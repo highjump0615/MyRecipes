@@ -1,0 +1,7 @@
+{
+  "name": "MyRecipes",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
