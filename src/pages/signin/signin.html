@@ -1,0 +1,97 @@
+<!--
+  Generated template for the SigninPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+
+<ion-content class="red-bg">
+
+  <div ion-fixed class="container" padding>
+    <!-- logo image -->
+    <img
+      src="../assets/imgs/logo.png"
+      class="nm-center img-logo"
+      style="width: 139px;" />
+
+    <!-- log in form -->
+    <div class="nm-center width-80">
+
+      <!-- email -->
+      <div class="flex-row input-item">
+        <img
+          src="../assets/imgs/signin/signin_email.png"
+          style="width: 19px;" />
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </div>
+
+      <!-- password -->
+      <div
+        class="flex-row input-item"
+        style="margin-top: 4px;">
+        <img
+          src="../assets/imgs/signin/signin_password.png"
+          style="width: 13px;" />
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </div>
+    </div>
+
+    <!-- buttons -->
+    <div class="nm-center width-80">
+      <!-- login button -->
+      <button
+        ion-button round full
+        class="but-primary"
+        (click)="onButSignin($event)">
+        <b>Let's Go!</b>
+      </button>
+
+      <!-- forget button -->
+      <button
+        ion-button full clear
+        class="but-transparent"
+        (click)="onButForget($event)">
+        Forgot Password?
+      </button>
+    </div>
+
+    <!-- social login -->
+    <div class="nm-center social">
+      <!-- facebook -->
+      <button
+        ion-button icon-only clear
+        class="but-transparent">
+        <img
+          src="../assets/imgs/signin/signin_fb.png" />
+      </button>
+
+      <!-- google -->
+      <button
+        ion-button icon-only clear
+        class="but-transparent"
+        style="margin-left: 16px;">
+        <img
+          src="../assets/imgs/signin/signin_google.png" />
+      </button>
+    </div>
+
+    <!-- terms -->
+    <div class="nm-center menu">
+      <span style="line-height: 1.6">By using the nuMenu app, you agree to our<br>
+        <span class="clickable" (click)="onButPolicy($event)">Privacy Policy</span> and <span class="clickable" (click)="onButTerm($event)">Terms of Services</span>
+      </span>
+    </div>
+
+    <!-- signup -->
+    <div class="nm-center menu">
+        <span>Not Registered?</span>
+        <span class="clickable" (click)="onButSignup($event)"> Sign Up! </span>
+    </div>
+
+  </div>
+
+</ion-content>

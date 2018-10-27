@@ -26,8 +26,13 @@ $font-size-button: 10pt;
     height: 100%;
 }
 
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
 .flex-fill {
-    flex: 1 100%
+    flex: 1 100%;
 }
 
 .match-parent {
@@ -43,4 +48,26 @@ $font-size-button: 10pt;
 .nm-center {
     align-self: center;
     justify-content: center;
+}
+
+// width
+.width-80 {
+  width: 80%;
+}
+
+//
+// buttons
+//
+.but-primary {
+    font-size: $font-size-button;
+    color: map-get($colors, primary) !important;
+    background-color: map-get($colors, light) !important;
+}
+.but-primary.activated {
+    opacity: 0.7;
+}
+
+.but-transparent {
+    font-size: $font-size-button;
+    color: map-get($colors, light) !important;
 }

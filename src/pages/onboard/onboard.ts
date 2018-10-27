@@ -5,6 +5,8 @@ import { BaseLandingPage } from '../BaseLandingPage';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
+import { SigninPage } from '../signin/signin';
+
 /**
  * Generated class for the OnboardPage page.
  *
@@ -64,7 +66,7 @@ export class OnboardPage extends BaseLandingPage {
 
     let currentIndex = this.slides.getActiveIndex();
     if (currentIndex >= this.slides._slides.length - 1) {
-      // go to login page
+      this.gotoLoginPage();
     }
   }
 
@@ -73,6 +75,14 @@ export class OnboardPage extends BaseLandingPage {
    * @param event
    */
   onButSkip(event) {
+    this.gotoLoginPage();
+  }
+
+  /**
+   * go to log in page
+   */
+  gotoLoginPage() {
+    this.navCtrl.push(SigninPage);
   }
 
 }

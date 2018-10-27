@@ -9,13 +9,15 @@ import { OnboardPage } from '../pages/onboard/onboard';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SigninPage } from '../pages/signin/signin';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    OnboardPage
+    OnboardPage,
+    SigninPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     ListPage,
-    OnboardPage
+    OnboardPage,
+    SigninPage
   ],
   providers: [
     StatusBar,

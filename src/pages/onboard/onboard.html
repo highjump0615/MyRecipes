@@ -59,16 +59,14 @@
       class="nm-center"
       style="width: 70%; height: 160px;">
       <button
-        ion-button round
+        ion-button round full
         class="but-primary"
-        style="width: 100%;"
         (click)="onButNext($event)">
         {{titleButNext}}
       </button>
       <button
-        ion-button clear=true
+        ion-button full clear
         class="but-transparent"
-        style="width: 100%;"
         (click)="onButSkip($event)"
         *ngIf="showSkipButton">
         Skip
