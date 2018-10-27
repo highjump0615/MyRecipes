@@ -1,0 +1,80 @@
+<!--
+  Gener ted template for the OnboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+</ion-header>
+
+
+<ion-content class="red-bg" padding>
+
+  <div ion-fixed class="container">
+    <!-- slider -->
+    <div class="flex-fill">
+      <ion-slides pager (ionSlideWillChange)="slideWillChange()">
+        <ion-slide>
+          <div class="container slide-content">
+            <!-- logo image -->
+            <img
+              src="../assets/imgs/logo.png"
+              class="nm-center img-logo" />
+
+            <!-- label -->
+            <span>Input your preference and generate<br>a menu that has everything you want.</span>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="container slide-content">
+            <!-- logo image -->
+            <img
+              src="../assets/imgs/logo.png"
+              class="nm-center img-logo" />
+
+            <!-- label -->
+            <span>Have access to thousands of recipes<br>that are tailored to your specific<br>preference.</span>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="container slide-content">
+            <!-- logo image -->
+            <img
+              src="../assets/imgs/logo.png"
+              class="nm-center img-logo" />
+
+            <!-- label -->
+            <span>Upload your own recipes, take pictures<br>of what you make, and share it on<br>social media.</span>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!-- buttons -->
+    <div
+      class="nm-center"
+      style="width: 70%; height: 160px;">
+      <button
+        ion-button round
+        class="but-primary"
+        style="width: 100%;"
+        (click)="onButNext($event)">
+        {{titleButNext}}
+      </button>
+      <button
+        ion-button clear=true
+        class="but-transparent"
+        style="width: 100%;"
+        (click)="onButSkip($event)"
+        *ngIf="showSkipButton">
+        Skip
+      </button>
+    </div>
+
+  </div>
+
+</ion-content>
