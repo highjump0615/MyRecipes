@@ -10,6 +10,7 @@ import { OnboardPage } from '../pages/onboard/onboard';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SigninPage } from '../pages/signin/signin';
+import { ForgetPage } from '../pages/forget/forget';
 
 @NgModule({
   declarations: [
@@ -17,11 +18,15 @@ import { SigninPage } from '../pages/signin/signin';
     HomePage,
     ListPage,
     OnboardPage,
-    SigninPage
+    SigninPage,
+    ForgetPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      backButtonIcon: 'md-arrow-back'
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +34,8 @@ import { SigninPage } from '../pages/signin/signin';
     HomePage,
     ListPage,
     OnboardPage,
-    SigninPage
+    SigninPage,
+    ForgetPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+
+import { BaseLandingPage } from '../BaseLandingPage';
+import { ForgetPage } from '../forget/forget'
 
 /**
  * Generated class for the SigninPage page.
@@ -13,9 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-signin',
   templateUrl: 'signin.html',
 })
-export class SigninPage {
+export class SigninPage extends BaseLandingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+    super(menuCtrl);
   }
 
   ionViewDidLoad() {
@@ -59,6 +63,6 @@ export class SigninPage {
    * @param event
    */
   onButForget(event) {
-    console.log(event);
+    this.navCtrl.push(ForgetPage);
   }
 }

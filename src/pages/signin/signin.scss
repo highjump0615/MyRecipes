@@ -4,30 +4,6 @@ page-signin {
     justify-content: space-around;
   }
 
-  .input-item {
-    border-bottom: 1px solid map-get($colors, light);
-  }
-
-  .input-item ion-input {
-    margin-left: 24px;
-    color: map-get($colors, light);
-  }
-
-
-  //
-  // placeholders
-  //
-  .text-input::-moz-placeholder {
-    color: map-get($colors, light);
-  }
-
-  .text-input::-ms-input-placeholder {
-    color: map-get($colors, light);
-  }
-
-  .text-input::-webkit-input-placeholder {
-    color: map-get($colors, light);
-  }
 
   //
   // social
@@ -37,15 +13,4 @@ page-signin {
     height: 60px;
   }
 
-  // term & signup
-  .menu {
-    text-align: center;
-  }
-  .menu span {
-    font-size: $font-size-label;
-    color: map-get($colors, light);
-  }
-  .menu span.clickable {
-    color: #ff5047;
-  }
 }

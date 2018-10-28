@@ -71,3 +71,47 @@ $font-size-button: 10pt;
     font-size: $font-size-button;
     color: map-get($colors, light) !important;
 }
+
+// navigation bar
+.back-button-icon {
+  font-size: 2.8rem;
+}
+
+//
+// signin form
+//
+.signin-input {
+  border-bottom: 1px solid map-get($colors, light);
+}
+.signin-input ion-input {
+  margin-left: 24px;
+  color: map-get($colors, light);
+}
+
+// term & signup
+.signin-menu {
+  text-align: center;
+}
+.signin-menu span {
+  font-size: $font-size-label;
+  color: map-get($colors, light);
+}
+.signin-menu span.clickable {
+  color: #ff5047;
+}
+
+
+//
+// placeholders
+//
+.text-input::-moz-placeholder {
+  color: map-get($colors, light);
+}
+
+.text-input::-ms-input-placeholder {
+  color: map-get($colors, light);
+}
+
+.text-input::-webkit-input-placeholder {
+  color: map-get($colors, light);
+}
