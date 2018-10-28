@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CheckBoxComponent } from '../../../components/check-box/check-box'
+import { SignupPasswordPage } from '../signup-password/signup-password'
 
 /**
  * Generated class for the SignupEmailPage page.
@@ -11,9 +12,10 @@ import { CheckBoxComponent } from '../../../components/check-box/check-box'
 
 @IonicPage()
 @Component({
-  selector: 'page-signup-email',
+  selector: 'page-signup',
   templateUrl: 'signup-email.html',
 })
+
 export class SignupEmailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -29,5 +31,6 @@ export class SignupEmailPage {
    */
   onButNext(event) {
     // go to signup password page
+    this.navCtrl.push(SignupPasswordPage);
   }
 }
