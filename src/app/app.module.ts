@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SigninPage } from '../pages/signin/signin';
 import { ForgetPage } from '../pages/forget/forget';
+// import { SignupEmailPage } from '../pages/signup/signup-email/signup-email';
+import { SignupEmailPageModule } from '../pages/signup/signup-email/signup-email.module'
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { ForgetPage } from '../pages/forget/forget';
       backButtonText: '',
       backButtonIcon: 'md-arrow-back'
     }),
+    SignupEmailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

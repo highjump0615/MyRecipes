@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 
 import { BaseLandingPage } from '../BaseLandingPage';
 import { ForgetPage } from '../forget/forget'
+import { SignupEmailPage } from '../signup/signup-email/signup-email'
 
 /**
  * Generated class for the SigninPage page.
@@ -31,7 +32,8 @@ export class SigninPage extends BaseLandingPage {
    * @param event
    */
   onButSignup(event) {
-    console.log(event);
+    // go to sign up page
+    this.navCtrl.push(SignupEmailPage);
   }
 
   /**
@@ -63,6 +65,7 @@ export class SigninPage extends BaseLandingPage {
    * @param event
    */
   onButForget(event) {
+    // go to reset password page
     this.navCtrl.push(ForgetPage);
   }
 }
