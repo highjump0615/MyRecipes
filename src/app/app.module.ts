@@ -13,6 +13,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { ForgetPage } from '../pages/forget/forget';
 import { SignupEmailPageModule } from '../pages/signup/signup-email/signup-email.module'
 import { SignupPasswordPageModule } from '../pages/signup/signup-password/signup-password.module';
+import { SignupProfilePage } from '../pages/signup/signup-profile/signup-profile'
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SignupPasswordPageModule } from '../pages/signup/signup-password/signup
     ListPage,
     OnboardPage,
     SigninPage,
-    ForgetPage
+    ForgetPage,
+    SignupProfilePage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { SignupPasswordPageModule } from '../pages/signup/signup-password/signup
     ListPage,
     OnboardPage,
     SigninPage,
-    ForgetPage
+    ForgetPage,
+    SignupProfilePage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,63 @@
+<!--
+  Generated template for the SignupProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="red-bg" padding>
+  <div ion-fixed class="container" padding>
+    <!-- submit form -->
+    <div
+      class="nm-center width-80"
+      style="margin-top: 30px;">
+
+      <!-- photo button -->
+      <button
+        ion-button round
+        class="nm-center but-photo-large">
+        <div class="container nm-center">
+          <ion-icon name="add"></ion-icon>
+          <span class="title">Upload<br>Photo</span>
+        </div>
+      </button>
+
+      <!-- items -->
+      <div style="margin-top: 20px;">
+        <div class="flex-row input-item signin-input">
+          <ion-input placeholder="First Name"></ion-input>
+        </div>
+        <div
+          class="flex-row input-item signin-input"
+          style="margin-top: 8px;">
+          <ion-input placeholder="Last Name"></ion-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- buttons -->
+    <div
+      class="nm-center width-80"
+      style="margin-bottom: 40px;">
+
+      <!-- next button -->
+      <button
+        ion-button round full
+        class="but-primary"
+        (click)="onButNext($event)">
+        <b>Next</b>
+      </button>
+    </div>
+
+  </div>
+
+</ion-content>

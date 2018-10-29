@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SignupProfilePage } from '../signup-profile/signup-profile'
 
 /**
- * Generated class for the SignupPasswordPage page.
+ * Generated class for the SignupProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,16 +10,16 @@ import { SignupProfilePage } from '../signup-profile/signup-profile'
 
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup-password.html',
+  selector: 'page-signup-profile',
+  templateUrl: 'signup-profile.html',
 })
-export class SignupPasswordPage {
+export class SignupProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPasswordPage');
+    console.log('ionViewDidLoad SignupProfilePage');
   }
 
   /**
@@ -28,8 +27,7 @@ export class SignupPasswordPage {
    * @param event
    */
   onButNext(event) {
-    // go to signup profile page
-    this.navCtrl.push(SignupProfilePage);
+    // go to signup favourite page
   }
 
 }
