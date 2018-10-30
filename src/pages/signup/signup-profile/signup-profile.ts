@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { SignupFavouritePage } from '../signup-favourite/signup-favourite'
+
 /**
  * Generated class for the SignupProfilePage page.
  *
@@ -28,6 +30,7 @@ export class SignupProfilePage {
    */
   onButNext(event) {
     // go to signup favourite page
+    this.navCtrl.push(SignupFavouritePage);
   }
 
 }

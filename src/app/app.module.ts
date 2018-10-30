@@ -14,6 +14,8 @@ import { ForgetPage } from '../pages/forget/forget';
 import { SignupEmailPageModule } from '../pages/signup/signup-email/signup-email.module'
 import { SignupPasswordPageModule } from '../pages/signup/signup-password/signup-password.module';
 import { SignupProfilePage } from '../pages/signup/signup-profile/signup-profile'
+import { SignupFavouritePage } from '../pages/signup/signup-favourite/signup-favourite'
+import { SignupFavouritePageModule } from '../pages/signup/signup-favourite/signup-favourite.module';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { SignupProfilePage } from '../pages/signup/signup-profile/signup-profile
       backButtonIcon: 'md-arrow-back'
     }),
     SignupEmailPageModule,
-    SignupPasswordPageModule
+    SignupPasswordPageModule,
+    SignupFavouritePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

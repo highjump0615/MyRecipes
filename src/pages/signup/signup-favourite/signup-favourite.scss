@@ -1,0 +1,44 @@
+page-signup-favourite {
+
+  ion-content {
+    background-color: map-get($map: $colors, $key: main-red) !important;
+    color: map-get($map: $colors, $key: light) !important;
+  }
+
+  .fixed-content {
+    margin-top: 36px;
+  }
+
+  .darkred-bg {
+    background-color: map-get($colors, dark-red);
+  }
+
+  .div-profile span {
+    margin-top: 16px;
+    margin-bottom: 26px;
+    font-size: 12pt;
+  }
+
+  .div-content .title {
+    text-align: center;
+    padding: 14px;
+  }
+  .div-content .container-scroll {
+    margin: 12px;
+    padding: 8px;
+    background: map-get($map: $colors, $key: light);
+    border-radius: 12px;
+  }
+
+  //
+  // border
+  //
+  .top-border {
+    border-top: 1px solid #ffffff70;
+  }
+  .bottom-border {
+    border-bottom: 1px solid #ffffff70;
+  }
+
+
+}

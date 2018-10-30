@@ -1,0 +1,22 @@
+<!-- Generated template for the CuisineItemComponent component -->
+<div class="flex-column nm-center">
+
+  <!-- image -->
+  <div
+    class="square"
+    style="background-image: url('../../../assets/imgs/default_food.png')"
+    (click)="onSelectChangeed($event)">
+    <!-- tick mark -->
+    <div
+      class="container nm-center tick"
+      *ngIf="selected">
+      <ion-icon name="checkmark"></ion-icon>
+    </div>
+  </div>
+
+  <!-- text -->
+  <span
+    [style.font-weight]="selected ? 'bold' : 'normal'">
+    {{text}}
+  </span>
+</div>
