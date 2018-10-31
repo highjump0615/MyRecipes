@@ -18,6 +18,12 @@
 $font-size-label: 10pt;
 $font-size-button: 10pt;
 
+//
+// content
+//
+ion-content {
+  background-color: map-get($map: $colors, $key: light) !important;
+}
 
 .container {
     display: flex;
@@ -89,7 +95,7 @@ $font-size-button: 10pt;
 
 // navigation bar
 .back-button-icon {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
 }
 
 //

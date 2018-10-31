@@ -40,7 +40,10 @@
           class="menu"
           (click)="onButAccordion(0)">
           Allergies
-          <ion-icon name="arrow-down" item-end></ion-icon>
+          <ion-icon
+            [name]="currentItem == 0 ? 'arrow-down' : 'arrow-up'"
+            item-end>
+          </ion-icon>
         </button>
 
         <!-- content -->
@@ -66,7 +69,10 @@
           class="menu"
           (click)="onButAccordion(1)">
           Diets
-          <ion-icon name="arrow-down" item-end></ion-icon>
+          <ion-icon
+            [name]="currentItem == 1 ? 'arrow-down' : 'arrow-up'"
+            item-end>
+          </ion-icon>
         </button>
 
         <!-- content -->

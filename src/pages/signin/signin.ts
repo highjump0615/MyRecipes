@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import { BaseLandingPage } from '../BaseLandingPage';
 import { ForgetPage } from '../forget/forget'
 import { SignupEmailPage } from '../signup/signup-email/signup-email'
+import { TermsPage } from '../terms/terms';
 
 /**
  * Generated class for the SigninPage page.
@@ -41,7 +42,8 @@ export class SigninPage extends BaseLandingPage {
    * @param event
    */
   onButPolicy(event) {
-    console.log(event);
+    // go to terms page
+    this.gotoTermPage(TermsPage.TYPE_POLICY);
   }
 
   /**
@@ -49,7 +51,15 @@ export class SigninPage extends BaseLandingPage {
    * @param event
    */
   onButTerm(event) {
-    console.log(event);
+    // go to terms page
+    this.gotoTermPage(TermsPage.TYPE_TERMS);
+  }
+
+  gotoTermPage(type) {
+    var params = {};
+    params[TermsPage.PARAM_TYPE] = type;
+
+    this.navCtrl.push(TermsPage, params);
   }
 
   /**
