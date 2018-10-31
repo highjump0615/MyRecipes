@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SignupAllergiesPage } from '../signup-allergies/signup-allergies';
 
 /**
  * Generated class for the SignupFavouritePage page.
@@ -26,6 +27,15 @@ export class SignupFavouritePage {
   }
 
   ionViewDidLoad() {
+  }
+
+  /**
+   * next button
+   * @param event
+   */
+  onButNext(event) {
+    // go to signup password page
+    this.navCtrl.push(SignupAllergiesPage);
   }
 
 }

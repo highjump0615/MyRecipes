@@ -28,6 +28,9 @@ $font-size-button: 10pt;
 
 .flex-row {
   display: flex;
+}
+.flex-c-row {
+  display: flex;
   align-items: center;
 }
 .flex-column {
@@ -160,5 +163,5 @@ ion-header[transparent] .toolbar-background {
 // scroll container
 //
 .container-scroll {
-  overflow-y: scroll
+  overflow: scroll
 }

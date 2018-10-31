@@ -40,5 +40,25 @@ page-signup-favourite {
     border-bottom: 1px solid #ffffff70;
   }
 
+  //
+  // accordion menu
+  //
+  .accordion .menu {
+    font-size: 11pt;
+  }
+  .accordion .menu ion-icon {
+    font-size: 13pt;
+    min-height: 0;
+  }
+  .accordion .container-scroll {
+    margin-top: 0;
+  }
+  .accordion .content {
+    transition: 0.3s linear;
+    overflow: hidden;
+  }
+  .collapsed {
+    max-height: 0 !important;
+  }
 
 }

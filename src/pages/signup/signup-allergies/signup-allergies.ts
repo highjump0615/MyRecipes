@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 
 /**
  * Generated class for the SignupAllergiesPage page.
@@ -13,13 +13,57 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-signup-favourite',
   templateUrl: 'signup-allergies.html',
 })
+
 export class SignupAllergiesPage {
 
+  /**
+   * current accordion item
+   * 0: Allergies
+   * 1: Diets
+   *
+   * @memberof SignupAllergiesPage
+   */
+  currentItem = 0;
+
+  allergies: Array<string> = [];
+  diets: Array<string> = [];
+
+  @ViewChild('accordionContent') accordContent: ElementRef;
+
+  heightAccord = 0;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // init data
+    for (var i = 0; i < 15; i++) {
+      this.allergies.push("aa");
+    }
+
+    for (i = 0; i < 15; i++) {
+      this.diets.push("aa");
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupAllergiesPage');
+
+    console.log(this.accordContent.nativeElement.offsetHeight);
+  }
+
+  /**
+   * allergy accordion button
+   * @param event
+   */
+  onButAccordion(index) {
+    this.currentItem = index;
+  }
+
+  /**
+   * next button
+   * @param event
+   */
+  onButNext(event) {
+    // go to signup password page
+    this.navCtrl.push(SignupAllergiesPage);
   }
 
 }

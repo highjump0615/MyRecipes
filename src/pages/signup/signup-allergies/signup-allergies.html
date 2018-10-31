@@ -14,4 +14,89 @@
 
 
 <ion-content padding>
+  <div ion-fixed class="container">
+
+    <!-- profile -->
+    <div class="nm-center flex-column div-profile">
+      <img
+        src="../../../assets/imgs/default_user.png"
+        class="but-photo-large round" />
+      <span>Kristina Maloine</span>
+    </div>
+
+    <!-- contents -->
+    <div
+      class="flex-column div-content darkred-bg top-border bottom-border">
+
+      <div class="title bottom-border">
+        <span>Any Allergies or diets?</span>
+      </div>
+
+      <!-- accordion items : Allergies -->
+      <div class="accordion">
+        <!-- menu -->
+        <button
+          ion-item detail-none no-lines color="dark-red"
+          class="menu"
+          (click)="onButAccordion(0)">
+          Allergies
+          <ion-icon name="arrow-down" item-end></ion-icon>
+        </button>
+
+        <!-- content -->
+        <div
+          #accordionContent
+          class="content"
+          [class.collapsed]="currentItem != 0">
+          <div class="container-scroll">
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of allergies">
+                <cuisine-item text="AMERICAN"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+      <!-- accordion items : Diets -->
+      <div class="accordion top-border">
+        <!-- menu -->
+        <button
+          ion-item detail-none no-lines color="dark-red"
+          class="menu"
+          (click)="onButAccordion(1)">
+          Diets
+          <ion-icon name="arrow-down" item-end></ion-icon>
+        </button>
+
+        <!-- content -->
+        <div
+          class="content"
+          [class.collapsed]="currentItem != 1">
+          <div class="container-scroll">
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of diets">
+                <cuisine-item text="AMERICAN"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- buttons -->
+    <div class="darkred-bg full-width flex-row flex-fill nm-center">
+
+      <!-- next button -->
+      <button
+        ion-button round full
+        class="but-primary width-80"
+        (click)="onButNext($event)"
+        style="margin-top: 20px;">
+        <b>Next</b>
+      </button>
+    </div>
+
+  </div>
 </ion-content>
