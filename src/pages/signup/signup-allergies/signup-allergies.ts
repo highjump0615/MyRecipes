@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { SignupDislikePage } from '../signup-dislike/signup-dislike';
 
 /**
  * Generated class for the SignupAllergiesPage page.
@@ -63,7 +64,7 @@ export class SignupAllergiesPage {
    */
   onButNext(event) {
     // go to signup password page
-    this.navCtrl.push(SignupAllergiesPage);
+    this.navCtrl.push(SignupDislikePage);
   }
 
 }

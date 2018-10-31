@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { OnboardPage } from "../pages/onboard/onboard";
-import { SignupAllergiesPage } from '../pages/signup/signup-allergies/signup-allergies';
+import { SignupDislikePage } from '../pages/signup/signup-dislike/signup-dislike';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +20,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = SignupAllergiesPage;
+    this.rootPage = SignupDislikePage;
 
     this.initializeApp();
 
