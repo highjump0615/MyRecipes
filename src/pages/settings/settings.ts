@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Toast, ToastController, MenuController } from 'ionic-angular';
 import { TermsPage } from '../terms/terms';
 import { AboutAppPage } from '../about-app/about-app';
+import { EmailComposer } from '@ionic-native/email-composer'
+import { BasePage } from '../BasePage';
 
 /**
  * Generated class for the SettingsPage page.
@@ -15,9 +17,17 @@ import { AboutAppPage } from '../about-app/about-app';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class SettingsPage extends BasePage {
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menuCtrl: MenuController,
+    private emailComposer: EmailComposer,
+    public platform: Platform,
+    public toastCtrl: ToastController) {
+      super(navCtrl, menuCtrl, toastCtrl)
   }
 
   ionViewDidLoad() {
@@ -38,6 +48,24 @@ export class SettingsPage {
   }
 
   onButReport() {
+    if (this.platform.is('core') || this.platform.is('mobileweb')) {
+      // this is not app
+      this.presentToast('Can be used in apps only');
+    }
+    else {
+      this.emailComposer.isAvailable().then((available: boolean) => {
+        if (available) {
+          let email = {
+            to: 'max@mustermann.de',
+            subject: 'Report a Problem',
+            isHtml: true
+          };
+
+          // Send a text message using default options
+          this.emailComposer.open(email);
+        }
+      });
+    }
   }
 
 }

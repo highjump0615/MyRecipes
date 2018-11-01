@@ -20,6 +20,7 @@ import { SignupDislikePageModule } from '../pages/signup/signup-dislike/signup-d
 import { TermsPage } from '../pages/terms/terms';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutAppPage } from '../pages/about-app/about-app';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AboutAppPage } from '../pages/about-app/about-app';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    EmailComposer
   ]
 })
 export class AppModule {}

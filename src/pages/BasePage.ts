@@ -1,8 +1,11 @@
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, ToastController } from 'ionic-angular';
 import { HomePage } from './home/home';
 
 export class BasePage {
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
+  constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController) {
   }
 
   gotoHome() {
@@ -17,5 +20,19 @@ export class BasePage {
   enableMenu(enable) {
     // disable menu
     this.menuCtrl.enable(enable, 'main');
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 }
