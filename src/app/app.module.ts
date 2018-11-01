@@ -19,6 +19,7 @@ import { SignupAllergiesPageModule } from '../pages/signup/signup-allergies/sign
 import { SignupDislikePageModule } from '../pages/signup/signup-dislike/signup-dislike.module';
 import { TermsPage } from '../pages/terms/terms';
 import { SettingsPage } from '../pages/settings/settings';
+import { AboutAppPage } from '../pages/about-app/about-app';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SettingsPage } from '../pages/settings/settings';
     ForgetPage,
     SignupProfilePage,
     TermsPage,
-    SettingsPage
+    SettingsPage,
+    AboutAppPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { SettingsPage } from '../pages/settings/settings';
     ForgetPage,
     SignupProfilePage,
     TermsPage,
-    SettingsPage
+    SettingsPage,
+    AboutAppPage
   ],
   providers: [
     StatusBar,

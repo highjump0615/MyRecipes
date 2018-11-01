@@ -1,0 +1,22 @@
+page-about-app {
+
+  ion-content {
+    background-color: map-get($map: $colors, $key: main-red) !important;
+    font-size: 10pt;
+  }
+
+  .logo {
+    padding: 30px;
+  }
+  .logo span {
+    margin-top: 10px;    
+    color: map-get($map: $colors, $key: light);
+  }
+
+  .content {
+    background-color: map-get($map: $colors, $key: light);
+    color: map-get($map: $colors, $key: dark);
+    line-height: 1.4;
+  }
+
+}

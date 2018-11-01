@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TermsPage } from '../terms/terms';
+import { AboutAppPage } from '../about-app/about-app';
 
 /**
  * Generated class for the SettingsPage page.
@@ -24,6 +25,8 @@ export class SettingsPage {
   }
 
   onButAbout() {
+    // go to about app page
+    this.navCtrl.push(AboutAppPage);
   }
 
   onButPrivacy() {
