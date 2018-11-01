@@ -3,3 +3,5 @@ $toolbar-background: map-get($map: $colors, $key: primary);
 
 // menu width
 $menu-width: 224px;
+
+$item-ios-detail-push-color: color($colors, primary);

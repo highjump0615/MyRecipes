@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { OnboardPage } from "../pages/onboard/onboard";
 import { SigninPage } from '../pages/signin/signin';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = HomePage;
+    this.rootPage = SettingsPage;
 
     this.initializeApp();
 
@@ -28,7 +29,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
       { title: 'Preferences', component: ListPage, icon: 'logo-buffer' },
-      { title: 'Settings', component: ListPage, icon: 'settings' }
+      { title: 'Settings', component: SettingsPage, icon: 'settings' }
     ];
 
   }
