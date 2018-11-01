@@ -18,10 +18,11 @@ import { TermsPage } from '../terms/terms';
   selector: 'page-signin',
   templateUrl: 'signin.html',
 })
+
 export class SigninPage extends BaseLandingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
-    super(menuCtrl);
+    super(navCtrl, menuCtrl);
   }
 
   ionViewDidLoad() {
@@ -67,7 +68,7 @@ export class SigninPage extends BaseLandingPage {
    * @param event
    */
   onButSignin(event) {
-    console.log(event);
+    this.gotoHome();
   }
 
   /**

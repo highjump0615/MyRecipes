@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { HomePage } from '../../home/home';
+import { BasePage } from '../../BasePage';
 
 /**
  * Generated class for the SignupDislikePage page.
@@ -13,11 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-signup-favourite',
   templateUrl: 'signup-dislike.html',
 })
-export class SignupDislikePage {
+export class SignupDislikePage extends BasePage {
 
   dislikes: Array<string> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
+    super(navCtrl, menuCtrl);
+
     // init data
     for (var i = 0; i < 15; i++) {
       this.dislikes.push("aa");
@@ -34,7 +38,7 @@ export class SignupDislikePage {
    */
   onButNext(event) {
     // go to main page
-    // this.navCtrl.push(SignupDislikePage);
+    this.gotoHome();
   }
 
 }

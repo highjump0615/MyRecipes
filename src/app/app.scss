@@ -171,3 +171,40 @@ ion-header[transparent] .toolbar-background {
 .container-scroll {
   overflow: scroll
 }
+
+//
+// menu
+//
+button[menutoggle] {
+  margin: 0;
+}
+button[menutoggle] ion-icon {
+  font-size: 2.2rem;
+}
+
+ion-menu ion-title {
+  padding: 0 40px !important;
+}
+ion-menu ion-title .toolbar-title {
+  font-size: 12pt;
+  font-weight: normal;
+}
+#main .container {
+  justify-content: space-between;
+}
+
+//
+// menu buttons
+//
+#main ion-list {
+  margin-bottom: 0;
+}
+#main ion-list button {
+  font-size: 11pt;
+  color: map-get($map: $colors, $key: dark);
+}
+#main ion-list button ion-icon {
+  font-size: 13pt;
+  min-height: 0;
+  color: map-get($map: $colors, $key: primary)
+}

@@ -39,7 +39,7 @@ export class OnboardPage extends BaseLandingPage {
   showSkipButton = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
-    super(menuCtrl);
+    super(navCtrl, menuCtrl);
   }
 
   ionViewDidLoad() {
