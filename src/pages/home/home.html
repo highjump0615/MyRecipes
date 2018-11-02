@@ -1,18 +1,187 @@
-<ion-header>
-  <ion-navbar>
+<ion-header transparent no-border>
+  <ion-navbar >
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <!-- title -->
+    <ion-title>
+      <img class="logo" src="../../assets/imgs/logo_title.png" />
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <div ion-fixed class="container">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <!-- profile -->
+    <div>
+      <div class="flex-row profile">
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+        <!-- info -->
+        <div class="info">
+          <div class="flex-row">
+            <span class="name">{{username}}</span>
+            <button ion-button clear>
+              <img src="../../assets/imgs/home_edit.png" />
+            </button>
+          </div>
+          <div class="desc">{{desc}}</div>
+        </div>
+
+        <!-- photo -->
+        <div class="photo">
+          <img
+            src="../../../assets/imgs/default_user.png"
+            class="but-photo round" />
+        </div>
+      </div>
+
+      <!-- list -->
+      <div class="top-border bottom-border menu-list">
+        <!-- menus -->
+        <div class="list-item bottom-border" id="list-menu">
+          <div class="title flex-row">
+            <span>Menus</span>
+            <button ion-button clear>
+              <img src="../../assets/imgs/home_menu_add.png" />
+            </button>
+          </div>
+
+          <div class="content">
+            <button ion-button icon-start round
+              color="light-red">
+              <img src="../../assets/imgs/home_menu_icon.png" />
+              <span>Weeknight Suppers</span>
+            </button>
+            <button ion-button icon-start round
+              color="light-red">
+              <img src="../../assets/imgs/home_menu_icon.png" />
+              <span>Dinner with Family</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- shopping list -->
+        <div class="list-item" id="list-shopping">
+          <div class="title flex-row">
+            <span>Shopping List</span>
+            <button ion-button clear>
+              <img src="../../assets/imgs/home_menu_add.png" />
+            </button>
+          </div>
+
+          <div class="content">
+            <button ion-button icon-start round
+              color="light-red">
+              <img src="../../assets/imgs/home_list_icon.png" />
+              <span>Weeknight Suppers</span>
+            </button>
+            <button ion-button icon-start round
+              color="light-red">
+              <img src="../../assets/imgs/home_list_icon.png" />
+              <span>Dinner with Family</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll content -->
+    <div class="recipes">
+      <div class="container-scroll">
+      <!-- upcoming recipes -->
+      <div>
+        <span class="title">Upcoming Recipes:</span>
+        <div class="recipe-content">
+          <ion-row>
+            <ion-col col-4 *ngFor="let data of upcomings">
+              <!-- recipe item -->
+              <ion-card class="recipe-item flex-column nm-center">
+                <!-- image -->
+                <div
+                  class="thumbnail square"
+                  style="background-image: url('../../assets/imgs/default_food.png')">
+                </div>
+
+                <!-- rating -->
+                <ionic3-star-rating
+                  activeIcon = "ios-star"
+                  defaultIcon = "ios-star"
+                  activeColor = "#ffd027"
+                  defaultColor = "#ffeaa0"
+                  readonly="true"
+                  [rating]="3">
+                </ionic3-star-rating>
+
+                <!-- name -->
+                <span class="name">Burger Americana</span>
+
+                <!-- date -->
+                <span class="date">Feb 17, 2018</span>
+
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- browse -->
+      <div style="margin-top: 4px;">
+        <span class="title">Browse recipes and menus</span>
+        <div class="recipe-content">
+          <ion-row>
+            <ion-col col-4 *ngFor="let data of upcomings">
+              <!-- recipe item -->
+              <ion-card class="recipe-item flex-column nm-center">
+                <!-- image -->
+                <div
+                  class="thumbnail square"
+                  style="background-image: url('../../assets/imgs/default_food.png')">
+                </div>
+
+                <!-- rating -->
+                <ionic3-star-rating
+                  activeIcon = "ios-star"
+                  defaultIcon = "ios-star"
+                  activeColor = "#ffd027"
+                  defaultColor = "#ffeaa0"
+                  readonly="true"
+                  [rating]="3">
+                </ionic3-star-rating>
+
+                <!-- name -->
+                <span class="name">Burger Americana</span>
+
+                <!-- date -->
+                <span class="date">Feb 17, 2018</span>
+
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="div-button">
+        <button ion-button round full>
+          Cooking Tips
+        </button>
+
+        <div class="flex-row">
+          <button ion-button round full
+            style="flex: 1; margin-right: 4px;">
+            Favorites
+          </button>
+          <button ion-button round full
+            style="flex: 1; margin-left: 4px;">
+            My Recipes
+          </button>
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+
 </ion-content>

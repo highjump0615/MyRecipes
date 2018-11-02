@@ -1,3 +1,152 @@
 page-home {
 
+  ion-content {
+    background-color: map-get($map: $colors, $key: main-red) !important;
+    color: map-get($map: $colors, $key: light) !important;
+  }
+
+  //
+  // logo
+  //
+  .logo {
+    width: 111px;
+  }
+
+  //
+  // profile
+  //
+  .profile {
+    padding: 10px 40px 12px 40px;
+    background-color: map-get($map: $colors, $key: main-red);
+  }
+  .profile .info {
+    font-size: 10pt;
+    flex: 5;
+  }
+  .profile .info .name {
+    font-weight: bolder;
+    font-size: 14pt;
+    flex: 1;
+  }
+  .profile .info button {
+    height: auto;
+    padding: 6px;
+    margin-top: -6px;
+    margin-right: -6px;
+  }
+  .profile .info button img {
+    width: 14px;
+  }
+  .profile .info .desc {
+    margin-top: 8px;
+  }
+  .profile .photo {
+    margin-left: 18px;
+    flex: 2;
+  }
+
+  //
+  // menu list
+  //
+  .menu-list {
+    padding: 0 12px;
+    background-color: map-get($map: $colors, $key: dark-red);
+  }
+  .menu-list .title {
+    font-weight: bold;
+    font-size: 11pt;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu-list .title button {
+    height: auto;
+    padding: 6px;
+  }
+  .menu-list .title button img {
+    width: 15px;
+  }
+  .menu-list .content button {
+    height: auto;
+    padding: 8px 12px;
+    font-size: 9pt;
+  }
+  .menu-list .content button img {
+    margin-right: 6px;
+  }
+  .menu-list .list-item {
+    padding-bottom: 10px;
+  }
+  #list-menu .content button img {
+    width: 16px;
+  }
+  #list-shopping .content button img {
+    width: 13px;
+  }
+
+  //
+  // recipes content
+  //
+  .scroll-content {
+    background-color: map-get($map: $colors, $key: light);
+  }
+
+  .recipes {
+    padding: 12px;
+    overflow: scroll;
+  }
+  .recipes .title {
+    font-weight: bold;
+    color: map-get($map: $colors, $key: primary);
+  }
+  .recipe-content {
+    margin: 2px -5px;
+  }
+
+  //
+  // recipe item
+  //
+  .recipe-item {
+    padding: 8px;
+    margin: 0;
+    width: 100%;
+    color: map-get($map: $colors, $key: dark);
+  }
+  .recipe-item .thumbnail {
+    position: relative;
+    padding-bottom: 100%;
+  }
+  .recipe-item .thumbnail img {
+    position: absolute;
+  }
+  .recipe-item .name {
+    margin-top: 2px;
+    font-size: 7.5pt;
+  }
+  .recipe-item .date {
+    color: #888;
+    font-size: 6pt;
+    margin-top: 6px;
+  }
+  ionic3-star-rating {
+    margin-top: -4px;
+  }
+  ionic3-star-rating button {
+    height: auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+  ionic3-star-rating button ion-icon {
+    font-size: 11pt !important;
+    padding: 0 !important;
+  }
+
+  // buttons
+  .div-button {
+    margin-top: 10px;
+  }
+  .div-button [ion-button] {
+    font-weight: bold;
+    font-size: 11pt;
+  }
 }

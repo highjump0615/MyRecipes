@@ -21,7 +21,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = SettingsPage;
+    this.rootPage = HomePage;
 
     this.initializeApp();
 

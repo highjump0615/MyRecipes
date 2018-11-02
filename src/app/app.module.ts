@@ -21,12 +21,12 @@ import { TermsPage } from '../pages/terms/terms';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutAppPage } from '../pages/about-app/about-app';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { HomePageModule } from '../pages/home/home.module';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
     OnboardPage,
     SigninPage,
@@ -46,12 +46,12 @@ import { EmailComposer } from '@ionic-native/email-composer';
     SignupPasswordPageModule,
     SignupFavouritePageModule,
     SignupAllergiesPageModule,
-    SignupDislikePageModule
+    SignupDislikePageModule,
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
     OnboardPage,
     SigninPage,

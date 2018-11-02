@@ -145,6 +145,9 @@ ion-content {
 .round {
   border-radius: 50%;
 }
+.but-photo {
+  border: 3px solid white;
+}
 .but-photo-large {
   width: 120px;
   height: 120px;
@@ -207,4 +210,24 @@ ion-menu ion-title .toolbar-title {
   font-size: 13pt;
   min-height: 0;
   color: map-get($map: $colors, $key: primary)
+}
+
+//
+// border
+//
+.top-border {
+  border-top: 1px solid #ffffff70;
+}
+.bottom-border {
+  border-bottom: 1px solid #ffffff70;
+}
+
+//
+// square image
+//
+.square {
+  position: relative;
+  padding-bottom: 100%;
+  background-position: 50%;
+  background-size: cover;
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 
 import { BaseLandingPage } from '../BaseLandingPage';
 import { ViewChild } from '@angular/core';
@@ -38,8 +38,13 @@ export class OnboardPage extends BaseLandingPage {
    */
   showSkipButton = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
-    super(navCtrl, menuCtrl);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController) {
+
+    super(navCtrl, menuCtrl, toastCtrl);
   }
 
   ionViewDidLoad() {

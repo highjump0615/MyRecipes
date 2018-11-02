@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 
 import { BaseLandingPage } from '../BaseLandingPage';
 import { ForgetPage } from '../forget/forget'
@@ -21,8 +21,13 @@ import { TermsPage } from '../terms/terms';
 
 export class SigninPage extends BaseLandingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController) {
-    super(navCtrl, menuCtrl);
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController) {
+
+    super(navCtrl, menuCtrl, toastCtrl);
   }
 
   ionViewDidLoad() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController, ToastController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
 
 @Component({
@@ -8,11 +8,29 @@ import { BasePage } from '../BasePage';
 })
 export class HomePage extends BasePage {
 
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController) {
-    super(navCtrl, menuCtrl);
+  // user info
+  username = "Kristina Maloine";
+  desc = "Food Blogger, Explorer, Designer, Entrepreneur, Food photographer";
+
+  // recipes
+  upcomings: Array<string> = [];
+  recipes: Array<string> = [];
+
+  constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController) {
+
+    super(navCtrl, menuCtrl, toastCtrl);
 
     // enable menu
     this.enableMenu(true);
+
+    // init data
+    for (var i = 0; i < 3; i++) {
+      this.upcomings.push("aa");
+      this.recipes.push("aa");
+    }
   }
 
 }
