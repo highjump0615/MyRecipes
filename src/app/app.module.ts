@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { OnboardPage } from '../pages/onboard/onboard';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,12 +21,12 @@ import { SettingsPage } from '../pages/settings/settings';
 import { AboutAppPage } from '../pages/about-app/about-app';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { HomePageModule } from '../pages/home/home.module';
+import { PreferencePageModule } from '../pages/preference/preference.module';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    ListPage,
     OnboardPage,
     SigninPage,
     ForgetPage,
@@ -47,12 +46,12 @@ import { HomePageModule } from '../pages/home/home.module';
     SignupFavouritePageModule,
     SignupAllergiesPageModule,
     SignupDislikePageModule,
-    HomePageModule
+    HomePageModule,
+    PreferencePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ListPage,
     OnboardPage,
     SigninPage,
     ForgetPage,

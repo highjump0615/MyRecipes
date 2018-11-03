@@ -4,10 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { OnboardPage } from "../pages/onboard/onboard";
 import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
+import { PreferencePage } from '../pages/preference/preference';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,14 +21,14 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = HomePage;
+    this.rootPage = PreferencePage;
 
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Preferences', component: ListPage, icon: 'logo-buffer' },
+      { title: 'Preferences', component: PreferencePage, icon: 'logo-buffer' },
       { title: 'Settings', component: SettingsPage, icon: 'settings' }
     ];
 

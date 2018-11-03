@@ -9,10 +9,13 @@ cuisine-item {
     position: absolute;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .tick ion-icon {
     font-weight: bolder;
     font-size: 34pt;
+    color: map-get($map: $colors, $key: light);
   }
 
   span {
