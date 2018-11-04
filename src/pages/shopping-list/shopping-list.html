@@ -1,0 +1,65 @@
+<!--
+  Generated template for the ShoppingListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <!-- close button -->
+    <ion-buttons>
+      <button
+        ion-button menuClose
+        (click)="onButClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Shopping List</ion-title>
+
+    <ion-buttons end>
+      <button
+        ion-button
+        (click)="onButSave()">
+        SAVE
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div ion-fixed class="container">
+    <!-- menu selection -->
+    <div>
+      <ion-select [(ngModel)]="menu" interface="popover">
+        <ion-option selected>Weeknight Suppers</ion-option>
+        <ion-option>Dinner with Family</ion-option>
+        <ion-option>Quick and Easy</ion-option>
+        <ion-option>Super Bown Party</ion-option>
+        <ion-option>Dinner to Impress</ion-option>
+      </ion-select>
+    </div>
+
+    <!-- list -->
+    <ion-list class="ingredients">
+      <ion-item *ngFor="let ing of ingredients">
+        <ion-chip item-start>
+          <span>3 tbsp</span>
+        </ion-chip>
+        <ion-label text-center class="name">Brasil Leaves</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <!-- add button -->
+    <button
+      ion-button full icon-only
+      class="but-add">
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>

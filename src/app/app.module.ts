@@ -27,6 +27,7 @@ import { RecipeDetailMoreComponent } from '../components/recipe-detail-more/reci
 import { RecipeDetailMoreSecondaryComponent } from '../components/recipe-detail-more/recipe-detail-more-secondary/recipe-detail-more-secondary';
 import { MenuDetailPage } from '../pages/menu-detail/menu-detail';
 import { MenuDetailPageModule } from '../pages/menu-detail/menu-detail.module';
+import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MenuDetailPageModule } from '../pages/menu-detail/menu-detail.module';
     SettingsPage,
     AboutAppPage,
     RecipeDetailMoreComponent,
-    RecipeDetailMoreSecondaryComponent
+    RecipeDetailMoreSecondaryComponent,
+    ShoppingListPage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { MenuDetailPageModule } from '../pages/menu-detail/menu-detail.module';
     SettingsPage,
     AboutAppPage,
     RecipeDetailMoreComponent,
-    RecipeDetailMoreSecondaryComponent
+    RecipeDetailMoreSecondaryComponent,
+    ShoppingListPage
   ],
   providers: [
     StatusBar,

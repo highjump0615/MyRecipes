@@ -21,7 +21,9 @@
         <div class="info">
           <div class="flex-row">
             <span class="name">{{username}}</span>
-            <button ion-button clear>
+            <button
+              ion-button clear
+              (click)="onButEditProfile()">
               <img src="../../assets/imgs/home_edit.png" />
             </button>
           </div>
@@ -67,19 +69,25 @@
         <div class="list-item" id="list-shopping">
           <div class="title flex-row">
             <span>Shopping List</span>
-            <button ion-button clear>
+            <button
+              ion-button clear
+              (click)="onButAddShoppingList()">
               <img src="../../assets/imgs/home_menu_add.png" />
             </button>
           </div>
 
           <div class="content">
-            <button ion-button icon-start round
-              color="light-red">
+            <button
+              ion-button icon-start round
+              color="light-red"
+              (click)="onShoppingList()">
               <img src="../../assets/imgs/home_list_icon.png" />
               <span>Weeknight Suppers</span>
             </button>
-            <button ion-button icon-start round
-              color="light-red">
+            <button
+              ion-button icon-start round
+              color="light-red"
+              (click)="onShoppingList()">
               <img src="../../assets/imgs/home_list_icon.png" />
               <span>Dinner with Family</span>
             </button>
@@ -135,7 +143,9 @@
           <ion-row>
             <ion-col col-4 *ngFor="let data of upcomings">
               <!-- recipe item -->
-              <ion-card class="recipe-item flex-column nm-center">
+              <ion-card
+                class="recipe-item flex-column nm-center"
+                (click)="onRecipeDetail()">
                 <!-- image -->
                 <div
                   class="thumbnail square"

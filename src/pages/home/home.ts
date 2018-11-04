@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, MenuController, ToastController } from 'ionic-angular';
+import { NavController, MenuController, ToastController, ModalController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { MenuDetailPage } from '../menu-detail/menu-detail';
+import { ShoppingListPage } from '../shopping-list/shopping-list';
+import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
 
 @Component({
   selector: 'page-home',
@@ -22,7 +24,8 @@ export class HomePage extends BasePage {
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController) {
 
     super(navCtrl, menuCtrl, toastCtrl);
 
@@ -44,6 +47,17 @@ export class HomePage extends BasePage {
   onMenuDetail() {
     // go to menu detail page
     this.navCtrl.push(MenuDetailPage);
+  }
+
+  onShoppingList() {
+    // present shopping list page
+    let shoppingListPage = this.modalCtrl.create(ShoppingListPage, {});
+    shoppingListPage.present();
+  }
+
+  onButEditProfile() {
+    // go to edit profile page
+    this.navCtrl.push(SignupProfilePage);
   }
 
 }

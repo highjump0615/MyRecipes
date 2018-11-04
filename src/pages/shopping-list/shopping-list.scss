@@ -1,0 +1,68 @@
+page-shopping-list {
+
+  button[menuClose] {
+    font-size: 20pt;
+  }
+
+  ion-buttons[end] {
+    button {
+      font-size: 10pt;
+    }
+  }
+
+  ion-select {
+    margin: 10px;
+    background-color: map-get($map: $colors, $key: main-red);
+    border-radius: 6px;
+    max-width: 100%;
+    color: white;
+
+    // arrow icon
+    .select-icon {
+      margin-right: 6px;
+    }
+    .select-icon-inner {
+      color: white !important;
+    }
+  }
+
+  //
+  // ingredients list
+  //
+  .ingredients {
+    flex: 1;
+
+    ion-item {
+      background-color: #d0d0d0;
+
+      ion-chip {
+        color: white;
+        font-size: 9pt;
+        background-color: #9f9f9f;
+        padding: 0 10px;
+      }
+
+      ion-label.name {
+        color: #3f3f3f;
+        font-size: 10pt;
+      }
+    }
+  }
+
+  //
+  // add button
+  //
+  .but-add {
+    font-size: 10pt;
+    margin: 0;
+  }
+}
+
+.select-popover {
+  .popover-wrapper {
+    ion-list ion-item {
+      font-size: 10pt;
+      min-height: 0;
+    }
+  }
+}

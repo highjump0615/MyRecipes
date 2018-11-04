@@ -21,12 +21,11 @@ page-home {
   }
   .profile .info {
     font-size: 10pt;
-    flex: 5;
+    flex: 1;
   }
   .profile .info .name {
     font-weight: bolder;
     font-size: 14pt;
-    flex: 1;
   }
   .profile .info button {
     height: auto;
@@ -42,7 +41,12 @@ page-home {
   }
   .profile .photo {
     margin-left: 18px;
-    flex: 2;
+    height: 80px;
+    weight: 80px;
+
+    img {
+      height: 100%;
+    }
   }
 
   //
