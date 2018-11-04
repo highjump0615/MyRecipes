@@ -4,12 +4,6 @@ page-shopping-list {
     font-size: 20pt;
   }
 
-  ion-buttons[end] {
-    button {
-      font-size: 10pt;
-    }
-  }
-
   ion-select {
     margin: 10px;
     background-color: map-get($map: $colors, $key: main-red);

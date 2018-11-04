@@ -6,6 +6,7 @@ import { MenuDetailPage } from '../menu-detail/menu-detail';
 import { ShoppingListPage } from '../shopping-list/shopping-list';
 import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
 import { CookingTipPage } from '../cooking-tip/cooking-tip';
+import { FavouritesPage } from '../favourites/favourites';
 
 @Component({
   selector: 'page-home',
@@ -66,4 +67,8 @@ export class HomePage extends BasePage {
     this.navCtrl.push(CookingTipPage);
   }
 
+  onButFavourites() {
+    // go to cooking tips page
+    this.navCtrl.push(FavouritesPage);
+  }
 }

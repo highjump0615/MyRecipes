@@ -93,9 +93,17 @@ ion-content {
     color: map-get($colors, light) !important;
 }
 
+//
 // navigation bar
+//
 .back-button-icon {
   font-size: 2.2rem;
+}
+
+ion-navbar ion-buttons[end] {
+  button {
+    font-size: 10pt;
+  }
 }
 
 //
@@ -247,4 +255,17 @@ ion-menu ion-title .toolbar-title {
 //
 .with-shadow {
   box-shadow: 0 3px 30px #666;
+}
+
+//
+// segments
+//
+ion-segment {
+  .segment-button {
+    color: white !important;
+  }
+
+  .segment-activated {
+    background-color: map-get($map: $colors, $key: light-red) !important;
+  }
 }
