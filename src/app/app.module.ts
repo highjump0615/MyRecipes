@@ -22,6 +22,9 @@ import { AboutAppPage } from '../pages/about-app/about-app';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { HomePageModule } from '../pages/home/home.module';
 import { PreferencePageModule } from '../pages/preference/preference.module';
+import { RecipeDetailPageModule } from '../pages/recipe-detail/recipe-detail.module';
+import { RecipeDetailMoreComponent } from '../components/recipe-detail-more/recipe-detail-more';
+import { RecipeDetailMoreSecondaryComponent } from '../components/recipe-detail-more/recipe-detail-more-secondary/recipe-detail-more-secondary';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { PreferencePageModule } from '../pages/preference/preference.module';
     SignupProfilePage,
     TermsPage,
     SettingsPage,
-    AboutAppPage
+    AboutAppPage,
+    RecipeDetailMoreComponent,
+    RecipeDetailMoreSecondaryComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { PreferencePageModule } from '../pages/preference/preference.module';
     SignupAllergiesPageModule,
     SignupDislikePageModule,
     HomePageModule,
-    PreferencePageModule
+    PreferencePageModule,
+    RecipeDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -58,7 +64,9 @@ import { PreferencePageModule } from '../pages/preference/preference.module';
     SignupProfilePage,
     TermsPage,
     SettingsPage,
-    AboutAppPage
+    AboutAppPage,
+    RecipeDetailMoreComponent,
+    RecipeDetailMoreSecondaryComponent
   ],
   providers: [
     StatusBar,

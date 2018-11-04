@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController, ToastController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
+import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage extends BasePage {
 
   // user info
@@ -31,6 +33,11 @@ export class HomePage extends BasePage {
       this.upcomings.push("aa");
       this.recipes.push("aa");
     }
+  }
+
+  onRecipeDetail() {
+    // go to menu detail page
+    this.navCtrl.push(RecipeDetailPage);
   }
 
 }

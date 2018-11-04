@@ -88,7 +88,6 @@
 
     <!-- scroll content -->
     <div class="recipes">
-      <div class="container-scroll">
       <!-- upcoming recipes -->
       <div>
         <span class="title">Upcoming Recipes:</span>
@@ -96,7 +95,9 @@
           <ion-row>
             <ion-col col-4 *ngFor="let data of upcomings">
               <!-- recipe item -->
-              <ion-card class="recipe-item flex-column nm-center">
+              <ion-card
+                class="recipe-item flex-column nm-center"
+                (click)="onRecipeDetail()">
                 <!-- image -->
                 <div
                   class="thumbnail square"
@@ -179,7 +180,6 @@
         </div>
       </div>
 
-      </div>
     </div>
 
   </div>
