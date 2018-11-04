@@ -5,6 +5,7 @@ import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { MenuDetailPage } from '../menu-detail/menu-detail';
 import { ShoppingListPage } from '../shopping-list/shopping-list';
 import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
+import { CookingTipPage } from '../cooking-tip/cooking-tip';
 
 @Component({
   selector: 'page-home',
@@ -58,6 +59,11 @@ export class HomePage extends BasePage {
   onButEditProfile() {
     // go to edit profile page
     this.navCtrl.push(SignupProfilePage);
+  }
+
+  onButCookTip() {
+    // go to cooking tips page
+    this.navCtrl.push(CookingTipPage);
   }
 
 }
