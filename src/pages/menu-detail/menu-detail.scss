@@ -1,0 +1,68 @@
+page-menu-detail {
+
+  .page-title {
+    background-color: map-get($map: $colors, $key: dark-red);
+    text-align: center;
+    color: white;
+    padding: 10px;
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: scroll;
+    justify-content: space-between;
+    padding-top: 12px;
+  }
+
+  .buttons {
+    margin: 0 12px 12px 12px;
+  }
+
+  .date {
+    margin-left: 12px;
+    font-size: 10pt;
+    color: map-get($map: $colors, $key: primary);
+  }
+
+  .recipe-item {
+    margin-top: 8px;
+
+    .photo {
+      width: 98px;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .info {
+      padding: 10px;
+    }
+
+    .recipe-title {
+      color: map-get($map: $colors, $key: primary);
+      font-size: 10pt;
+    }
+    .recipe-desc {
+      margin-top: 6px;
+      color: #999;
+      font-size: 8.5pt;
+      line-height: 1.5;
+    }
+
+    // rating star
+    ionic3-star-rating {
+    }
+    ionic3-star-rating button {
+      height: auto !important;
+      width: auto !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+    }
+    ionic3-star-rating button ion-icon {
+      font-size: 12pt !important;
+      padding: 0 !important;
+    }
+  }
+}

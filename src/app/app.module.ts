@@ -25,6 +25,8 @@ import { PreferencePageModule } from '../pages/preference/preference.module';
 import { RecipeDetailPageModule } from '../pages/recipe-detail/recipe-detail.module';
 import { RecipeDetailMoreComponent } from '../components/recipe-detail-more/recipe-detail-more';
 import { RecipeDetailMoreSecondaryComponent } from '../components/recipe-detail-more/recipe-detail-more-secondary/recipe-detail-more-secondary';
+import { MenuDetailPage } from '../pages/menu-detail/menu-detail';
+import { MenuDetailPageModule } from '../pages/menu-detail/menu-detail.module';
 
 
 @NgModule({
@@ -53,7 +55,8 @@ import { RecipeDetailMoreSecondaryComponent } from '../components/recipe-detail-
     SignupDislikePageModule,
     HomePageModule,
     PreferencePageModule,
-    RecipeDetailPageModule
+    RecipeDetailPageModule,
+    MenuDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

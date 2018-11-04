@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, MenuController, ToastController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
+import { MenuDetailPage } from '../menu-detail/menu-detail';
 
 @Component({
   selector: 'page-home',
@@ -36,8 +37,13 @@ export class HomePage extends BasePage {
   }
 
   onRecipeDetail() {
-    // go to menu detail page
+    // go to recipe detail page
     this.navCtrl.push(RecipeDetailPage);
+  }
+
+  onMenuDetail() {
+    // go to menu detail page
+    this.navCtrl.push(MenuDetailPage);
   }
 
 }

@@ -231,3 +231,13 @@ ion-menu ion-title .toolbar-title {
   background-position: 50%;
   background-size: cover;
 }
+
+//
+// buttons
+//
+.button-primary {
+  font-size: 10pt !important;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 3px 30px #666;
+}
