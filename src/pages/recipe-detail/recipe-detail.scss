@@ -93,7 +93,7 @@ page-recipe-detail {
 
 .secondary-popover .popover-content {
   margin-top: -38px;
-  transform: translateX(-163px);
+  transform: translateX(-163px) !important;
 }
 .secondary-popover ion-backdrop {
   opacity: 0 !important;

@@ -261,6 +261,8 @@ ion-menu ion-title .toolbar-title {
 // segments
 //
 ion-segment {
+  background-color: color($colors, main-red);
+
   .segment-button {
     color: white !important;
   }

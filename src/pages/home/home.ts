@@ -71,4 +71,11 @@ export class HomePage extends BasePage {
     // go to cooking tips page
     this.navCtrl.push(FavouritesPage);
   }
+
+  //
+  // add buttons
+  //
+  onButAddShoppingList() {
+
+  }
 }
