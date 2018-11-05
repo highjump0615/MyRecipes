@@ -52,17 +52,9 @@ page-menu-detail {
     }
 
     // rating star
-    ionic3-star-rating {
-    }
-    ionic3-star-rating button {
-      height: auto !important;
-      width: auto !important;
-      min-width: 0 !important;
-      margin: 0 !important;
-    }
-    ionic3-star-rating button ion-icon {
-      font-size: 12pt !important;
-      padding: 0 !important;
+    star-rate {
+      width: 80px;
+
     }
   }
 }

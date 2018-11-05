@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MenuDetailPage } from './menu-detail';
-import { StarRatingModule } from 'ionic3-star-rating';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { StarRatingModule } from 'ionic3-star-rating';
   ],
   imports: [
     IonicPageModule.forChild(MenuDetailPage),
-    StarRatingModule
+    ComponentsModule
   ],
 })
 export class MenuDetailPageModule {}

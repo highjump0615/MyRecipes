@@ -105,32 +105,8 @@
           <ion-row>
             <ion-col col-4 *ngFor="let data of upcomings">
               <!-- recipe item -->
-              <ion-card
-                class="recipe-item flex-column nm-center"
-                (click)="onRecipeDetail()">
-                <!-- image -->
-                <div
-                  class="thumbnail square"
-                  style="background-image: url('../../assets/imgs/default_food.png')">
-                </div>
-
-                <!-- rating -->
-                <ionic3-star-rating
-                  activeIcon = "ios-star"
-                  defaultIcon = "ios-star"
-                  activeColor = "#ffd027"
-                  defaultColor = "#ffeaa0"
-                  readonly="true"
-                  [rating]="3">
-                </ionic3-star-rating>
-
-                <!-- name -->
-                <span class="name">Burger Americana</span>
-
-                <!-- date -->
-                <span class="date">Feb 17, 2018</span>
-
-              </ion-card>
+              <recipe-grid-item (click)="onRecipeDetail()">
+              </recipe-grid-item>
             </ion-col>
           </ion-row>
         </div>
@@ -143,32 +119,8 @@
           <ion-row>
             <ion-col col-4 *ngFor="let data of upcomings">
               <!-- recipe item -->
-              <ion-card
-                class="recipe-item flex-column nm-center"
-                (click)="onRecipeDetail()">
-                <!-- image -->
-                <div
-                  class="thumbnail square"
-                  style="background-image: url('../../assets/imgs/default_food.png')">
-                </div>
-
-                <!-- rating -->
-                <ionic3-star-rating
-                  activeIcon = "ios-star"
-                  defaultIcon = "ios-star"
-                  activeColor = "#ffd027"
-                  defaultColor = "#ffeaa0"
-                  readonly="true"
-                  [rating]="3">
-                </ionic3-star-rating>
-
-                <!-- name -->
-                <span class="name">Burger Americana</span>
-
-                <!-- date -->
-                <span class="date">Feb 17, 2018</span>
-
-              </ion-card>
+              <recipe-grid-item (click)="onRecipeDetail()">
+              </recipe-grid-item>
             </ion-col>
           </ion-row>
         </div>

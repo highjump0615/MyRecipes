@@ -1,50 +1,12 @@
 page-favourites {
 
-  ion-segment {
-    margin: 12px;
+  .header-select {
+    padding: 12px;
   }
+
 
   ion-row {
     padding: 0 5px;
-  }
-
-  //
-  // recipe item
-  //
-  .recipe-item {
-    padding: 8px;
-    margin: 0;
-    width: 100%;
-    color: map-get($map: $colors, $key: dark);
-  }
-  .recipe-item .thumbnail {
-    position: relative;
-    padding-bottom: 100%;
-  }
-  .recipe-item .thumbnail img {
-    position: absolute;
-  }
-  .recipe-item .name {
-    margin-top: 2px;
-    font-size: 7.5pt;
-  }
-  .recipe-item .date {
-    color: #888;
-    font-size: 6pt;
-    margin-top: 6px;
-  }
-  ionic3-star-rating {
-    margin-top: -4px;
-  }
-  ionic3-star-rating button {
-    height: auto !important;
-    width: auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-  }
-  ionic3-star-rating button ion-icon {
-    font-size: 11pt !important;
-    padding: 0 !important;
   }
 
 }

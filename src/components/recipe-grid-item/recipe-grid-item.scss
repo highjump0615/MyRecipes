@@ -1,0 +1,36 @@
+recipe-grid-item {
+
+  //
+  // recipe item
+  //
+  .recipe-item {
+    padding: 8px;
+    margin: 0;
+    width: 100%;
+    color: map-get($map: $colors, $key: dark);
+  }
+  .recipe-item .thumbnail {
+    position: relative;
+    padding-bottom: 100%;
+  }
+  .recipe-item .thumbnail img {
+    position: absolute;
+  }
+  .recipe-item .name {
+    margin-top: 2px;
+    font-size: 7.5pt;
+  }
+  .recipe-item .date {
+    color: #888;
+    font-size: 6pt;
+    margin-top: 6px;
+  }
+
+  // rate star
+  star-rate {
+    margin-top: 3px;
+    width: 62px;
+    align-self: center;
+  }
+
+}

@@ -20,18 +20,9 @@ page-recipe-detail {
     }
 
     // rating star
-    ionic3-star-rating {
-      margin-top: -4px;
-    }
-    ionic3-star-rating button {
-      height: auto !important;
-      width: auto !important;
-      min-width: 0 !important;
-      margin: 0 !important;
-    }
-    ionic3-star-rating button ion-icon {
-      font-size: 18pt !important;
-      padding: 0 !important;
+    star-rate {
+      width: 120px;
+      align-self: center;
     }
   }
 

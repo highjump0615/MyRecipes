@@ -24,18 +24,14 @@
 
   <div class="container">
     <!-- photo & rating -->
-    <div class="photo-rating nm-center">
+    <div class="photo-rating nm-center flex-column">
       <img src="../../assets/imgs/default_food.png" />
 
       <!-- rating -->
-      <ionic3-star-rating
-        activeIcon = "ios-star"
-        defaultIcon = "ios-star"
-        activeColor = "#ffd027"
-        defaultColor = "#ffeaa0"
-        readonly="true"
+      <star-rate
+        starSize="18"
         [rating]="3">
-      </ionic3-star-rating>
+      </star-rate>
     </div>
 
     <!-- skill level -->
