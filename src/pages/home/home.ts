@@ -7,6 +7,7 @@ import { ShoppingListPage } from '../shopping-list/shopping-list';
 import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
 import { CookingTipPage } from '../cooking-tip/cooking-tip';
 import { FavouritesPage } from '../favourites/favourites';
+import { MyRecipesPage } from '../my-recipes/my-recipes';
 
 @Component({
   selector: 'page-home',
@@ -73,7 +74,7 @@ export class HomePage extends BasePage {
   }
 
   onButFavourites() {
-    // go to cooking tips page
+    // go to favourites page
     this.navCtrl.push(FavouritesPage);
   }
 
@@ -81,6 +82,10 @@ export class HomePage extends BasePage {
   // add buttons
   //
   onButAddShoppingList() {
+  }
 
+  onButMyRecipes() {
+    // go to my recipes page
+    this.navCtrl.push(MyRecipesPage);
   }
 }
