@@ -31,14 +31,19 @@ export class HomePage extends BasePage {
 
     super(navCtrl, menuCtrl, toastCtrl);
 
-    // enable menu
-    this.enableMenu(true);
-
     // init data
     for (var i = 0; i < 3; i++) {
       this.upcomings.push("aa");
       this.recipes.push("aa");
     }
+  }
+
+  /**
+   * view will appear
+   */
+  ionViewWillEnter() {
+    // enable menu
+    this.enableMenu(true);
   }
 
   onRecipeDetail() {

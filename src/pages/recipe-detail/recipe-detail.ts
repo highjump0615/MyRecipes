@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, MenuController, ToastController } from 'ionic-angular';
 import { RecipeDetailMoreComponent } from '../../components/recipe-detail-more/recipe-detail-more';
 import { Recipe } from '../../models/recipe';
+import { BasePage } from '../BasePage';
 
 /**
  * Generated class for the RecipeDetailPage page.
@@ -16,16 +17,22 @@ import { Recipe } from '../../models/recipe';
   templateUrl: 'recipe-detail.html',
 })
 
-export class RecipeDetailPage {
+export class RecipeDetailPage extends BasePage {
 
   recipe: Recipe;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController
   ) {
+    super(navCtrl, menuCtrl, toastCtrl);
+
     this.recipe = new Recipe();
+
+    this.enableMenu(false);
   }
 
   ionViewDidLoad() {

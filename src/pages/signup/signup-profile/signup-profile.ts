@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 
 import { SignupFavouritePage } from '../signup-favourite/signup-favourite'
+import { BaseLandingPage } from '../../BaseLandingPage';
 
 /**
  * Generated class for the SignupProfilePage page.
@@ -15,9 +16,14 @@ import { SignupFavouritePage } from '../signup-favourite/signup-favourite'
   selector: 'page-signup-profile',
   templateUrl: 'signup-profile.html',
 })
-export class SignupProfilePage {
+export class SignupProfilePage extends BaseLandingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public toastCtrl: ToastController
+  ) {
+    super(navCtrl, menuCtrl, toastCtrl);
   }
 
   ionViewDidLoad() {
