@@ -28,7 +28,9 @@
         <span class="date">March 20</span>
 
         <!-- recipe -->
-        <ion-card class="recipe-item flex-row">
+        <ion-card
+          class="recipe-row-item flex-row"
+          (click)="onRecipeDetail(recipe)">
           <!-- image -->
           <div class="photo">
             <img src="../../assets/imgs/default_food.png" />

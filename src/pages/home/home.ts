@@ -8,6 +8,7 @@ import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
 import { CookingTipPage } from '../cooking-tip/cooking-tip';
 import { FavouritesPage } from '../favourites/favourites';
 import { MyRecipesPage } from '../my-recipes/my-recipes';
+import { MenuGeneratorPage } from '../menu-generator/menu-generator';
 
 @Component({
   selector: 'page-home',
@@ -87,5 +88,10 @@ export class HomePage extends BasePage {
   onButMyRecipes() {
     // go to my recipes page
     this.navCtrl.push(MyRecipesPage);
+  }
+
+  onButAddMenu() {
+    // go to menu generator page
+    this.navCtrl.push(MenuGeneratorPage);
   }
 }

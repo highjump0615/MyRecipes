@@ -24,37 +24,4 @@ page-menu-detail {
     color: map-get($map: $colors, $key: primary);
   }
 
-  .recipe-item {
-    margin-top: 8px;
-
-    .photo {
-      width: 98px;
-
-      img {
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-
-    .info {
-      padding: 10px;
-    }
-
-    .recipe-title {
-      color: map-get($map: $colors, $key: primary);
-      font-size: 10pt;
-    }
-    .recipe-desc {
-      margin-top: 6px;
-      color: #999;
-      font-size: 8.5pt;
-      line-height: 1.5;
-    }
-
-    // rating star
-    star-rate {
-      width: 80px;
-
-    }
-  }
 }

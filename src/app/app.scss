@@ -135,16 +135,18 @@ ion-navbar ion-buttons[end] {
 //
 // placeholders
 //
-.text-input::-moz-placeholder {
-  color: map-get($colors, light);
-}
+.signin-input {
+  .text-input::-moz-placeholder {
+    color: map-get($colors, light);
+  }
 
-.text-input::-ms-input-placeholder {
-  color: map-get($colors, light);
-}
+  .text-input::-ms-input-placeholder {
+    color: map-get($colors, light);
+  }
 
-.text-input::-webkit-input-placeholder {
-  color: map-get($colors, light);
+  .text-input::-webkit-input-placeholder {
+    color: map-get($colors, light);
+  }
 }
 
 //
@@ -261,6 +263,7 @@ ion-menu ion-title .toolbar-title {
 // segments
 //
 ion-segment {
+  border-radius: 6px;
   background-color: color($colors, main-red);
 
   .segment-button {
@@ -271,3 +274,41 @@ ion-segment {
     background-color: map-get($map: $colors, $key: light-red) !important;
   }
 }
+
+//
+// recipe row item
+//
+.recipe-row-item {
+  margin-top: 8px;
+
+  .photo {
+    width: 98px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    padding: 10px;
+  }
+
+  .recipe-title {
+    color: map-get($map: $colors, $key: primary);
+    font-size: 10pt;
+  }
+  .recipe-desc {
+    margin-top: 6px;
+    color: #999;
+    font-size: 8.5pt;
+    line-height: 1.5;
+  }
+
+  // rating star
+  star-rate {
+    width: 80px;
+
+  }
+}
+

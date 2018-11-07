@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Recipe } from '../../models/recipe';
+import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 
 /**
  * Generated class for the MenuDetailPage page.
@@ -33,4 +34,8 @@ export class MenuDetailPage {
     console.log('ionViewDidLoad MenuDetailPage');
   }
 
+  onRecipeDetail(data) {
+    // go to recipe detail page
+    this.navCtrl.push(RecipeDetailPage);
+  }
 }

@@ -8,8 +8,6 @@ import { OnboardPage } from "../pages/onboard/onboard";
 import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
 import { PreferencePage } from '../pages/preference/preference';
-import { MenuDetailPage } from '../pages/menu-detail/menu-detail';
-import { FavouritesPage } from '../pages/favourites/favourites';
 
 @Component({
   templateUrl: 'app.html'
