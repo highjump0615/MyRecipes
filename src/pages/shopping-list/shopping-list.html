@@ -16,7 +16,7 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Shopping List</ion-title>
+    <ion-title>{{title}}</ion-title>
 
     <ion-buttons end>
       <button
@@ -34,32 +34,112 @@
 
   <div ion-fixed class="container">
     <!-- menu selection -->
-    <div>
-      <ion-select [(ngModel)]="menu" interface="popover">
-        <ion-option selected>Weeknight Suppers</ion-option>
-        <ion-option>Dinner with Family</ion-option>
-        <ion-option>Quick and Easy</ion-option>
-        <ion-option>Super Bown Party</ion-option>
-        <ion-option>Dinner to Impress</ion-option>
-      </ion-select>
+    <div class="header">
+      <div *ngIf="currentShopList; else newShopList">
+        <ion-select [(ngModel)]="menu" interface="popover">
+          <ion-option selected>Weeknight Suppers</ion-option>
+          <ion-option>Dinner with Family</ion-option>
+          <ion-option>Quick and Easy</ion-option>
+          <ion-option>Super Bown Party</ion-option>
+          <ion-option>Dinner to Impress</ion-option>
+        </ion-select>
+      </div>
+
+      <!-- template name -->
+      <ng-template #newShopList>
+        <div
+          class="input-item">
+          <ion-input placeholder="Menu Name"></ion-input>
+        </div>
+      </ng-template>
     </div>
 
     <!-- list -->
-    <ion-list class="ingredients">
-      <ion-item *ngFor="let ing of ingredients">
-        <ion-chip item-start>
-          <span>3 tbsp</span>
-        </ion-chip>
-        <ion-label text-center class="name">Brasil Leaves</ion-label>
-      </ion-item>
-    </ion-list>
+    <div class="content">
+      <ion-list class="ingredients">
+        <ion-item *ngFor="let ing of ingredients">
+          <ion-chip item-start>
+            <span>3 tbsp</span>
+          </ion-chip>
+          <ion-label text-center class="name">Brasil Leaves</ion-label>
+        </ion-item>
+      </ion-list>
 
-    <!-- add button -->
-    <button
-      ion-button full icon-only
-      class="but-add">
-      <ion-icon name="arrow-up"></ion-icon>
-    </button>
+      <div
+        class="add flex-column"
+        [class.collapsed]="!showAddMenu">
+        <!-- add button -->
+        <button
+          ion-button full icon-only
+          class="but-show-add"
+          (click)="onToggleAddMenu()">
+          <ion-icon [name]="showAddMenu ? 'ios-arrow-down' : 'ios-arrow-up'"></ion-icon>
+        </button>
+
+        <div class="list-add flex-column">
+          <div class="row-add flex-row top-border">
+            <!-- increase/decrease -->
+            <button
+              ion-button icon-only
+              (click)="onButCountDec()">
+              <ion-icon name="ios-remove-circle-outline"></ion-icon>
+            </button>
+            <button
+              ion-button icon-only
+              style="margin-left: 6px;"
+              (click)="onButCountInc()">
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+            </button>
+
+            <!-- count -->
+            <ion-input
+              class="round-height"
+              type="number"
+              placeholder="Count"
+              style="margin-left: 6px; flex: 1;"
+              [value]="count > 0 ? count : ''">
+            </ion-input>
+
+            <!-- unit -->
+            <ion-input
+              class="round-height"
+              style="margin-left: 6px; flex: 1;"
+              readonly
+              value="tbsp">
+              tbsp
+            </ion-input>
+
+            <!-- item name -->
+            <ion-input
+              class="round-height"
+              placeholder="Item Name"
+              style="margin-left: 6px; flex: 2;"
+              [value]="currentIngredient ? currentIngredient.name : ''"
+              readonly>
+            </ion-input>
+
+            <button
+              ion-button small
+              (click)="onButSave()">
+              ADD
+            </button>
+
+          </div>
+
+          <!-- list -->
+          <div class="list-source">
+            <ion-list>
+              <ion-item
+                *ngFor="let item of sources; let i = index"
+                [class.selected]="currentIngredientIndex == i"
+                (click)="selectIngredient(i)">
+                <ion-label>Alfalfa Sprouts</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 </ion-content>

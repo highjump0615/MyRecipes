@@ -9,6 +9,7 @@ import { CookingTipPage } from '../cooking-tip/cooking-tip';
 import { FavouritesPage } from '../favourites/favourites';
 import { MyRecipesPage } from '../my-recipes/my-recipes';
 import { MenuGeneratorPage } from '../menu-generator/menu-generator';
+import { ShoppingList } from '../../models/shoppinglist';
 
 @Component({
   selector: 'page-home',
@@ -59,8 +60,14 @@ export class HomePage extends BasePage {
   }
 
   onShoppingList() {
+    var params = {};
+    params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
+
     // present shopping list page
-    let shoppingListPage = this.modalCtrl.create(ShoppingListPage, {});
+    let shoppingListPage = this.modalCtrl.create(
+      ShoppingListPage,
+      params
+    );
     shoppingListPage.present();
   }
 
@@ -83,6 +90,9 @@ export class HomePage extends BasePage {
   // add buttons
   //
   onButAddShoppingList() {
+    // present new shopping list page
+    let shoppingListPage = this.modalCtrl.create(ShoppingListPage);
+    shoppingListPage.present();
   }
 
   onButMyRecipes() {

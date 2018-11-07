@@ -20,6 +20,21 @@ page-shopping-list {
     }
   }
 
+  // new shopping list name input
+  .input-item {
+    background-color: white;
+    margin: 10px;
+    padding: 0 10px;
+    box-shadow: 0 0px 2px #666;
+    border-radius: 6px;
+  }
+
+  // contents
+  .content {
+    flex: 1;
+    position: relative;
+  }
+
   //
   // ingredients list
   //
@@ -43,13 +58,75 @@ page-shopping-list {
     }
   }
 
-  //
-  // add button
-  //
-  .but-add {
-    font-size: 10pt;
-    margin: 0;
+  .add.collapsed {
+    height: 37px;
   }
+  .add {
+    // bottom: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    transition: 0.2s linear;
+
+    //
+    // add button
+    //
+    .but-show-add {
+      font-size: 10pt;
+      margin: 0;
+    }
+
+    .list-add {
+      flex: 1;
+
+      ion-label {
+        font-size: 11pt;
+      }
+
+      .list-source {
+        overflow: scroll;
+        flex: 1;
+
+        .selected {
+          background-color: map-get($map: $colors, $key: selected);
+        }
+
+        ion-list {
+          margin: 0;
+        }
+      }
+    }
+
+    .row-add {
+      padding: 4px 0 4px 10px;
+      background-color: map-get($map: $colors, $key: primary);
+      color: map-get($map: $colors, $key: dark);
+
+      button[icon-only] {
+        height: auto;
+
+        ion-icon {
+          padding: 0;
+          line-height: 1;
+          font-size: 16pt;
+        }
+      }
+
+      ion-input {
+        font-size: 10pt;
+        background-color: white;
+        display: flex;
+        margin: 4px 0;
+
+        .text-input {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
 }
 
 .select-popover {
