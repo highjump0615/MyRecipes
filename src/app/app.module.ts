@@ -32,6 +32,8 @@ import { CookingTipPage } from '../pages/cooking-tip/cooking-tip';
 import { FavouritesPageModule } from '../pages/favourites/favourites.module';
 import { MyRecipesPageModule } from '../pages/my-recipes/my-recipes.module';
 import { MenuGeneratorPageModule } from '../pages/menu-generator/menu-generator.module';
+import { ReviewListPage } from '../pages/review-list/review-list';
+import { ReviewListPageModule } from '../pages/review-list/review-list.module';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { MenuGeneratorPageModule } from '../pages/menu-generator/menu-generator.
     MenuDetailPageModule,
     FavouritesPageModule,
     MyRecipesPageModule,
-    MenuGeneratorPageModule
+    MenuGeneratorPageModule,
+    ReviewListPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

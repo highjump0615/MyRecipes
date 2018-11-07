@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, PopoverController, MenuController,
 import { RecipeDetailMoreComponent } from '../../components/recipe-detail-more/recipe-detail-more';
 import { Recipe } from '../../models/recipe';
 import { BasePage } from '../BasePage';
+import { ReviewListPage } from '../review-list/review-list';
 
 /**
  * Generated class for the RecipeDetailPage page.
@@ -51,6 +52,11 @@ export class RecipeDetailPage extends BasePage {
     popover.present({
       ev: event
     });
+  }
+
+  onButReview() {
+    // go to review list page
+    this.navCtrl.push(ReviewListPage);
   }
 
 }
