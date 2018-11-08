@@ -14,6 +14,7 @@ import { Component, Input } from '@angular/core';
 export class StarRateComponent {
 
   @Input() starSize = 11;
+  @Input() readOnly = true;
 
   @Input() rating: number ;
 
@@ -29,6 +30,10 @@ export class StarRateComponent {
    * @memberof StarRateComponent
    */
   rate(index: number) {
+    if (this.readOnly) {
+      return;
+    }
+
     this.rating = index;
   }
 

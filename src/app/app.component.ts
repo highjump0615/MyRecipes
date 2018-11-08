@@ -8,7 +8,7 @@ import { OnboardPage } from "../pages/onboard/onboard";
 import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
 import { PreferencePage } from '../pages/preference/preference';
-import { ReviewListPage } from '../pages/review-list/review-list';
+import { WriteReviewPage } from '../pages/write-review/write-review';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +22,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = ReviewListPage;
+    this.rootPage = HomePage;
 
     this.initializeApp();
 

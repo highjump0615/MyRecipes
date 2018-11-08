@@ -319,3 +319,11 @@ ion-segment {
   }
 }
 
+// buttons
+.div-button {
+  margin-top: 10px;
+}
+.div-button [ion-button] {
+  font-weight: bold;
+  font-size: 11pt;
+}

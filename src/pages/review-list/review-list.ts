@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Review } from '../../models/review';
+import { WriteReviewPage } from '../write-review/write-review';
 
 /**
  * Generated class for the ReviewListPage page.
@@ -31,6 +32,7 @@ export class ReviewListPage {
   }
 
   onButNew() {
-
+    // go to write review page
+    this.navCtrl.push(WriteReviewPage);
   }
 }
