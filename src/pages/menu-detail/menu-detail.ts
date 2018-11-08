@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Recipe } from '../../models/recipe';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
+import { ShoppingListPage } from '../shopping-list/shopping-list';
+import { ShoppingList } from '../../models/shoppinglist';
+import { AddRecipePage } from '../add-recipe/add-recipe';
 
 /**
  * Generated class for the MenuDetailPage page.
@@ -22,7 +25,8 @@ export class MenuDetailPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public modalCtrl: ModalController
   ) {
     // init data
     for (var i = 0; i < 5; i++) {
@@ -37,5 +41,23 @@ export class MenuDetailPage {
   onRecipeDetail(data) {
     // go to recipe detail page
     this.navCtrl.push(RecipeDetailPage);
+  }
+
+  onButAddRecipe() {
+    // go to add recipe page
+    this.navCtrl.push(AddRecipePage);
+  }
+
+  onButShoppingList() {
+    // go to shopping list page
+    var params = {};
+    params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
+
+    // present shopping list page
+    let shoppingListPage = this.modalCtrl.create(
+      ShoppingListPage,
+      params
+    );
+    shoppingListPage.present();
   }
 }

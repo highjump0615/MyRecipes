@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BaseTextPage } from '../BaseTextPage';
 
 /**
- * Generated class for the WriteReviewPage page.
+ * Generated class for the AddRecipePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,10 +11,10 @@ import { BaseTextPage } from '../BaseTextPage';
 
 @IonicPage()
 @Component({
-  selector: 'page-write-review',
-  templateUrl: 'write-review.html',
+  selector: 'page-add-recipe',
+  templateUrl: 'add-recipe.html',
 })
-export class WriteReviewPage extends BaseTextPage {
+export class AddRecipePage extends BaseTextPage {
 
   constructor(
     public navCtrl: NavController,
@@ -24,10 +24,12 @@ export class WriteReviewPage extends BaseTextPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WriteReviewPage');
-  }
-
-  onButSubmit() {
+    console.log('ionViewDidLoad AddRecipePage');
 
   }
+
+  onButAdd() {
+
+  }
+
 }

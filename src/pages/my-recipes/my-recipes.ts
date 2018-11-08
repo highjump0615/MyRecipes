@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { BasePage } from '../BasePage';
+import { AddRecipePage } from '../add-recipe/add-recipe';
 
 /**
  * Generated class for the MyRecipesPage page.
@@ -43,6 +44,11 @@ export class MyRecipesPage extends BasePage {
   onRecipeDetail() {
     // go to recipe detail page
     this.navCtrl.push(RecipeDetailPage);
+  }
+
+  onButNew() {
+    // go to add recipe page
+    this.navCtrl.push(AddRecipePage);
   }
 
 }
