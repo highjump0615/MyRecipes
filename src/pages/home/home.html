@@ -115,8 +115,16 @@
       </div>
 
       <!-- browse -->
-      <div style="margin-top: 4px;">
-        <span class="title">Browse recipes and menus</span>
+      <div>
+        <!-- title -->
+        <div class="title-button title">
+          <span>Browse recipes and menus</span>
+          <button
+            ion-button clear>
+            View All
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </button>
+        </div>
         <div class="recipe-content">
           <ion-row>
             <ion-col col-4 *ngFor="let data of upcomings">

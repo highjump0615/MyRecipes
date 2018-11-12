@@ -97,11 +97,29 @@ page-home {
   .recipes {
     padding: 12px;
     overflow: scroll;
+
+    .title-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-weight: bold;
+      color: map-get($map: $colors, $key: primary);
+
+      button {
+        height: auto;
+        font-size: 10pt;
+        font-weight: bold;
+
+        ion-icon {
+          margin-left: 6px;
+        }
+      }
+    }
   }
-  .recipes .title {
-    font-weight: bold;
-    color: map-get($map: $colors, $key: primary);
-  }
+
   .recipe-content {
     margin: 2px -5px;
   }
