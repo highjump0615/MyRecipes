@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /**
  * Generated class for the RecipeGridItemComponent component.
@@ -13,11 +13,10 @@ import { Component } from '@angular/core';
 
 export class RecipeGridItemComponent {
 
-  text: string;
+  @Input() showDate = true;
 
   constructor() {
     console.log('Hello RecipeGridItemComponent Component');
-    this.text = 'Hello World';
   }
 
 }

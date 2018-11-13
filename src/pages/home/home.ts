@@ -10,6 +10,7 @@ import { FavouritesPage } from '../favourites/favourites';
 import { MyRecipesPage } from '../my-recipes/my-recipes';
 import { MenuGeneratorPage } from '../menu-generator/menu-generator';
 import { ShoppingList } from '../../models/shoppinglist';
+import { RecipeMenuPage } from '../recipe-menu/recipe-menu';
 
 @Component({
   selector: 'page-home',
@@ -84,6 +85,11 @@ export class HomePage extends BasePage {
   onButFavourites() {
     // go to favourites page
     this.navCtrl.push(FavouritesPage);
+  }
+
+  onButViewAll() {
+    // go to view all page
+    this.navCtrl.push(RecipeMenuPage);
   }
 
   //

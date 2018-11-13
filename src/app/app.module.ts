@@ -25,17 +25,16 @@ import { PreferencePageModule } from '../pages/preference/preference.module';
 import { RecipeDetailPageModule } from '../pages/recipe-detail/recipe-detail.module';
 import { RecipeDetailMoreComponent } from '../components/recipe-detail-more/recipe-detail-more';
 import { RecipeDetailMoreSecondaryComponent } from '../components/recipe-detail-more/recipe-detail-more-secondary/recipe-detail-more-secondary';
-import { MenuDetailPage } from '../pages/menu-detail/menu-detail';
 import { MenuDetailPageModule } from '../pages/menu-detail/menu-detail.module';
 import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
 import { CookingTipPage } from '../pages/cooking-tip/cooking-tip';
 import { FavouritesPageModule } from '../pages/favourites/favourites.module';
 import { MyRecipesPageModule } from '../pages/my-recipes/my-recipes.module';
 import { MenuGeneratorPageModule } from '../pages/menu-generator/menu-generator.module';
-import { ReviewListPage } from '../pages/review-list/review-list';
 import { ReviewListPageModule } from '../pages/review-list/review-list.module';
 import { WriteReviewPageModule } from '../pages/write-review/write-review.module';
 import { AddRecipePage } from '../pages/add-recipe/add-recipe';
+import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
 
 
 @NgModule({
@@ -73,7 +72,8 @@ import { AddRecipePage } from '../pages/add-recipe/add-recipe';
     MyRecipesPageModule,
     MenuGeneratorPageModule,
     ReviewListPageModule,
-    WriteReviewPageModule
+    WriteReviewPageModule,
+    RecipeMenuPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
