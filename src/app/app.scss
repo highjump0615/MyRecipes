@@ -116,12 +116,13 @@ ion-navbar ion-buttons[end] {
 //
 .signin-input {
   border-bottom: 1px solid map-get($colors, light);
+
+  ion-input, ion-textarea {
+    color: map-get($colors, light);
+  }
 }
 .signin-input img {
   margin-right: 24px;
-}
-.signin-input ion-input {
-  color: map-get($colors, light);
 }
 
 // term & signup

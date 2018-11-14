@@ -12,6 +12,7 @@ import { MenuGeneratorPage } from '../menu-generator/menu-generator';
 import { ShoppingList } from '../../models/shoppinglist';
 import { RecipeMenuPage } from '../recipe-menu/recipe-menu';
 import { MenuDetail2Page } from '../menu-detail2/menu-detail2';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'page-home',
@@ -49,6 +50,10 @@ export class HomePage extends BasePage {
   ionViewWillEnter() {
     // enable menu
     this.enableMenu(true);
+  }
+
+  ionViewDidLoad() {
+    User.currentUser = new User();
   }
 
   onRecipeDetail() {

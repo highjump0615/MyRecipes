@@ -4,4 +4,26 @@ page-signup-profile {
     justify-content: space-between;
   }
 
+  .input-items {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex: 1;
+
+    .signin-input.desc {
+      flex: 1;
+      margin-bottom: 12px;
+      border-bottom: 0px !important;
+
+      ion-textarea {
+        overflow: scroll;
+        max-height: 100%;
+
+        textarea {
+          border-bottom: 1px solid map-get($colors, light);
+        }
+      }
+    }
+  }
+
 }

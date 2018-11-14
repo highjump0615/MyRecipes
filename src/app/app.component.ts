@@ -8,6 +8,8 @@ import { OnboardPage } from "../pages/onboard/onboard";
 import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
 import { PreferencePage } from '../pages/preference/preference';
+import { User } from '../models/user';
+import { SignupProfilePage } from '../pages/signup/signup-profile/signup-profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +23,7 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     // set root page based on log in state
-    this.rootPage = HomePage;
+    this.rootPage = SignupProfilePage;
 
     this.initializeApp();
 
@@ -50,6 +52,9 @@ export class MyApp {
   }
 
   onLogout() {
+    // clear current user
+    User.currentUser = null;
+
     // go to log in page
     this.nav.setRoot(
       SigninPage,

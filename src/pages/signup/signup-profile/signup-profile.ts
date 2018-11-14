@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
 
 import { SignupFavouritePage } from '../signup-favourite/signup-favourite'
 import { BaseLandingPage } from '../../BaseLandingPage';
+import { User } from '../../../models/user';
 
 /**
  * Generated class for the SignupProfilePage page.
@@ -18,6 +19,10 @@ import { BaseLandingPage } from '../../BaseLandingPage';
 })
 export class SignupProfilePage extends BaseLandingPage {
 
+  @ViewChild('desc') textDesc: ElementRef;
+
+  title = "Sign Up";
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -28,6 +33,19 @@ export class SignupProfilePage extends BaseLandingPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupProfilePage');
+
+    // check signup or edit profile
+    if (User.currentUser) {
+      this.title = "Edit Profile";
+    }
+  }
+
+  adjustTextarea(event: any): void {
+    let textarea: any		= event.target;
+    textarea.style.overflow = 'hidden';
+    textarea.style.height 	= 'auto';
+    textarea.style.height 	= textarea.scrollHeight + 'px';
+    return;
   }
 
   /**

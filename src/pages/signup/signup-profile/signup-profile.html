@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Sign Up</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
   <div ion-fixed class="container" padding>
     <!-- submit form -->
     <div
-      class="nm-center width-80"
+      class="width-80 input-items"
       style="margin-top: 30px;">
 
       <!-- photo button -->
@@ -30,18 +30,31 @@
         </div>
       </button>
 
-      <!-- items -->
-      <div style="margin-top: 20px;">
-        <div class="flex-c-row input-item signin-input">
-          <ion-input placeholder="First Name"></ion-input>
-        </div>
-        <div
-          class="flex-c-row input-item signin-input"
-          style="margin-top: 8px;">
-          <ion-input placeholder="Last Name"></ion-input>
-        </div>
+      <!-- first name -->
+      <div
+        class="flex-c-row input-item signin-input"
+        style="margin-top: 10px;">
+        <ion-input placeholder="First Name"></ion-input>
       </div>
 
+      <!-- last name -->
+      <div
+        class="flex-c-row input-item signin-input"
+        style="margin-top: 8px;">
+        <ion-input placeholder="Last Name"></ion-input>
+      </div>
+
+      <!-- description -->
+      <div
+        class="flex-row input-item signin-input desc"
+        style="margin-top: 8px;">
+        <ion-textarea #desc
+          (input)="adjustTextarea($event);"
+          placeholder="Description"
+          maxLength="500">
+
+        </ion-textarea>
+      </div>
     </div>
 
     <!-- buttons -->
