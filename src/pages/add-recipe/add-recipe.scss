@@ -1,8 +1,12 @@
 page-add-recipe {
 
+  .container {
+    padding: 0 10px 10px 10px;
+  }
+
   .input-item {
     background-color: white;
-    margin: 10px 10px 0 10px;
+    margin: 10px 0 0 0;
     padding: 0 10px;
     box-shadow: 0 0px 2px #666;
     border-radius: 6px;
