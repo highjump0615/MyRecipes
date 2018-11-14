@@ -11,6 +11,7 @@ import { MyRecipesPage } from '../my-recipes/my-recipes';
 import { MenuGeneratorPage } from '../menu-generator/menu-generator';
 import { ShoppingList } from '../../models/shoppinglist';
 import { RecipeMenuPage } from '../recipe-menu/recipe-menu';
+import { MenuDetail2Page } from '../menu-detail2/menu-detail2';
 
 @Component({
   selector: 'page-home',
@@ -57,7 +58,7 @@ export class HomePage extends BasePage {
 
   onMenuDetail() {
     // go to menu detail page
-    this.navCtrl.push(MenuDetailPage);
+    this.navCtrl.push(MenuDetail2Page);
   }
 
   onShoppingList() {

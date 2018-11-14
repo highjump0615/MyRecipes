@@ -37,6 +37,7 @@ import { AddRecipePage } from '../pages/add-recipe/add-recipe';
 import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
 import { FilterSearchPage } from '../pages/filter-search/filter-search';
 import { AddDatePage } from '../pages/add-date/add-date';
+import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { AddDatePage } from '../pages/add-date/add-date';
     MenuGeneratorPageModule,
     ReviewListPageModule,
     WriteReviewPageModule,
-    RecipeMenuPageModule
+    RecipeMenuPageModule,
+    MenuDetail2PageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

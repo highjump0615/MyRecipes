@@ -88,6 +88,11 @@ ion-content {
     opacity: 0.7;
 }
 
+// add button
+.but-add img {
+  width: 15px;
+}
+
 .but-transparent {
     font-size: $font-size-button;
     color: map-get($colors, light) !important;
@@ -292,8 +297,6 @@ ion-segment {
 // recipe row item
 //
 .recipe-row-item {
-  margin-top: 8px;
-
   .photo {
     width: 98px;
 

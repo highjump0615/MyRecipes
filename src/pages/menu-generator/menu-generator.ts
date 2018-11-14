@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController, ToastController, M
 import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { AddDatePage } from '../add-date/add-date';
+import { MenuDetailPage } from '../menu-detail/menu-detail';
 
 /**
  * Generated class for the MenuGeneratorPage page.
@@ -99,5 +100,10 @@ export class MenuGeneratorPage extends BasePage {
     // show calendar page
     let calendarPage = this.modalCtrl.create(AddDatePage);
     calendarPage.present();
+  }
+
+  onButGenerate() {
+    // go to menu detail page
+    this.navCtrl.push(MenuDetailPage);
   }
 }
