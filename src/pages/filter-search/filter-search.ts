@@ -73,7 +73,8 @@ export class FilterSearchPage {
   }
 
   onButDone() {
-    this.viewCtrl.dismiss();
+    // close
+    this.onButClose();
   }
 
   onButOption(value) {
@@ -86,5 +87,9 @@ export class FilterSearchPage {
 
   onButIngredient(data) {
     data.selected = !data.selected;
+  }
+
+  onButClose() {
+    this.viewCtrl.dismiss();
   }
 }

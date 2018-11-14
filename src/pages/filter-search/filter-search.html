@@ -7,7 +7,17 @@
 <ion-header>
 
   <ion-navbar>
+    <!-- close button -->
+    <ion-buttons start>
+      <button
+        ion-button menuClose
+        (click)="onButClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>Filter Search</ion-title>
+
     <ion-buttons end>
       <button
         ion-button

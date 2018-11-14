@@ -1,0 +1,108 @@
+page-add-date {
+
+  [col-1] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 14.285714285714286%;
+    width: 14.285714285714286%;
+    max-width: 14.285714285714286%;
+  }
+  .col {
+    text-align: center;
+  }
+  .last-month, .next-month {
+    color: #999999;
+    font-size: 90%;
+  }
+  .currentDate, .otherDate {
+    padding: 5px;
+  }
+  .currentDate {
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+  }
+
+  .selectedDate {
+    color: white;
+  }
+
+  .calendar-header {
+    background-color: map-get($map: $colors, $key: dark-red);
+    color: #FFFFFF;
+    font-size: 13pt;
+    padding: 4px 0;
+
+    ion-row {
+      align-items: center;
+    }
+  }
+
+  .event-bullet {
+    margin: 2px auto;
+    height: 5px;
+    width: 5px;
+    background-color: green;
+    border-radius: 30px;
+  }
+  .selected-date {
+    width: 20px;
+    height: 2px;
+    background-color: blue;
+  }
+  .unselected-date {
+    border: none;
+  }
+  .calendar-body {
+    .grid {
+      padding: 0;
+    }
+    .col:last-child {
+      border-right: none;
+    }
+    .calendar-weekday, .calendar-date {
+      text-align: center;
+      margin: 0;
+    }
+
+    .calendar-weekday {
+      padding: 6px 0;
+      font-size: 10pt;
+      color: map-get($map: $colors, $key: light);
+      border-top: solid 1px #dddddd77;
+      background-color: map-get($map: $colors, $key: dark-red);;
+    }
+    .calendar-date {
+      border-top: solid 1px #dddddd;
+      border-bottom: solid 1px #dddddd;
+
+      ion-col {
+        padding: 11px 0;
+
+        span {
+          margin: 11px 0;
+        }
+
+        .bg {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: -1;
+
+          .bg-round {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: map-get($map: $colors, $key: light-red);
+          }
+        }
+      }
+    }
+  }
+
+}

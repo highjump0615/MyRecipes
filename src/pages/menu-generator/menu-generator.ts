@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController, ModalController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
+import { AddDatePage } from '../add-date/add-date';
 
 /**
  * Generated class for the MenuGeneratorPage page.
@@ -49,7 +50,8 @@ export class MenuGeneratorPage extends BasePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController
   ) {
     super(navCtrl, menuCtrl, toastCtrl);
 
@@ -91,5 +93,11 @@ export class MenuGeneratorPage extends BasePage {
   onRecipeDetail(data) {
     // go to recipe detail page
     this.navCtrl.push(RecipeDetailPage);
+  }
+
+  onCalendar() {
+    // show calendar page
+    let calendarPage = this.modalCtrl.create(AddDatePage);
+    calendarPage.present();
   }
 }

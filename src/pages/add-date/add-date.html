@@ -1,0 +1,94 @@
+<!--
+  Generated template for the AddDatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <!-- close button -->
+    <ion-buttons start>
+      <button
+        ion-button menuClose
+        (click)="onButClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Calendar</ion-title>
+
+    <ion-buttons end>
+      <button
+        ion-button
+        (click)="onButDone()">
+        DONE
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div ion-fixed class="container">
+
+    <div class="calendar-header">
+      <ion-row class="calendar-month">
+        <ion-col col-2 (click)="goToLastMonth()"><ion-icon name="arrow-back"></ion-icon></ion-col>
+        <ion-col col-8>{{currentMonth}} {{currentYear}}</ion-col>
+        <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+      </ion-row>
+    </div>
+    <div class="calendar-body">
+      <ion-grid>
+        <ion-row class="calendar-weekday">
+          <ion-col>Sun</ion-col>
+          <ion-col>Mon</ion-col>
+          <ion-col>Tue</ion-col>
+          <ion-col>Wed</ion-col>
+          <ion-col>Thu</ion-col>
+          <ion-col>Fri</ion-col>
+          <ion-col>Sat</ion-col>
+        </ion-row>
+        <ion-row class="calendar-date">
+          <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
+          <ion-col
+            col-1
+            *ngFor="let day of daysInThisMonth"
+            (click)="selectDate(day)">
+
+            <!-- red circle background -->
+            <div
+              class="bg"
+              *ngIf="isSelectedDate(day) >= 0">
+              <div class="bg-round"></div>
+            </div>
+
+            <!-- selected date -->
+            <span
+              class="selectedDate"
+              *ngIf="isSelectedDate(day) >= 0; else today"
+            >{{day}}</span>
+
+            <!-- current date -->
+            <ng-template #today>
+              <ng-container *ngIf="currentDate === day;else otherDate">
+                <span class="currentDate">{{day}}</span>
+              </ng-container>
+            </ng-template>
+
+            <!-- other date -->
+            <ng-template
+              #otherDate
+              class="otherDate"
+            ><span>{{day}}</span></ng-template>
+          </ion-col>
+          <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+
+</ion-content>
