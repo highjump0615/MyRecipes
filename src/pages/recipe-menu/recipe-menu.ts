@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ToastController, ModalController } from 'ionic-angular';
 import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
+import { FilterSearchPage } from '../filter-search/filter-search';
 
 /**
  * Generated class for the RecipeMenuPage page.
@@ -29,7 +30,8 @@ export class RecipeMenuPage extends BasePage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController
   ) {
     super(navCtrl, menuCtrl, toastCtrl);
 
@@ -53,6 +55,14 @@ export class RecipeMenuPage extends BasePage {
   onRecipeDetail() {
     // go to recipe detail page
     this.navCtrl.push(RecipeDetailPage);
+  }
+
+  onButFilter() {
+    // go to filter search page
+    let filterPage = this.modalCtrl.create(
+      FilterSearchPage
+    );
+    filterPage.present();
   }
 
 }

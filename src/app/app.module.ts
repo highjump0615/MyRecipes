@@ -35,6 +35,7 @@ import { ReviewListPageModule } from '../pages/review-list/review-list.module';
 import { WriteReviewPageModule } from '../pages/write-review/write-review.module';
 import { AddRecipePage } from '../pages/add-recipe/add-recipe';
 import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
+import { FilterSearchPage } from '../pages/filter-search/filter-search';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
     RecipeDetailMoreSecondaryComponent,
     ShoppingListPage,
     CookingTipPage,
-    AddRecipePage
+    AddRecipePage,
+    FilterSearchPage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,8 @@ import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
     RecipeDetailMoreSecondaryComponent,
     ShoppingListPage,
     CookingTipPage,
-    AddRecipePage
+    AddRecipePage,
+    FilterSearchPage
   ],
   providers: [
     StatusBar,

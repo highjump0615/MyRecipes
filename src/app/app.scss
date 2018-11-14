@@ -177,6 +177,9 @@ ion-navbar ion-buttons[end] {
 .round-height {
   border-radius: 120px;
 }
+.round-rect {
+  border-radius: 6px !important;
+}
 
 //
 // transparent header
@@ -264,6 +267,9 @@ ion-menu ion-title .toolbar-title {
 //
 .with-shadow {
   box-shadow: 0 3px 30px #666;
+}
+.with-shadow-small {
+  box-shadow: 0 0px 10px #bbb;
 }
 
 //
