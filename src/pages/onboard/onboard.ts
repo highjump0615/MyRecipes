@@ -4,8 +4,11 @@ import { IonicPage, NavController, NavParams, MenuController, ToastController } 
 import { BaseLandingPage } from '../BaseLandingPage';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
+import { Storage } from '@ionic/storage'
 
 import { SigninPage } from '../signin/signin';
+import {MyApp} from "../../app/app.component";
+
 
 /**
  * Generated class for the OnboardPage page.
@@ -42,7 +45,8 @@ export class OnboardPage extends BaseLandingPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    private storage: Storage) {
 
     super(navCtrl, menuCtrl, toastCtrl);
   }
@@ -87,6 +91,9 @@ export class OnboardPage extends BaseLandingPage {
    * go to log in page
    */
   gotoLoginPage() {
+    // set onboard flag
+    this.storage.set(MyApp.KEY_ONBOARD, true);
+
     this.navCtrl.push(SigninPage);
   }
 

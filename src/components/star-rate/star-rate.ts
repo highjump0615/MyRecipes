@@ -16,7 +16,7 @@ export class StarRateComponent {
   @Input() starSize = 11;
   @Input() readOnly = true;
 
-  @Input() rating: number ;
+  @Input() rating: number;
 
   constructor() {
     console.log('Hello StarRateComponent Component');

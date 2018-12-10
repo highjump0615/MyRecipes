@@ -38,6 +38,7 @@ import { RecipeMenuPageModule } from '../pages/recipe-menu/recipe-menu.module';
 import { FilterSearchPage } from '../pages/filter-search/filter-search';
 import { AddDatePage } from '../pages/add-date/add-date';
 import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module';
+import {IonicStorageModule} from "@ionic/storage";
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module
       backButtonText: '',
       backButtonIcon: 'md-arrow-back'
     }),
+    IonicStorageModule.forRoot(),
     SignupEmailPageModule,
     SignupPasswordPageModule,
     SignupFavouritePageModule,

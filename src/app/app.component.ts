@@ -9,6 +9,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
 import { PreferencePage } from '../pages/preference/preference';
 import { User } from '../models/user';
+import {Storage} from "@ionic/storage";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,13 +17,34 @@ import { User } from '../models/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  static KEY_ONBOARD = 'onboard';
+
+  rootPage: any;
 
   pages: Array<{title: string, component: any, icon: string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private storage: Storage
+  ) {
+    //
     // set root page based on log in state
-    this.rootPage = OnboardPage;
+    //
+
+    // todo: if logged in
+
+    this.storage.get(MyApp.KEY_ONBOARD).then((value) => {
+      if (value) {
+        // onboard is already shown, go to sign in page directly
+        this.rootPage = SigninPage;
+      }
+      else {
+        // app is opened for the first time
+        this.rootPage = OnboardPage;
+      }
+    });
 
     this.initializeApp();
 
