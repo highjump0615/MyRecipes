@@ -10,6 +10,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { PreferencePage } from '../pages/preference/preference';
 import { User } from '../models/user';
 import {Storage} from "@ionic/storage";
+import * as firebase from 'firebase/app';
+import {environment} from "../environments/environments";
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +31,9 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private storage: Storage
   ) {
+    // init firebase
+    firebase.initializeApp(environment.firebase);
+
     //
     // set root page based on log in state
     //

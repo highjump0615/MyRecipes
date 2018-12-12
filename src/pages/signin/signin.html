@@ -11,87 +11,102 @@
 
 <ion-content class="red-bg">
 
-  <div ion-fixed class="container" padding>
-    <!-- logo image -->
-    <img
-      src="../assets/imgs/logo.png"
-      class="nm-center img-logo"
-      style="width: 139px;" />
+  <form (ngSubmit)="signinForm()">
+    <div ion-fixed class="container" padding>
+      <!-- logo image -->
+      <img
+        src="../assets/imgs/logo.png"
+        class="nm-center img-logo"
+        style="width: 139px;" />
 
-    <!-- log in form -->
-    <div class="nm-center width-80">
+      <!-- log in form -->
+      <div class="nm-center width-80">
 
-      <!-- email -->
-      <div class="flex-c-row input-item signin-input">
-        <img
-          src="../assets/imgs/signin/signin_email.png"
-          style="width: 19px;" />
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <!-- email -->
+        <div class="flex-c-row input-item signin-input">
+          <img
+            src="../assets/imgs/signin/signin_email.png"
+            style="width: 19px;" />
+          <ion-input
+            type="email"
+            name="email"
+            placeholder="Email"
+            [(ngModel)]="email">
+          </ion-input>
+        </div>
+
+        <!-- password -->
+        <div
+          class="flex-c-row input-item signin-input"
+          style="margin-top: 4px;">
+          <img
+            src="../assets/imgs/signin/signin_password.png"
+            style="width: 13px;" />
+          <ion-input
+            type="password"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="password">
+          </ion-input>
+        </div>
       </div>
 
-      <!-- password -->
-      <div
-        class="flex-c-row input-item signin-input"
-        style="margin-top: 4px;">
-        <img
-          src="../assets/imgs/signin/signin_password.png"
-          style="width: 13px;" />
-        <ion-input type="password" placeholder="Password"></ion-input>
+      <!-- buttons -->
+      <div class="nm-center width-80">
+        <!-- login button -->
+        <button
+          ion-button round full
+          type="submit"
+          class="but-primary">
+          <b>Let's Go!</b>
+        </button>
+
+        <!-- forget button -->
+        <button
+          type="button"
+          ion-button full clear
+          class="but-transparent"
+          (click)="onButForget($event)">
+          Forgot Password?
+        </button>
       </div>
+
+      <!-- social login -->
+      <div class="nm-center social">
+        <!-- facebook -->
+        <button
+          ion-button icon-only clear
+          type="button"
+          class="but-transparent">
+          <img
+            src="../assets/imgs/signin/signin_fb.png" />
+        </button>
+
+        <!-- google -->
+        <button
+          ion-button icon-only clear
+          type="button"
+          class="but-transparent"
+          style="margin-left: 16px;">
+          <img
+            src="../assets/imgs/signin/signin_google.png" />
+        </button>
+      </div>
+
+      <!-- terms -->
+      <div class="nm-center signin-menu">
+        <span style="line-height: 1.6">By using the nuMenu app, you agree to our<br>
+          <span class="clickable" (click)="onButPolicy($event)">Privacy Policy</span> and <span class="clickable" (click)="onButTerm($event)">Terms of Services</span>
+        </span>
+      </div>
+
+      <!-- signup -->
+      <div class="nm-center signin-menu">
+          <span>Not Registered?</span>
+          <span class="clickable" (click)="onButSignup($event)"> Sign Up! </span>
+      </div>
+
     </div>
-
-    <!-- buttons -->
-    <div class="nm-center width-80">
-      <!-- login button -->
-      <button
-        ion-button round full
-        class="but-primary"
-        (click)="onButSignin($event)">
-        <b>Let's Go!</b>
-      </button>
-
-      <!-- forget button -->
-      <button
-        ion-button full clear
-        class="but-transparent"
-        (click)="onButForget($event)">
-        Forgot Password?
-      </button>
-    </div>
-
-    <!-- social login -->
-    <div class="nm-center social">
-      <!-- facebook -->
-      <button
-        ion-button icon-only clear
-        class="but-transparent">
-        <img
-          src="../assets/imgs/signin/signin_fb.png" />
-      </button>
-
-      <!-- google -->
-      <button
-        ion-button icon-only clear
-        class="but-transparent"
-        style="margin-left: 16px;">
-        <img
-          src="../assets/imgs/signin/signin_google.png" />
-      </button>
-    </div>
-
-    <!-- terms -->
-    <div class="nm-center signin-menu">
-      <span style="line-height: 1.6">By using the nuMenu app, you agree to our<br>
-        <span class="clickable" (click)="onButPolicy($event)">Privacy Policy</span> and <span class="clickable" (click)="onButTerm($event)">Terms of Services</span>
-      </span>
-    </div>
-
-    <!-- signup -->
-    <div class="nm-center signin-menu">
-        <span>Not Registered?</span>
-        <span class="clickable" (click)="onButSignup($event)"> Sign Up! </span>
-    </div>
-
-  </div>
+  </form>
 
 </ion-content>

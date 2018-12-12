@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { OnboardPage } from '../pages/onboard/onboard';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,6 +39,12 @@ import { AddDatePage } from '../pages/add-date/add-date';
 import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module';
 import {IonicStorageModule} from "@ionic/storage";
 
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireAuth } from 'angularfire2/auth'
+import { environment } from '../environments/environments'
+import {AuthService} from "../services/auth.service";
+import {AppExceptionHandler} from "../helpers/exception-handler";
+
 
 @NgModule({
   declarations: [
@@ -66,6 +71,7 @@ import {IonicStorageModule} from "@ionic/storage";
       backButtonIcon: 'md-arrow-back'
     }),
     IonicStorageModule.forRoot(),
+    // AngularFireModule.initializeApp(environment.firebase),
     SignupEmailPageModule,
     SignupPasswordPageModule,
     SignupFavouritePageModule,
@@ -104,8 +110,10 @@ import {IonicStorageModule} from "@ionic/storage";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    EmailComposer
+    {provide: ErrorHandler, useClass: AppExceptionHandler},
+    EmailComposer,
+    // AuthService,
+    AngularFireAuth
   ]
 })
 export class AppModule {}
