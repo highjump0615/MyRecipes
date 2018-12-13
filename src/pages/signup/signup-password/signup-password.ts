@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupProfilePage } from '../signup-profile/signup-profile'
+import {SignupEmailPage} from "../signup-email/signup-email";
 
 /**
  * Generated class for the SignupPasswordPage page.
@@ -16,7 +17,13 @@ import { SignupProfilePage } from '../signup-profile/signup-profile'
 })
 export class SignupPasswordPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email = '';
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.email = navParams.get(SignupEmailPage.PARAM_EMAIL);
   }
 
   ionViewDidLoad() {

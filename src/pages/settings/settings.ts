@@ -40,7 +40,7 @@ export class SettingsPage extends BasePage {
   }
 
   onButPrivacy() {
-    // go to proviacy page
+    // go to privacy page
     var params = {};
     params[TermsPage.PARAM_TYPE] = TermsPage.TYPE_POLICY;
 

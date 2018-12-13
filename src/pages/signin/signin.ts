@@ -16,7 +16,7 @@ import { TermsPage } from '../terms/terms';
 import {Utils} from "../../helpers/utils";
 
 import * as firebase from 'firebase/app';
-import {environment} from "../../environments/environments";
+import 'firebase/auth';
 
 /**
  * Generated class for the SigninPage page.
@@ -148,7 +148,7 @@ export class SigninPage extends BaseLandingPage {
       this.password
     ).then( (res) => {
       console.log(res);
-    }, (err) => {
+    }).catch((err) => {
       console.log(err);
 
       loadingView.dismiss();

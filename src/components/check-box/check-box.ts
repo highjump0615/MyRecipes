@@ -14,6 +14,7 @@ import { Component, Input } from '@angular/core';
 export class CheckBoxComponent {
 
   @Input() text: String;
+  @Input() enabled = false;
 
   constructor() {
     console.log('Hello CheckBoxComponent Component');

@@ -39,10 +39,6 @@ import { AddDatePage } from '../pages/add-date/add-date';
 import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module';
 import {IonicStorageModule} from "@ionic/storage";
 
-import { AngularFireModule } from 'angularfire2'
-import { AngularFireAuth } from 'angularfire2/auth'
-import { environment } from '../environments/environments'
-import {AuthService} from "../services/auth.service";
 import {AppExceptionHandler} from "../helpers/exception-handler";
 
 
@@ -71,7 +67,6 @@ import {AppExceptionHandler} from "../helpers/exception-handler";
       backButtonIcon: 'md-arrow-back'
     }),
     IonicStorageModule.forRoot(),
-    // AngularFireModule.initializeApp(environment.firebase),
     SignupEmailPageModule,
     SignupPasswordPageModule,
     SignupFavouritePageModule,
@@ -112,8 +107,6 @@ import {AppExceptionHandler} from "../helpers/exception-handler";
     SplashScreen,
     {provide: ErrorHandler, useClass: AppExceptionHandler},
     EmailComposer,
-    // AuthService,
-    AngularFireAuth
   ]
 })
 export class AppModule {}

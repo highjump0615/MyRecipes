@@ -26,14 +26,23 @@
         <img
           src="../assets/imgs/signin/signin_email.png"
           style="width: 19px;" />
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input
+          type="email"
+          placeholder="Email"
+          (ionChange)="onChangeText()"
+          [(ngModel)]="email">
+        </ion-input>
       </div>
 
       <div
         style="margin-top: 20px; margin-left: 20px;">
-        <check-box text="Valid email."></check-box>
+        <check-box
+          text="Valid email."
+          [enabled]="isEmailValid">
+        </check-box>
         <check-box
           text="Not in use."
+          [enabled]="isNotUse"
           style="margin-top: 6px;">
         </check-box>
       </div>
@@ -48,6 +57,7 @@
       <button
         ion-button round full
         class="but-primary"
+        [class.inactive]="!isEmailValid || !isNotUse"
         (click)="onButNext($event)">
         <b>Next</b>
       </button>
