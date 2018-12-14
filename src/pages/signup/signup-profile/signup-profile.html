@@ -34,25 +34,32 @@
       <div
         class="flex-c-row input-item signin-input"
         style="margin-top: 10px;">
-        <ion-input placeholder="First Name"></ion-input>
+        <ion-input
+          placeholder="First Name"
+          [(ngModel)]="firstName">
+        </ion-input>
       </div>
 
       <!-- last name -->
       <div
         class="flex-c-row input-item signin-input"
         style="margin-top: 8px;">
-        <ion-input placeholder="Last Name"></ion-input>
+        <ion-input
+          placeholder="Last Name"
+          [(ngModel)]="lastName">
+        </ion-input>
       </div>
 
       <!-- description -->
       <div
         class="flex-row input-item signin-input desc"
         style="margin-top: 8px;">
-        <ion-textarea #desc
+        <ion-textarea
+          #desc
           (input)="adjustTextarea($event);"
           placeholder="Description"
-          maxLength="500">
-
+          maxLength="500"
+          [(ngModel)]="description">
         </ion-textarea>
       </div>
     </div>

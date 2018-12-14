@@ -40,6 +40,7 @@ import { MenuDetail2PageModule } from '../pages/menu-detail2/menu-detail2.module
 import {IonicStorageModule} from "@ionic/storage";
 
 import {AppExceptionHandler} from "../helpers/exception-handler";
+import {SplashPage} from "../pages/splash/splash";
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {AppExceptionHandler} from "../helpers/exception-handler";
     CookingTipPage,
     AddRecipePage,
     FilterSearchPage,
-    AddDatePage
+    AddDatePage,
+    SplashPage
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ import {AppExceptionHandler} from "../helpers/exception-handler";
     CookingTipPage,
     AddRecipePage,
     FilterSearchPage,
-    AddDatePage
+    AddDatePage,
+    SplashPage
   ],
   providers: [
     StatusBar,

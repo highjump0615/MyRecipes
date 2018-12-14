@@ -12,6 +12,8 @@ import { User } from '../models/user';
 import {Storage} from "@ionic/storage";
 import * as firebase from 'firebase/app';
 import {environment} from "../environments/environments";
+import {FirebaseManager} from "../helpers/firebase-manager";
+import {SplashPage} from "../pages/splash/splash";
 
 @Component({
   templateUrl: 'app.html'
@@ -33,23 +35,39 @@ export class MyApp {
   ) {
     // init firebase
     firebase.initializeApp(environment.firebase);
+    FirebaseManager.initServerTime();
 
     //
     // set root page based on log in state
     //
+    const that = this;
 
-    // todo: if logged in
+    let unsubscribe = firebase.auth().onAuthStateChanged(function(user) {
 
-    this.storage.get(MyApp.KEY_ONBOARD).then((value) => {
-      if (value) {
-        // onboard is already shown, go to sign in page directly
-        this.rootPage = SigninPage;
-      }
-      else {
-        // app is opened for the first time
-        this.rootPage = OnboardPage;
+      // do not listen anymore
+      unsubscribe();
+
+      if (user) {
+        // fetch current user
+        User.readFromDatabase(user.uid, (user) => {
+          User.currentUser = user;
+
+          if (user) {
+            // go to home page
+            that.setRootPage(HomePage);
+          }
+          else {
+            that.goToSigninView();
+          }
+        });
+
+      } else {
+        // No user is signed in.
+        that.goToSigninView();
       }
     });
+
+    this.rootPage = SplashPage;
 
     this.initializeApp();
 
@@ -77,8 +95,34 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
+  goToSigninView() {
+    this.storage.get(MyApp.KEY_ONBOARD).then((value) => {
+      if (value) {
+        // onboard is already shown, go to sign in page directly
+        this.setRootPage(SigninPage);
+      }
+      else {
+        // app is opened for the first time
+        this.setRootPage(OnboardPage);
+      }
+    });
+  }
+
+  /**
+   * set root page with animation
+   * @param page
+   */
+  setRootPage(page) {
+    this.nav.setRoot(
+      page,
+      {},
+      {animate: true, direction: 'forward'}
+    );
+  }
+
   onLogout() {
     // clear current user
+    FirebaseManager.signOut();
     User.currentUser = null;
 
     // go to log in page

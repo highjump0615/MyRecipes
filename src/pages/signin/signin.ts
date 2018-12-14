@@ -15,8 +15,7 @@ import { SignupEmailPage } from '../signup/signup-email/signup-email'
 import { TermsPage } from '../terms/terms';
 import {Utils} from "../../helpers/utils";
 
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import {FirebaseManager} from "../../helpers/firebase-manager";
 
 /**
  * Generated class for the SigninPage page.
@@ -78,18 +77,10 @@ export class SigninPage extends BaseLandingPage {
   }
 
   gotoTermPage(type) {
-    var params = {};
+    const params = {};
     params[TermsPage.PARAM_TYPE] = type;
 
     this.navCtrl.push(TermsPage, params);
-  }
-
-  /**
-   * sign in button
-   * @param event
-   */
-  onButSignin(event) {
-    this.gotoHome();
   }
 
   /**
@@ -143,11 +134,20 @@ export class SigninPage extends BaseLandingPage {
     loadingView.present();
 
     // do login
-    firebase.auth().signInWithEmailAndPassword(
+    FirebaseManager.auth().signInWithEmailAndPassword(
       this.email,
       this.password
     ).then( (res) => {
       console.log(res);
+
+      loadingView.dismiss();
+
+      if (!res.user) {
+        return;
+      }
+
+      // go to home page
+      this.gotoHome();
     }).catch((err) => {
       console.log(err);
 
