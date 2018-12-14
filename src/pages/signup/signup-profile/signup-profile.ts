@@ -19,6 +19,9 @@ import { User } from '../../../models/user';
 })
 export class SignupProfilePage extends BaseLandingPage {
 
+  email = '';
+  password = '';
+
   @ViewChild('desc') textDesc: ElementRef;
 
   title = "Sign Up";

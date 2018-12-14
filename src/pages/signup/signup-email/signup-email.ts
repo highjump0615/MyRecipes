@@ -28,7 +28,8 @@ export class SignupEmailPage {
   isEmailValid = false;
   isNotUse = false;
 
-  static PARAM_EMAIL = "email";
+  static PARAM_EMAIL = 'email';
+  static PARAM_PASSWORD = 'password';
 
   constructor(
     public navCtrl: NavController,
@@ -46,19 +47,15 @@ export class SignupEmailPage {
    * @param event
    */
   onButNext(event) {
-    if (!this.isEmailValid) {
-      return;
-    }
-
-    if (!this.isNotUse) {
+    if (!this.isEmailValid || !this.isNotUse) {
       return;
     }
 
     // go to signup password page
-    var params = {};
+    let params = {};
     params[SignupEmailPage.PARAM_EMAIL] = this.email;
 
-    this.navCtrl.push(SignupPasswordPage);
+    this.navCtrl.push(SignupPasswordPage, params);
   }
 
   onChangeText() {
