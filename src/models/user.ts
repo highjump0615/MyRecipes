@@ -14,10 +14,12 @@ export class User extends BaseModel {
   static FIELD_FIRSTNAME = 'firstName';
   static FIELD_LASTNAME = 'lastName';
   static FIELD_PHOTO = 'photoUrl';
+  static FIELD_DESC = 'description';
 
   email = '';
   firstName = '';
   lastName = '';
+  desc = '';
   photoUrl = '';
 
 
@@ -40,6 +42,7 @@ export class User extends BaseModel {
       this.firstName = info[User.FIELD_FIRSTNAME];
       this.lastName = info[User.FIELD_LASTNAME];
       this.photoUrl = info[User.FIELD_PHOTO];
+      this.desc = info[User.FIELD_DESC];
     }
   }
 
@@ -75,6 +78,7 @@ export class User extends BaseModel {
     dict[User.FIELD_FIRSTNAME] = this.firstName;
     dict[User.FIELD_LASTNAME] = this.lastName;
     dict[User.FIELD_PHOTO] = this.photoUrl;
+    dict[User.FIELD_DESC] = this.desc;
 
     return dict;
   }

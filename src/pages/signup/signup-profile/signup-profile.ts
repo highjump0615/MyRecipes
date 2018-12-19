@@ -183,6 +183,7 @@ export class SignupProfilePage extends BaseLandingPage {
     // save info
     user.firstName = this.firstName;
     user.lastName = this.lastName;
+    user.desc = this.description;
 
     user.saveToDatabase();
 
