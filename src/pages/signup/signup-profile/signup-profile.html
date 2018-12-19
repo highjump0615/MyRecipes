@@ -14,21 +14,33 @@
 
 
 <ion-content class="red-bg" padding>
-  <div ion-fixed class="container" padding>
+  <div class="container" padding>
     <!-- submit form -->
     <div
       class="width-80 input-items"
       style="margin-top: 30px;">
 
       <!-- photo button -->
-      <button
-        ion-button round
-        class="nm-center but-photo-large">
-        <div class="flex-column">
-          <ion-icon name="add"></ion-icon>
-          <span class="title">Upload<br>Photo</span>
-        </div>
-      </button>
+      <input
+        type="file"
+        [hidden]="true"
+        accept="image/*;capture=camera"
+        (change)="onFileSelected($event)"
+        #file />
+
+        <button
+          ion-button round
+          class="but-photo-large nm-center"
+          (click)="onButPhoto()">
+          <img class="photo"
+               [src]="imgPhoto"
+               *ngIf="imgPhoto" />
+          <div class="flex-column"
+               *ngIf="!imgPhoto">
+            <ion-icon name="add"></ion-icon>
+            <span class="title">Upload<br>Photo</span>
+          </div>
+        </button>
 
       <!-- first name -->
       <div

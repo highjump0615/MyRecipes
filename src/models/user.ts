@@ -9,14 +9,16 @@ export class User extends BaseModel {
   //
   // table info
   //
-  static TABLE_NAME = "users";
-  static FIELD_EMAIL = "email";
-  static FIELD_FIRSTNAME = "firstName";
-  static FIELD_LASTNAME = "lastName";
+  static TABLE_NAME = 'users';
+  static FIELD_EMAIL = 'email';
+  static FIELD_FIRSTNAME = 'firstName';
+  static FIELD_LASTNAME = 'lastName';
+  static FIELD_PHOTO = 'photoUrl';
 
   email = '';
   firstName = '';
   lastName = '';
+  photoUrl = '';
 
 
   constructor();
@@ -37,6 +39,7 @@ export class User extends BaseModel {
       this.email = info[User.FIELD_EMAIL];
       this.firstName = info[User.FIELD_FIRSTNAME];
       this.lastName = info[User.FIELD_LASTNAME];
+      this.photoUrl = info[User.FIELD_PHOTO];
     }
   }
 
@@ -71,6 +74,7 @@ export class User extends BaseModel {
     dict[User.FIELD_EMAIL] = this.email;
     dict[User.FIELD_FIRSTNAME] = this.firstName;
     dict[User.FIELD_LASTNAME] = this.lastName;
+    dict[User.FIELD_PHOTO] = this.photoUrl;
 
     return dict;
   }

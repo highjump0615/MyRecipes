@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 export class FirebaseManager {
 
@@ -34,5 +35,29 @@ export class FirebaseManager {
   static signOut() {
     // Log out
     FirebaseManager.auth().signOut();
+  }
+
+  static uploadImageTo(path, imgData, completion: (string?, error?) => void) {
+    let storageRef = firebase.storage().ref();
+    let imageRef = storageRef.child(path);
+
+    imageRef.putString(imgData, 'data_url')
+      .then((snapshot) => {
+        // get download url
+        imageRef.getDownloadURL().then((url) => {
+          console.log('url: ' + url);
+
+          completion(url);
+        }).catch((err) => {
+          console.log(err);
+
+          completion(null, err);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        completion(null, err);
+      });
   }
 }

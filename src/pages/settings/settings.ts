@@ -4,6 +4,7 @@ import { TermsPage } from '../terms/terms';
 import { AboutAppPage } from '../about-app/about-app';
 import { EmailComposer } from '@ionic-native/email-composer'
 import { BasePage } from '../BasePage';
+import {Utils} from "../../helpers/utils";
 
 /**
  * Generated class for the SettingsPage page.
@@ -48,7 +49,7 @@ export class SettingsPage extends BasePage {
   }
 
   onButReport() {
-    if (this.platform.is('core') || this.platform.is('mobileweb')) {
+    if (Utils.isPlatformWeb(this.platform)) {
       // this is not app
       this.presentToast('Can be used in apps only');
     }

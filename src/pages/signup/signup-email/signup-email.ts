@@ -73,9 +73,7 @@ export class SignupEmailPage {
         .equalTo(this.email)
         .once('value')
         .then((snapshot) => {
-          if (!snapshot.exists()) {
-            this.isNotUse = true;
-          }
+          this.isNotUse = !snapshot.exists();
         })
         .catch((err) => {
           console.log(err);

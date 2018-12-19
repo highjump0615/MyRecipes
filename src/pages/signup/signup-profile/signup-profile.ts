@@ -6,7 +6,8 @@ import {
   MenuController,
   ToastController,
   AlertController,
-  LoadingController
+  LoadingController,
+  Platform
 } from 'ionic-angular';
 
 import { SignupFavouritePage } from '../signup-favourite/signup-favourite'
@@ -14,6 +15,7 @@ import { BaseLandingPage } from '../../BaseLandingPage';
 import { User } from '../../../models/user';
 import {FirebaseManager} from "../../../helpers/firebase-manager";
 import {SignupEmailPage} from "../signup-email/signup-email";
+import {Utils} from "../../../helpers/utils";
 
 /**
  * Generated class for the SignupProfilePage page.
@@ -38,6 +40,9 @@ export class SignupProfilePage extends BaseLandingPage {
   lastName = '';
   description = '';
 
+  imgPhoto = '';
+
+  @ViewChild('file') inputFile: ElementRef;
   @ViewChild('desc') textDesc: ElementRef;
 
   title = "Sign Up";
@@ -48,7 +53,8 @@ export class SignupProfilePage extends BaseLandingPage {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public plt: Platform
   ) {
     super(navCtrl, menuCtrl, toastCtrl);
 
@@ -128,7 +134,7 @@ export class SignupProfilePage extends BaseLandingPage {
 
       User.currentUser = userNew;
 
-      this.saveUserInfo();
+      this.uploadImageAndSetupUserInfo();
 
     }).catch((err) => {
       console.log(err);
@@ -143,6 +149,32 @@ export class SignupProfilePage extends BaseLandingPage {
       });
       alert.present();
     });
+  }
+
+  uploadImageAndSetupUserInfo() {
+
+    if (this.imgPhoto) {
+      // upload photo
+      let user = User.currentUser;
+      let path = 'users/' + user.id + '.png';
+
+      FirebaseManager.uploadImageTo(
+        path,
+        this.imgPhoto,
+        (downloadURL, error) => {
+          if (error) {
+            // failed to upload
+            this.loadingView.dismiss();
+            return
+          }
+
+          User.currentUser.photoUrl = downloadURL;
+          this.saveUserInfo();
+        })
+    }
+    else {
+      this.saveUserInfo();
+    }
   }
 
   saveUserInfo() {
@@ -161,4 +193,61 @@ export class SignupProfilePage extends BaseLandingPage {
     this.navCtrl.push(SignupFavouritePage);
   }
 
+  onFileSelected(event) {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+
+      console.log(file);
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.imgPhoto = reader.result;
+
+        console.log(this.imgPhoto);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onButPhoto() {
+    // browser
+    // if (Utils.isPlatformWeb(this.plt)) {
+      this.inputFile.nativeElement.click();
+      // return;
+    // }
+
+    /*
+    // native app
+    let options = {
+      maximumImagesCount: 1,
+      outputType: OutputType.DATA_URL
+    };
+
+    this.imagePicker.hasReadPermission().then(
+      (result) => {
+        if(result == false){
+          // no callbacks required as this opens a popup which returns async
+          this.imagePicker.requestReadPermission();
+        }
+        else if(result == true){
+          this.imagePicker.getPictures(options).then(
+            (results) => {
+              if (results.length <= 0) {
+                return;
+              }
+
+              this.imgPhoto = 'data:image/jpeg;base64,' + results[0];
+
+              console.log(this.imgPhoto);
+
+              // this.uploadImageToFirebase(results[i]);
+            }, (err) => console.log(err)
+          );
+        }
+      }, (err) => {
+        console.log(err);
+      });
+      */
+  }
 }
