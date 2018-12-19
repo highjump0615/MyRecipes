@@ -23,7 +23,7 @@ page-signup-profile {
     display: flex;
     flex-direction: column;
     align-self: center;
-    flex: 1;
+    flex: 1 0 auto;
 
     .signin-input.desc {
       flex: 1;
