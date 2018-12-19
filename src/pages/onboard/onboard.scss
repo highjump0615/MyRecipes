@@ -6,7 +6,7 @@ page-onboard {
     }
 
     .slide-content {
-        margin-bottom: 110px;
+        margin-bottom: 10%;
     }
 
     .img-logo {
@@ -24,7 +24,7 @@ page-onboard {
 
     // position
     .swiper-pagination-bullets {
-        top: 70%;
+        bottom: 10% !important;
     }
 }
 
