@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {environment} from "../../environments/environments";
+import {DomSanitizer} from "@angular/platform-browser";
 
 /**
  * Generated class for the TermsPage page.
@@ -22,7 +24,13 @@ export class TermsPage {
   type = TermsPage.TYPE_TERMS;
   title = "Terms and Conditions";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loading = false;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private sanitizer: DomSanitizer
+  ) {
     this.type = navParams.get(TermsPage.PARAM_TYPE);
 
     // init UI
@@ -38,4 +46,15 @@ export class TermsPage {
     console.log('ionViewDidLoad TermsPage');
   }
 
+  getUrl() {
+    const urlPrivacy = this.sanitizer.bypassSecurityTrustResourceUrl(environment.urlPrivacyPolicy);
+    const urlTerms = this.sanitizer.bypassSecurityTrustResourceUrl(environment.urlTerms);
+    return this.type == TermsPage.TYPE_POLICY ? urlPrivacy : urlTerms;
+  }
+
+  dismissLoading() {
+    this.loading = false;
+
+    console.log('dismissLoading');
+  }
 }

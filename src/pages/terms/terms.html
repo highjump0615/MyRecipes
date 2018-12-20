@@ -13,14 +13,16 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <div>
-      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+  <div ion-fixed class="container">
+    <iframe
+      height="100%"
+      width="100%"
+      [src]="getUrl()">
+    </iframe>
 
-      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-
-      Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+    <ion-spinner *ngIf="loading"></ion-spinner>
   </div>
 
 </ion-content>

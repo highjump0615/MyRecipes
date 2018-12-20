@@ -1,3 +1,15 @@
 page-terms {
 
+  .container {
+    position: relative;
+  }
+
+  ion-spinner {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+  }
+
 }
