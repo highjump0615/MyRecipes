@@ -1,11 +1,14 @@
-import { NavController, MenuController, ToastController } from 'ionic-angular';
+import {NavController, MenuController, ToastController, LoadingController} from 'ionic-angular';
 import { HomePage } from './home/home';
 
 export class BasePage {
+  loadingView: any;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController,
+    public loadingCtrl?: LoadingController) {
   }
 
   gotoHome() {
@@ -34,5 +37,17 @@ export class BasePage {
     });
 
     toast.present();
+  }
+
+  showLoadingView(show = true, desc?: String) {
+    if (show) {
+      // show loading view
+      this.loadingView = this.loadingCtrl.create();
+      this.loadingView.present();
+    }
+    else {
+      // hide
+      this.loadingView.dismiss();
+    }
   }
 }

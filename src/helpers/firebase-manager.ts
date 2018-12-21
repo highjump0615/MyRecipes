@@ -60,4 +60,5 @@ export class FirebaseManager {
         completion(null, err);
       });
   }
+
 }

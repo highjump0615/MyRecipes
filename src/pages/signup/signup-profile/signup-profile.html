@@ -32,9 +32,16 @@
           ion-button round
           class="but-photo-large nm-center"
           (click)="onButPhoto()">
+          <!-- photo image -->
           <img class="photo"
                [src]="imgPhoto"
-               *ngIf="imgPhoto" />
+               *ngIf="imgPhoto; else fromUrl" />
+          <ng-template #fromUrl>
+            <img class="photo"
+                 [src]="imgPhotoUrl"
+                 *ngIf="imgPhotoUrl" />
+          </ng-template>
+
           <div class="flex-column"
                *ngIf="!imgPhoto">
             <ion-icon name="add"></ion-icon>

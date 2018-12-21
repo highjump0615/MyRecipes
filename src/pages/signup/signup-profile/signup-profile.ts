@@ -34,13 +34,12 @@ export class SignupProfilePage extends BaseLandingPage {
   email = '';
   password = '';
 
-  loadingView: any;
-
   firstName = '';
   lastName = '';
   description = '';
 
   imgPhoto = '';
+  imgPhotoUrl = '';
 
   @ViewChild('file') inputFile: ElementRef;
   @ViewChild('desc') textDesc: ElementRef;
@@ -60,6 +59,16 @@ export class SignupProfilePage extends BaseLandingPage {
 
     this.email = navParams.get(SignupEmailPage.PARAM_EMAIL);
     this.password = navParams.get(SignupEmailPage.PARAM_PASSWORD);
+
+    // fill info
+    const user = User.currentUser;
+    if (user) {
+      this.firstName = user.firstName;
+      this.lastName = user.lastName;
+      this.description = user.desc;
+
+      this.imgPhotoUrl = user.photoUrl;
+    }
   }
 
   ionViewDidLoad() {
@@ -110,45 +119,49 @@ export class SignupProfilePage extends BaseLandingPage {
     }
 
     // show loading view
-    this.loadingView = this.loadingCtrl.create();
-    this.loadingView.present();
+    this.showLoadingView();
 
-    // do signup
-    FirebaseManager.auth().createUserWithEmailAndPassword(
-      this.email,
-      this.password
-    ).then((res) => {
-      console.log(res);
+    if (!User.currentUser) {
+      // do signup
+      FirebaseManager.auth().createUserWithEmailAndPassword(
+        this.email,
+        this.password
+      ).then((res) => {
+        console.log(res);
 
-      let u = res.user;
+        let u = res.user;
 
-      if (!u) {
-        return;
-      }
+        if (!u) {
+          return;
+        }
 
-      // set user
-      let userNew = new User(u.uid);
+        // set user
+        let userNew = new User(u.uid);
 
-      // save user info
-      userNew.email = this.email;
+        // save user info
+        userNew.email = this.email;
 
-      User.currentUser = userNew;
+        User.currentUser = userNew;
 
-      this.uploadImageAndSetupUserInfo();
+        this.uploadImageAndSetupUserInfo();
 
-    }).catch((err) => {
-      console.log(err);
+      }).catch((err) => {
+        console.log(err);
 
-      this.loadingView.dismiss();
+        this.showLoadingView(false);
 
-      // show error alert
-      let alert = this.alertCtrl.create({
-        title: 'Signup Failed',
-        message: err.message,
-        buttons: ['Ok']
+        // show error alert
+        let alert = this.alertCtrl.create({
+          title: 'Signup Failed',
+          message: err.message,
+          buttons: ['Ok']
+        });
+        alert.present();
       });
-      alert.present();
-    });
+    }
+    else {
+      this.uploadImageAndSetupUserInfo();
+    }
   }
 
   uploadImageAndSetupUserInfo() {
@@ -164,8 +177,8 @@ export class SignupProfilePage extends BaseLandingPage {
         (downloadURL, error) => {
           if (error) {
             // failed to upload
-            this.loadingView.dismiss();
-            return
+            this.showLoadingView(false);
+            return;
           }
 
           User.currentUser.photoUrl = downloadURL;
@@ -188,7 +201,7 @@ export class SignupProfilePage extends BaseLandingPage {
     user.saveToDatabase();
 
     // hide loading view
-    this.loadingView.dismiss();
+    this.showLoadingView(false);
 
     // go to signup favourite page
     this.navCtrl.push(SignupFavouritePage);
