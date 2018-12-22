@@ -41,6 +41,12 @@ export class SigninPage extends BaseLandingPage {
   email = '';
   password = '';
 
+  SIGNIN_EMAIL = 0;
+  SIGNIN_FACEBOOK = 1;
+  SIGNIN_GOOGLE = 2;
+
+  signinMethod = this.SIGNIN_EMAIL;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -101,6 +107,8 @@ export class SigninPage extends BaseLandingPage {
   }
 
   signinForm() {
+    this.signinMethod = this.SIGNIN_EMAIL;
+
     //
     // check input validity
     //
@@ -169,7 +177,11 @@ export class SigninPage extends BaseLandingPage {
     });
   }
 
+  /**
+   * Google sign in
+   */
   onButGoogle() {
+    this.signinMethod = this.SIGNIN_GOOGLE;
     const that = this;
 
     this.showLoadingView();
@@ -178,23 +190,24 @@ export class SigninPage extends BaseLandingPage {
     if (Utils.isPlatformWeb(this.platform)) {
       const provider = new firebase.auth.GoogleAuthProvider();
 
-      FirebaseManager.auth().signInWithPopup(provider).then(function(result) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // var token = result.credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        const profile = result.additionalUserInfo.profile;
+      FirebaseManager.auth().signInWithPopup(provider)
+        .then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          // var token = result.credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          const profile = result.additionalUserInfo.profile;
 
-        console.log(profile);
+          console.log(profile);
 
-        that.continueGoogleSignIn(
-          result.credential,
-          profile['family_name'],
-          profile['given_name'],
-          profile['picture']);
-      }).catch(function(error) {
-        that.onError(error);
-      });
+          that.continueSocialSignIn(
+            result.credential,
+            profile['given_name'],
+            profile['family_name'],
+            profile['picture']);
+        }).catch(function(error) {
+          that.onError(error);
+        });
     }
     // native app
     else {
@@ -206,7 +219,7 @@ export class SigninPage extends BaseLandingPage {
 
         const googleCredential = firebase.auth.GoogleAuthProvider.credential(res['idToken']);
 
-        that.continueGoogleSignIn(
+        that.continueSocialSignIn(
           googleCredential,
           res['familyName'],
           res['givenName'],
@@ -223,16 +236,21 @@ export class SigninPage extends BaseLandingPage {
 
     this.showLoadingView(false);
 
+    let strTitle = 'Google Login Failed';
+    if (this.signinMethod == this.SIGNIN_FACEBOOK) {
+      strTitle = 'Facebook Login Failed';
+    }
+
     // show error alert
     let alert = this.alertCtrl.create({
-      title: 'Google Signin Failed',
+      title: strTitle,
       message: err.message,
       buttons: ['Ok']
     });
     alert.present();
   }
 
-  continueGoogleSignIn(credential, firstName, lastName, photoUrl) {
+  continueSocialSignIn(credential, firstName, lastName, photoUrl) {
     const that = this;
 
     FirebaseManager.auth().signInAndRetrieveDataWithCredential(credential)
@@ -299,5 +317,39 @@ export class SigninPage extends BaseLandingPage {
         onComplete();
       }
     });
+  }
+
+  /**
+   * Facebook sign in
+   */
+  onButFacebook() {
+    this.signinMethod = this.SIGNIN_FACEBOOK;
+    const that = this;
+
+    this.showLoadingView();
+
+    // browser
+    if (Utils.isPlatformWeb(this.platform)) {
+      const provider = new firebase.auth.FacebookAuthProvider();
+
+      FirebaseManager.auth().signInWithPopup(provider)
+        .then(function(result) {
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          // var token = result.credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          const profile = result.additionalUserInfo.profile;
+
+          console.log(profile);
+
+          that.continueSocialSignIn(
+            result.credential,
+            profile['first_name'],
+            profile['last_name'],
+            profile['picture']['data']['url']);
+        }).catch(function(error) {
+          that.onError(error);
+        });
+    }
   }
 }
