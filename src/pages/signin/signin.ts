@@ -21,6 +21,7 @@ import * as firebase from "firebase";
 import {User} from "../../models/user";
 import {SignupProfilePage} from "../signup/signup-profile/signup-profile";
 import {HomePage} from "../home/home";
+import {GooglePlus} from "@ionic-native/google-plus";
 
 /**
  * Generated class for the SigninPage page.
@@ -47,7 +48,8 @@ export class SigninPage extends BaseLandingPage {
     public toastCtrl: ToastController,
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private platform: Platform
+    private platform: Platform,
+    private googlePlus: GooglePlus
   ) {
     super(navCtrl, menuCtrl, toastCtrl, loadingCtrl);
   }
@@ -170,9 +172,10 @@ export class SigninPage extends BaseLandingPage {
   onButGoogle() {
     const that = this;
 
+    this.showLoadingView();
+
     // browser
     if (Utils.isPlatformWeb(this.platform)) {
-      this.showLoadingView();
       const provider = new firebase.auth.GoogleAuthProvider();
 
       FirebaseManager.auth().signInWithPopup(provider).then(function(result) {
@@ -190,19 +193,43 @@ export class SigninPage extends BaseLandingPage {
           profile['given_name'],
           profile['picture']);
       }).catch(function(error) {
-        this.showLoadingView(false);
-        // show error alert
-        let alert = that.alertCtrl.create({
-          title: 'Google Signin Failed',
-          message: error.message,
-          buttons: ['Ok']
-        });
-        alert.present();
+        that.onError(error);
       });
     }
     // native app
     else {
+      this.googlePlus.login({
+        'webClientId': environment.webClientId,
+        'offline': true
+      }).then((res) => {
+        console.log(JSON.stringify(res));
+
+        const googleCredential = firebase.auth.GoogleAuthProvider.credential(res['idToken']);
+
+        that.continueGoogleSignIn(
+          googleCredential,
+          res['familyName'],
+          res['givenName'],
+          res['imageUrl']);
+
+      }).catch((err) => {
+        that.onError(err);
+      });
     }
+  }
+
+  onError(err) {
+    console.log(err);
+
+    this.showLoadingView(false);
+
+    // show error alert
+    let alert = this.alertCtrl.create({
+      title: 'Google Signin Failed',
+      message: err.message,
+      buttons: ['Ok']
+    });
+    alert.present();
   }
 
   continueGoogleSignIn(credential, firstName, lastName, photoUrl) {
@@ -221,14 +248,7 @@ export class SigninPage extends BaseLandingPage {
           })
       })
       .catch((err) => {
-        this.showLoadingView(false);
-        // show error alert
-        let alert = that.alertCtrl.create({
-          title: 'Google Signin Failed',
-          message: err.message,
-          buttons: ['Ok']
-        });
-        alert.present();
+        this.onError(err);
       })
   }
 
@@ -241,11 +261,15 @@ export class SigninPage extends BaseLandingPage {
 
     const userId = FirebaseManager.auth().currentUser.uid;
     if (!userId) {
-      onFailed();
+      if (onFailed) {
+        onFailed();
+      }
     }
 
     User.readFromDatabase(userId, (u) => {
       User.currentUser = u;
+
+      this.showLoadingView(false);
 
       if (!User.currentUser) {
         // get user info, from facebook account info
@@ -260,8 +284,6 @@ export class SigninPage extends BaseLandingPage {
           User.currentUser = newUser;
         }
 
-        this.showLoadingView(false);
-
         // social login, go to signup profile page
         this.navCtrl.setRoot(
           SignupProfilePage,
@@ -273,7 +295,9 @@ export class SigninPage extends BaseLandingPage {
         this.gotoHome();
       }
 
-      onComplete();
+      if (onComplete) {
+        onComplete();
+      }
     });
   }
 }

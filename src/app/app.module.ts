@@ -42,6 +42,7 @@ import {TermsPageModule} from "../pages/terms/terms.module";
 import {SettingsPageModule} from "../pages/settings/settings.module";
 import {ShoppingListPageModule} from "../pages/shopping-list/shopping-list.module";
 import {SplashPageModule} from "../pages/splash/splash.module";
+import {GooglePlus} from "@ionic-native/google-plus";
 
 
 @NgModule({
@@ -98,6 +99,7 @@ import {SplashPageModule} from "../pages/splash/splash.module";
     SplashScreen,
     {provide: ErrorHandler, useClass: AppExceptionHandler},
     EmailComposer,
+    GooglePlus
   ]
 })
 export class AppModule {}
