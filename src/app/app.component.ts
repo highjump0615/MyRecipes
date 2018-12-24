@@ -3,17 +3,14 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { OnboardPage } from "../pages/onboard/onboard";
-import { SigninPage } from '../pages/signin/signin';
-import { SettingsPage } from '../pages/settings/settings';
-import { PreferencePage } from '../pages/preference/preference';
 import { User } from '../models/user';
 import {Storage} from "@ionic/storage";
 import * as firebase from 'firebase/app';
 import {environment} from "../environments/environments";
 import {FirebaseManager} from "../helpers/firebase-manager";
-import {SplashPage} from "../pages/splash/splash";
+
+import { SigninPage, SplashPage, HomePage, OnboardPage, SettingsPage, PreferencePage } from '../pages';
+import {BasePage} from "../pages/BasePage";
 
 @Component({
   templateUrl: 'app.html'
@@ -54,7 +51,7 @@ export class MyApp {
 
           if (user) {
             // go to home page
-            that.setRootPage(HomePage);
+            that.setRootPage(BasePage.getMainPage());
           }
           else {
             that.goToSigninView();

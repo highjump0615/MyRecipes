@@ -22,6 +22,11 @@ export class User extends BaseModel {
   desc = '';
   photoUrl = '';
 
+  favourites: any;
+  allergies: any;
+  diets: any;
+  dislikes: any;
+
 
   constructor();
   constructor(withId: string);

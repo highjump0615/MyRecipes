@@ -4,7 +4,7 @@ import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { MenuDetailPage } from '../menu-detail/menu-detail';
 import { ShoppingListPage } from '../shopping-list/shopping-list';
-import { SignupProfilePage } from '../signup/signup-profile/signup-profile';
+import { SignupProfilePage } from '..';
 import { CookingTipPage } from '../cooking-tip/cooking-tip';
 import { FavouritesPage } from '../favourites/favourites';
 import { MyRecipesPage } from '../my-recipes/my-recipes';

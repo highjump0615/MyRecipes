@@ -1,5 +1,6 @@
 import {NavController, MenuController, ToastController, LoadingController} from 'ionic-angular';
-import { HomePage } from './home/home';
+import {HomePage, SigninPage, SignupFavouritePage, SignupAllergiesPage, SignupDislikePage} from '.';
+import {User} from "../models/user";
 
 export class BasePage {
   loadingView: any;
@@ -11,10 +12,34 @@ export class BasePage {
     public loadingCtrl?: LoadingController) {
   }
 
+  static getMainPage() {
+    let userCurrent = User.currentUser;
+
+    // not logged in
+    if (!userCurrent) {
+      return SigninPage;
+    }
+
+    //
+    // logged in, but not initialized
+    //
+    if (!userCurrent.favourites) {
+      return SignupFavouritePage;
+    }
+    if (!userCurrent.allergies) {
+      return SignupAllergiesPage;
+    }
+    if (!userCurrent.dislikes) {
+      return SignupDislikePage;
+    }
+
+    return HomePage;
+  }
+
   gotoHome() {
     // go to main page
     this.navCtrl.setRoot(
-      HomePage,
+      BasePage.getMainPage(),
       {},
       {animate: true, direction: 'forward'}
     );

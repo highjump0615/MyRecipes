@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { SignupAllergiesPage } from '../signup-allergies/signup-allergies';
+import { SignupAllergiesPage } from '../..';
 
 /**
  * Generated class for the SignupFavouritePage page.

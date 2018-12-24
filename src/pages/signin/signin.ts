@@ -19,8 +19,7 @@ import {FirebaseManager} from "../../helpers/firebase-manager";
 import {environment} from "../../environments/environments";
 import * as firebase from "firebase";
 import {User} from "../../models/user";
-import {SignupProfilePage} from "../signup/signup-profile/signup-profile";
-import {HomePage} from "../home/home";
+import {SignupProfilePage} from "..";
 import {GooglePlus} from "@ionic-native/google-plus";
 import {Facebook} from "@ionic-native/facebook";
 
@@ -149,6 +148,8 @@ export class SigninPage extends BaseLandingPage {
 
     this.showLoadingView();
 
+    var that = this;
+
     // do login
     FirebaseManager.auth().signInWithEmailAndPassword(
       this.email,
@@ -162,8 +163,16 @@ export class SigninPage extends BaseLandingPage {
         return;
       }
 
-      // go to home page
-      this.gotoHome();
+      this.fetchUserInfo(
+        res.user,
+        null,
+        null,
+        null,
+        () => {
+          that.showLoadingView(false);
+          FirebaseManager.signOut();
+        });
+
     }).catch((err) => {
       console.log(err);
 
@@ -265,7 +274,7 @@ export class SigninPage extends BaseLandingPage {
           () => {
             that.showLoadingView(false);
             FirebaseManager.signOut();
-          })
+          });
       })
       .catch((err) => {
         this.onError(err);
