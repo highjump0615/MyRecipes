@@ -64,7 +64,6 @@ export class SignupFavouritePage {
    * @param event
    */
   onButNext(event) {
-    let userCurrent = User.currentUser;
     let favourites = [];
 
     for (let cuisine of this.favourites) {
@@ -74,11 +73,11 @@ export class SignupFavouritePage {
     }
 
     // save to db
-    userCurrent.saveToDatabaseWithField(
+    this.userCurrent.saveToDatabaseWithField(
       User.FIELD_FAVOURITE,
       favourites
     );
-    userCurrent.saveToDatabaseWithField(
+    this.userCurrent.saveToDatabaseWithField(
       User.FIELD_FAVOURITE_DONE,
       true
     );

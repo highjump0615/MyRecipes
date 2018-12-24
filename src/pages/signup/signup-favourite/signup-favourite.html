@@ -39,7 +39,7 @@
         </div>
 
         <ng-template #list>
-          <ion-row wrap *ngIf="favourites">
+          <ion-row wrap>
             <ion-col col-3 *ngFor="let data of favourites">
               <cuisine-item [item]="data"></cuisine-item>
             </ion-col>

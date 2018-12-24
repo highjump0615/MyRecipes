@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { SignupDislikePage } from '../signup-dislike/signup-dislike';
+import {Cuisine} from "../../../models/cuisine";
+import {User} from "../../../models/user";
+import {FirebaseManager} from "../../../helpers/firebase-manager";
 
 /**
  * Generated class for the SignupAllergiesPage page.
@@ -26,22 +29,46 @@ export class SignupAllergiesPage {
    */
   currentItem = 0;
 
-  allergies: Array<string> = [];
-  diets: Array<string> = [];
+  userCurrent: User;
+  allergies: Array<Cuisine> = [];
+  diets: Array<Cuisine> = [];
 
   @ViewChild('accordionContent') accordContent: ElementRef;
 
   heightAccord = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // init data
-    for (var i = 0; i < 15; i++) {
-      this.allergies.push("aa");
-    }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
+    let that = this;
 
-    for (i = 0; i < 15; i++) {
-      this.diets.push("aa");
-    }
+    // set current user
+    this.userCurrent = User.currentUser;
+
+    //
+    // fetch allergies
+    //
+    let dbRef = FirebaseManager.ref();
+
+    let query = dbRef.child(Cuisine.TABLE_NAME_ALLERGY);
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryAllergies = [];
+        const aryDiets = [];
+
+        snapshot.forEach(function(child) {
+          aryAllergies.push(new Cuisine(child));
+          aryDiets.push(new Cuisine(child));
+        });
+
+        this.allergies = aryAllergies;
+        this.diets = aryDiets;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   ionViewDidLoad() {
@@ -63,7 +90,44 @@ export class SignupAllergiesPage {
    * @param event
    */
   onButNext(event) {
-    // go to signup password page
+    //
+    // allergies
+    //
+    let allergiesSelected = [];
+    for (let item of this.allergies) {
+      if (item.selected) {
+        allergiesSelected.push(item.id);
+      }
+    }
+
+    // save to db
+    this.userCurrent.saveToDatabaseWithField(
+      User.FIELD_ALLERGY,
+      allergiesSelected
+    );
+
+    //
+    // diets
+    //
+    let dietsSelected = [];
+    for (let item of this.diets) {
+      if (item.selected) {
+        dietsSelected.push(item.id);
+      }
+    }
+
+    // save to db
+    this.userCurrent.saveToDatabaseWithField(
+      User.FIELD_DIET,
+      dietsSelected
+    );
+
+    this.userCurrent.saveToDatabaseWithField(
+      User.FIELD_ALLERGY_DONE,
+      true
+    );
+
+    // go to signup dislike page
     this.navCtrl.push(SignupDislikePage);
   }
 
