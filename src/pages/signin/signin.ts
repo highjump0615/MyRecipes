@@ -22,6 +22,7 @@ import {User} from "../../models/user";
 import {SignupProfilePage} from "../signup/signup-profile/signup-profile";
 import {HomePage} from "../home/home";
 import {GooglePlus} from "@ionic-native/google-plus";
+import {Facebook} from "@ionic-native/facebook";
 
 /**
  * Generated class for the SigninPage page.
@@ -55,7 +56,8 @@ export class SigninPage extends BaseLandingPage {
     private alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private platform: Platform,
-    private googlePlus: GooglePlus
+    private googlePlus: GooglePlus,
+    private facebook: Facebook
   ) {
     super(navCtrl, menuCtrl, toastCtrl, loadingCtrl);
   }
@@ -221,8 +223,8 @@ export class SigninPage extends BaseLandingPage {
 
         that.continueSocialSignIn(
           googleCredential,
-          res['familyName'],
           res['givenName'],
+          res['familyName'],
           res['imageUrl']);
 
       }).catch((err) => {
@@ -349,6 +351,35 @@ export class SigninPage extends BaseLandingPage {
             profile['picture']['data']['url']);
         }).catch(function(error) {
           that.onError(error);
+        });
+    }
+    // native app
+    else {
+      this.facebook.login(['email', 'public_profile'])
+        .then((res) => {
+          console.log(JSON.stringify(res));
+
+          const facebookCredential = firebase.auth
+            .FacebookAuthProvider
+            .credential(res.authResponse.accessToken);
+
+          // get user profile info
+          this.facebook.api('me?fields=first_name,last_name,picture.width(360).height(360).as(picture_large)', [])
+            .then((profile) => {
+              console.log(JSON.stringify(profile));
+
+              that.continueSocialSignIn(
+                facebookCredential,
+                profile['first_name'],
+                profile['last_name'],
+                profile['picture_large']['data']['url']);
+            })
+            .catch((err) => {
+              that.onError(err);
+            });
+
+        }).catch((err) => {
+          that.onError(err);
         });
     }
   }
