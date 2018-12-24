@@ -64,6 +64,11 @@ export class User extends BaseModel {
       // favourites
       this.favouritesDone = info[User.FIELD_FAVOURITE_DONE];
       this.favourites = info[User.FIELD_FAVOURITE];
+      this.allergiesDone = info[User.FIELD_ALLERGY_DONE];
+      this.allergies = info[User.FIELD_ALLERGY];
+      this.diets = info[User.FIELD_DIET];
+      this.dislikesDone = info[User.FIELD_DISLIKE_DONE];
+      this.dislikes = info[User.FIELD_DISLIKE];
     }
   }
 
@@ -110,5 +115,60 @@ export class User extends BaseModel {
 
   fullName() {
     return this.firstName + ' ' + this.lastName;
+  }
+
+  setFavourites(data) {
+    this.favourites = data;
+    this.favouritesDone = true;
+
+    // save to db
+    this.saveToDatabaseWithField(
+      User.FIELD_FAVOURITE,
+      data
+    );
+    this.saveToDatabaseWithField(
+      User.FIELD_FAVOURITE_DONE,
+      true
+    );
+  }
+
+  setAllergies(data) {
+    this.allergies = data;
+    this.allergiesDone = true;
+
+    // save to db
+    this.saveToDatabaseWithField(
+      User.FIELD_ALLERGY,
+      data
+    );
+    this.saveToDatabaseWithField(
+      User.FIELD_ALLERGY_DONE,
+      true
+    );
+  }
+
+  setDiets(data) {
+    this.diets = data;
+
+    // save to db
+    this.saveToDatabaseWithField(
+      User.FIELD_DIET,
+      data
+    );
+  }
+
+  setDislikes(data) {
+    this.dislikes = data;
+    this.dislikesDone = true;
+
+    // save to db
+    this.saveToDatabaseWithField(
+      User.FIELD_DISLIKE,
+      data
+    );
+    this.saveToDatabaseWithField(
+      User.FIELD_DISLIKE_DONE,
+      true
+    );
   }
 }

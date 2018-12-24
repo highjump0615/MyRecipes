@@ -101,10 +101,7 @@ export class SignupAllergiesPage {
     }
 
     // save to db
-    this.userCurrent.saveToDatabaseWithField(
-      User.FIELD_ALLERGY,
-      allergiesSelected
-    );
+    this.userCurrent.setAllergies(allergiesSelected);
 
     //
     // diets
@@ -117,15 +114,7 @@ export class SignupAllergiesPage {
     }
 
     // save to db
-    this.userCurrent.saveToDatabaseWithField(
-      User.FIELD_DIET,
-      dietsSelected
-    );
-
-    this.userCurrent.saveToDatabaseWithField(
-      User.FIELD_ALLERGY_DONE,
-      true
-    );
+    this.userCurrent.setDiets(dietsSelected);
 
     // go to signup dislike page
     this.navCtrl.push(SignupDislikePage);

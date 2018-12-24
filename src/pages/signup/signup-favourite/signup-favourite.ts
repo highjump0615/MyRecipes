@@ -73,14 +73,7 @@ export class SignupFavouritePage {
     }
 
     // save to db
-    this.userCurrent.saveToDatabaseWithField(
-      User.FIELD_FAVOURITE,
-      favourites
-    );
-    this.userCurrent.saveToDatabaseWithField(
-      User.FIELD_FAVOURITE_DONE,
-      true
-    );
+    this.userCurrent.setFavourites(favourites);
 
     // go to signup allergies page
     this.navCtrl.push(SignupAllergiesPage);
