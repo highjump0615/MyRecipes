@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import {Cuisine} from "../../models/cuisine";
 
 /**
  * Generated class for the CuisineItemComponent component.
@@ -13,17 +14,9 @@ import { Component, Input } from '@angular/core';
 
 export class CuisineItemComponent {
 
-  @Input() text: string;
-
-  /**
-   * item is selected or not
-   *
-   * @memberof CuisineItemComponent
-   */
-  selected = false;
+  @Input() item: Cuisine;
 
   constructor() {
-    console.log('Hello CuisineItemComponent Component');
   }
 
   /**
@@ -33,7 +26,7 @@ export class CuisineItemComponent {
    * @memberof CuisineItemComponent
    */
   onSelectChangeed(event) {
-    this.selected = !this.selected;
+    this.item.selected = !this.item.selected;
   }
 
 }

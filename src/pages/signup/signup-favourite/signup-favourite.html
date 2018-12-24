@@ -19,9 +19,9 @@
     <!-- profile -->
     <div class="nm-center flex-column div-profile">
       <img
-        src="../../../assets/imgs/default_user.png"
+        [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../assets/imgs/default_user.png'"
         class="but-photo-large round" />
-      <span>Kristina Maloine</span>
+      <span>{{userCurrent.fullName()}}</span>
     </div>
 
     <!-- contents -->
@@ -33,11 +33,18 @@
       </div>
 
       <div class="container-scroll">
-        <ion-row wrap>
-          <ion-col col-3 *ngFor="let data of images">
-            <cuisine-item text="AMERICAN"></cuisine-item>
-          </ion-col>
-        </ion-row>
+        <div class="dv-no-list-item flex-c-row nm-center"
+             *ngIf="favourites.length == 0; else list">
+          <span>No cuisine items yet</span>
+        </div>
+
+        <ng-template #list>
+          <ion-row wrap *ngIf="favourites">
+            <ion-col col-3 *ngFor="let data of favourites">
+              <cuisine-item [item]="data"></cuisine-item>
+            </ion-col>
+          </ion-row>
+        </ng-template>
       </div>
 
     </div>

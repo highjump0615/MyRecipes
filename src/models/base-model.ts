@@ -51,9 +51,25 @@ export class BaseModel {
     return database.child(this.id);
   }
 
+  /**
+   * save entire object to database
+   *
+   * @param withID
+   * @param parentID
+   */
   saveToDatabase(withID?: string, parentID?: string) {
     let db = this.getDatabaseRef(withID, parentID);
     db.set(this.toDictionary());
+  }
+
+  saveToDatabaseWithField(field: string,
+                          value: any,
+                          onComplete?: (err: Error | null) => any,
+                          withID?: string,
+                          parentID?: string) {
+
+    let db = this.getDatabaseRef(withID, parentID);
+    db.child(field).set(value, onComplete);
   }
 
 }

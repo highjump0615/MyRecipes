@@ -23,13 +23,13 @@ export class BasePage {
     //
     // logged in, but not initialized
     //
-    if (!userCurrent.favourites) {
+    if (!userCurrent.favouritesDone) {
       return SignupFavouritePage;
     }
-    if (!userCurrent.allergies) {
+    if (!userCurrent.allergiesDone) {
       return SignupAllergiesPage;
     }
-    if (!userCurrent.dislikes) {
+    if (!userCurrent.dislikesDone) {
       return SignupDislikePage;
     }
 

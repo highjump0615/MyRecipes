@@ -9,14 +9,14 @@
     <!-- tick mark -->
     <div
       class="nm-center tick"
-      *ngIf="selected">
+      *ngIf="item.selected">
       <ion-icon name="checkmark"></ion-icon>
     </div>
   </div>
 
   <!-- text -->
   <span
-    [style.font-weight]="selected ? 'bold' : 'normal'">
-    {{text}}
+    [style.font-weight]="item.selected ? 'bold' : 'normal'">
+    {{item.name}}
   </span>
 </div>

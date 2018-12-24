@@ -15,6 +15,13 @@ export class User extends BaseModel {
   static FIELD_LASTNAME = 'lastName';
   static FIELD_PHOTO = 'photoUrl';
   static FIELD_DESC = 'description';
+  static FIELD_FAVOURITE = 'favourites';
+  static FIELD_FAVOURITE_DONE = 'favouritesDone';
+  static FIELD_ALLERGY = 'allergies';
+  static FIELD_ALLERGY_DONE = 'allergiesDone';
+  static FIELD_DIET = 'diets';
+  static FIELD_DISLIKE = 'dislikes';
+  static FIELD_DISLIKE_DONE = 'dislikesDone';
 
   email = '';
   firstName = '';
@@ -23,9 +30,14 @@ export class User extends BaseModel {
   photoUrl = '';
 
   favourites: any;
+  favouritesDone = false;
+
   allergies: any;
+  allergiesDone = false;
   diets: any;
+
   dislikes: any;
+  dislikesDone = false;
 
 
   constructor();
@@ -48,6 +60,10 @@ export class User extends BaseModel {
       this.lastName = info[User.FIELD_LASTNAME];
       this.photoUrl = info[User.FIELD_PHOTO];
       this.desc = info[User.FIELD_DESC];
+
+      // favourites
+      this.favouritesDone = info[User.FIELD_FAVOURITE_DONE];
+      this.favourites = info[User.FIELD_FAVOURITE];
     }
   }
 
@@ -85,6 +101,14 @@ export class User extends BaseModel {
     dict[User.FIELD_PHOTO] = this.photoUrl;
     dict[User.FIELD_DESC] = this.desc;
 
+    if (this.favourites) {
+      dict[User.FIELD_FAVOURITE] = this.favourites;
+    }
+
     return dict;
+  }
+
+  fullName() {
+    return this.firstName + ' ' + this.lastName;
   }
 }
