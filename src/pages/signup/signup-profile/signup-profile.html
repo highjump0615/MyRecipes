@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>{{type == FROM_SIGNUP ? 'Sign Up' : 'Edit Profile'}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -93,7 +93,7 @@
         ion-button round full
         class="but-primary"
         (click)="onButNext($event)">
-        <b>Next</b>
+        <b>{{type == FROM_SIGNUP ? 'Next' : 'Save'}}</b>
       </button>
     </div>
 

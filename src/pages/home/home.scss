@@ -42,10 +42,12 @@ page-home {
   .profile .photo {
     margin-left: 18px;
     height: 80px;
-    weight: 80px;
+    width: 80px;
 
     img {
       height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 

@@ -103,12 +103,19 @@ export class User extends BaseModel {
     dict[User.FIELD_EMAIL] = this.email;
     dict[User.FIELD_FIRSTNAME] = this.firstName;
     dict[User.FIELD_LASTNAME] = this.lastName;
-    dict[User.FIELD_PHOTO] = this.photoUrl;
-    dict[User.FIELD_DESC] = this.desc;
 
-    if (this.favourites) {
-      dict[User.FIELD_FAVOURITE] = this.favourites;
-    }
+    this.addDictitem(dict, User.FIELD_PHOTO, this.photoUrl);
+    this.addDictitem(dict, User.FIELD_DESC, this.desc);
+
+    dict[User.FIELD_FAVOURITE_DONE] = this.favouritesDone;
+    this.addDictitem(dict, User.FIELD_FAVOURITE, this.favourites);
+
+    dict[User.FIELD_ALLERGY_DONE] = this.allergiesDone;
+    this.addDictitem(dict, User.FIELD_ALLERGY, this.allergies);
+    this.addDictitem(dict, User.FIELD_DIET, this.diets);
+
+    dict[User.FIELD_DISLIKE_DONE] = this.dislikesDone;
+    this.addDictitem(dict, User.FIELD_DISLIKE, this.dislikes);
 
     return dict;
   }

@@ -71,8 +71,10 @@ export class BasePage {
       this.loadingView.present();
     }
     else {
-      // hide
-      this.loadingView.dismiss();
+      if (this.loadingView) {
+        // hide
+        this.loadingView.dismiss();
+      }
     }
   }
 }

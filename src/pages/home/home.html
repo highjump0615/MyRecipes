@@ -20,20 +20,21 @@
         <!-- info -->
         <div class="info">
           <div class="flex-row">
-            <span class="name">{{username}}</span>
+            <span class="name"
+            >{{userCurrent.fullName()}}</span>
             <button
               ion-button clear
               (click)="onButEditProfile()">
               <img src="../../assets/imgs/home_edit.png" />
             </button>
           </div>
-          <div class="desc">{{desc}}</div>
+          <div class="desc">{{userCurrent.desc}}</div>
         </div>
 
         <!-- photo -->
         <div class="photo">
           <img
-            src="../../../assets/imgs/default_user.png"
+            [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../assets/imgs/default_user.png'"
             class="but-photo round" />
         </div>
       </div>

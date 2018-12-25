@@ -44,7 +44,11 @@ export class SignupProfilePage extends BaseLandingPage {
   @ViewChild('file') inputFile: ElementRef;
   @ViewChild('desc') textDesc: ElementRef;
 
+  FROM_SIGNUP = 0;
+  FROM_PROFILE = 1;
+
   title = "Sign Up";
+  type = this.FROM_SIGNUP;
 
   constructor(
     public navCtrl: NavController,
@@ -55,7 +59,7 @@ export class SignupProfilePage extends BaseLandingPage {
     public navParams: NavParams,
     public plt: Platform
   ) {
-    super(navCtrl, menuCtrl, toastCtrl);
+    super(navCtrl, menuCtrl, toastCtrl, loadingCtrl);
 
     this.email = navParams.get(SignupEmailPage.PARAM_EMAIL);
     this.password = navParams.get(SignupEmailPage.PARAM_PASSWORD);
@@ -67,7 +71,7 @@ export class SignupProfilePage extends BaseLandingPage {
       this.lastName = user.lastName;
       this.description = user.desc;
 
-      this.imgPhotoUrl = user.photoUrl;
+      this.imgPhotoUrl = user.photoUrl ? user.photoUrl : '../../../assets/imgs/default_user.png';
     }
   }
 
@@ -77,6 +81,7 @@ export class SignupProfilePage extends BaseLandingPage {
     // check signup or edit profile
     if (User.currentUser) {
       this.title = "Edit Profile";
+      this.type = this.FROM_PROFILE;
     }
   }
 
@@ -118,8 +123,6 @@ export class SignupProfilePage extends BaseLandingPage {
       return;
     }
 
-    // show loading view
-    this.showLoadingView();
 
     if (!User.currentUser) {
       // do signup
@@ -167,6 +170,9 @@ export class SignupProfilePage extends BaseLandingPage {
   uploadImageAndSetupUserInfo() {
 
     if (this.imgPhoto) {
+      // show loading view
+      this.showLoadingView();
+
       // upload photo
       let user = User.currentUser;
       let path = 'users/' + user.id + '.png';
@@ -203,8 +209,14 @@ export class SignupProfilePage extends BaseLandingPage {
     // hide loading view
     this.showLoadingView(false);
 
-    // go to signup favourite page
-    this.navCtrl.push(SignupFavouritePage);
+    if (this.type == this.FROM_SIGNUP) {
+      // go to signup favourite page
+      this.navCtrl.push(SignupFavouritePage);
+    }
+    else {
+      // back to previous page
+      this.navCtrl.pop();
+    }
   }
 
   onFileSelected(event) {

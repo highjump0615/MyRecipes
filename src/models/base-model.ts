@@ -34,6 +34,12 @@ export class BaseModel {
     return dict;
   }
 
+  addDictitem(dict, field, value) {
+    if (value) {
+      dict[field] = value;
+    }
+  }
+
   private getDatabaseRef(withID?: string, parentID?: string) {
     let strDb = this.tableName();
     if (parentID) {

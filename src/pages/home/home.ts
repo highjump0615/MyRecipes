@@ -22,8 +22,7 @@ import { User } from '../../models/user';
 export class HomePage extends BasePage {
 
   // user info
-  username = "Kristina Maloine";
-  desc = "Food Blogger, Explorer, Designer, Entrepreneur, Food photographer";
+  userCurrent: User;
 
   // recipes
   upcomings: Array<string> = [];
@@ -33,9 +32,13 @@ export class HomePage extends BasePage {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public toastCtrl: ToastController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController
+  ) {
 
     super(navCtrl, menuCtrl, toastCtrl);
+
+    // set current user
+    this.userCurrent = User.currentUser;
 
     // init data
     for (var i = 0; i < 3; i++) {
@@ -53,7 +56,6 @@ export class HomePage extends BasePage {
   }
 
   ionViewDidLoad() {
-    User.currentUser = new User();
   }
 
   onRecipeDetail() {
