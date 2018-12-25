@@ -37,11 +37,18 @@
         class="content"
         [class.collapsed]="!isFavouriteOpen">
         <div class="container-scroll">
-          <ion-row nowrap>
-            <ion-col col-3 *ngFor="let data of favourites">
-              <cuisine-item text="AMERICAN"></cuisine-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="favourites.length == 0; else listFavourite">
+            <span>No cuisine items yet</span>
+          </div>
+
+          <ng-template #listFavourite>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of favourites">
+                <cuisine-item [item]="data"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
     </ion-card>
@@ -65,11 +72,18 @@
         class="content"
         [class.collapsed]="!isAllergyOpen">
         <div class="container-scroll">
-          <ion-row nowrap>
-            <ion-col col-3 *ngFor="let data of allergies">
-              <cuisine-item text="AMERICAN"></cuisine-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="allergies.length == 0; else listAllergy">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listAllergy>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of allergies">
+                <cuisine-item [item]="data"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
     </ion-card>
@@ -93,11 +107,18 @@
         class="content"
         [class.collapsed]="!isDietOpen">
         <div class="container-scroll">
-          <ion-row nowrap>
-            <ion-col col-3 *ngFor="let data of diets">
-              <cuisine-item text="AMERICAN"></cuisine-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="diets.length == 0; else listDiet">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listDiet>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of diets">
+                <cuisine-item [item]="data"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
     </ion-card>
@@ -121,11 +142,18 @@
         class="content"
         [class.collapsed]="!isDislikeOpen">
         <div class="container-scroll">
-          <ion-row nowrap>
-            <ion-col col-3 *ngFor="let data of dislikes">
-              <cuisine-item text="AMERICAN"></cuisine-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="dislikes.length == 0; else listDislike">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listDislike>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of dislikes">
+                <cuisine-item [item]="data"></cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
     </ion-card>
