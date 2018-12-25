@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Cuisine} from "../../models/cuisine";
 
 /**
@@ -14,7 +14,9 @@ import {Cuisine} from "../../models/cuisine";
 
 export class CuisineItemComponent {
 
+  @Input() index: Cuisine;
   @Input() item: Cuisine;
+  @Output() selectChanged = new EventEmitter();
 
   constructor() {
   }
@@ -27,6 +29,11 @@ export class CuisineItemComponent {
    */
   onSelectChangeed(event) {
     this.item.selected = !this.item.selected;
+
+    this.selectChanged.emit({
+      index: this.index,
+      cuisine: this.item
+    });
   }
 
 }

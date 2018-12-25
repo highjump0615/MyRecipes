@@ -111,14 +111,20 @@ export class User extends BaseModel {
   /**
    * add or remove favourite cuisine
    * @param data
-   * @param add
    */
-  addFavouriteCuisine(data: Cuisine, add = true) {
+  addFavouriteCuisine(data: Cuisine) {
     let dbRef = FirebaseManager.ref()
       .child(User.TABLE_NAME_FAVOURITE_CUISINE)
       .child(this.id);
 
-    if (add) {
+    let index = -1;
+
+    if (this.favouriteCuisines) {
+      index = this.favouriteCuisines.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
       // add to db
       dbRef.child(data.id).set(true);
 
@@ -131,19 +137,32 @@ export class User extends BaseModel {
         this.favouriteCuisines.push(data.id);
       }
     }
+    // remove
+    else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.favouriteCuisines.splice(index, 1);
+    }
   }
 
   /**
    * add or remove allergy
    * @param data
-   * @param add
    */
-  addAllergy(data: Cuisine, add = true) {
+  addAllergy(data: Cuisine) {
     let dbRef = FirebaseManager.ref()
       .child(User.TABLE_NAME_ALLERGY)
       .child(this.id);
 
-    if (add) {
+    let index = -1;
+
+    if (this.allergies) {
+      index = this.allergies.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
       // add to db
       dbRef.child(data.id).set(true);
 
@@ -156,19 +175,32 @@ export class User extends BaseModel {
         this.allergies.push(data.id);
       }
     }
+    // remove
+    else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.allergies.splice(index, 1);
+    }
   }
 
   /**
    * add or remove diet
    * @param data
-   * @param add
    */
-  addDiet(data: Cuisine, add = true) {
+  addDiet(data: Cuisine) {
     let dbRef = FirebaseManager.ref()
       .child(User.TABLE_NAME_DIET)
       .child(this.id);
 
-    if (add) {
+    let index = -1;
+
+    if (this.diets) {
+      index = this.diets.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
       // add to db
       dbRef.child(data.id).set(true);
 
@@ -181,19 +213,32 @@ export class User extends BaseModel {
         this.diets.push(data.id);
       }
     }
+    // remove
+    else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.diets.splice(index, 1);
+    }
   }
 
   /**
    * add or remove dislike
    * @param data
-   * @param add
    */
-  addDislike(data: Cuisine, add = true) {
+  addDislike(data: Cuisine) {
     let dbRef = FirebaseManager.ref()
       .child(User.TABLE_NAME_DISLIKE)
       .child(this.id);
 
-    if (add) {
+    let index = -1;
+
+    if (this.dislikes) {
+      index = this.dislikes.indexOf(data.id);
+    }
+
+    // add
+    if (index < 0) {
       // add to db
       dbRef.child(data.id).set(true);
 
@@ -205,6 +250,13 @@ export class User extends BaseModel {
       if (!data.isInitData()) {
         this.dislikes.push(data.id);
       }
+    }
+    // remove
+    else {
+      // remove from db
+      dbRef.child(data.id).remove();
+
+      this.dislikes.splice(index, 1);
     }
   }
 
@@ -340,59 +392,4 @@ export class User extends BaseModel {
         completion();
       });
   }
-
-  // setFavourites(data) {
-  //   this.favourites = data;
-  //   this.favouritesDone = true;
-  //
-  //   // save to db
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_FAVOURITE,
-  //     data
-  //   );
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_FAVOURITE_DONE,
-  //     true
-  //   );
-  // }
-  //
-  // setAllergies(data) {
-  //   this.allergies = data;
-  //   this.allergiesDone = true;
-  //
-  //   // save to db
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_ALLERGY,
-  //     data
-  //   );
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_ALLERGY_DONE,
-  //     true
-  //   );
-  // }
-  //
-  // setDiets(data) {
-  //   this.diets = data;
-  //
-  //   // save to db
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_DIET,
-  //     data
-  //   );
-  // }
-  //
-  // setDislikes(data) {
-  //   this.dislikes = data;
-  //   this.dislikesDone = true;
-  //
-  //   // save to db
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_DISLIKE,
-  //     data
-  //   );
-  //   this.saveToDatabaseWithField(
-  //     User.FIELD_DISLIKE_DONE,
-  //     true
-  //   );
-  // }
 }

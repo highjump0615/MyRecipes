@@ -45,7 +45,11 @@
           <ng-template #listFavourite>
             <ion-row nowrap>
               <ion-col col-3 *ngFor="let data of favourites">
-                <cuisine-item [item]="data"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_FAVOURITE"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </ng-template>
@@ -80,7 +84,11 @@
           <ng-template #listAllergy>
             <ion-row nowrap>
               <ion-col col-3 *ngFor="let data of allergies">
-                <cuisine-item [item]="data"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_ALLERGY"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </ng-template>
@@ -115,7 +123,11 @@
           <ng-template #listDiet>
             <ion-row nowrap>
               <ion-col col-3 *ngFor="let data of diets">
-                <cuisine-item [item]="data"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_DIET"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </ng-template>
@@ -150,7 +162,11 @@
           <ng-template #listDislike>
             <ion-row nowrap>
               <ion-col col-3 *ngFor="let data of dislikes">
-                <cuisine-item [item]="data"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_DISLIKE"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </ng-template>
