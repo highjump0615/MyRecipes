@@ -96,12 +96,9 @@ export class SignupAllergiesPage {
     let allergiesSelected = [];
     for (let item of this.allergies) {
       if (item.selected) {
-        allergiesSelected.push(item.id);
+        this.userCurrent.addAllergy(item);
       }
     }
-
-    // save to db
-    this.userCurrent.setAllergies(allergiesSelected);
 
     //
     // diets
@@ -109,12 +106,12 @@ export class SignupAllergiesPage {
     let dietsSelected = [];
     for (let item of this.diets) {
       if (item.selected) {
-        dietsSelected.push(item.id);
+        this.userCurrent.addDiet(item);
       }
     }
 
-    // save to db
-    this.userCurrent.setDiets(dietsSelected);
+    // add init mark
+    this.userCurrent.addAllergy(new Cuisine());
 
     // go to signup dislike page
     this.navCtrl.push(SignupDislikePage);

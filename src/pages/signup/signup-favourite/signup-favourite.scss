@@ -13,10 +13,16 @@ page-signup-favourite {
     background-color: map-get($colors, dark-red);
   }
 
-  .div-profile span {
-    margin-top: 16px;
-    margin-bottom: 26px;
-    font-size: 12pt;
+  .div-profile {
+    img {
+      object-fit: cover;
+    }
+
+    span {
+      margin-top: 16px;
+      margin-bottom: 26px;
+      font-size: 12pt;
+    }
   }
 
   .div-content .title {

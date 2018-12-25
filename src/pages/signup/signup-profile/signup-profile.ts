@@ -189,7 +189,7 @@ export class SignupProfilePage extends BaseLandingPage {
 
           User.currentUser.photoUrl = downloadURL;
           this.saveUserInfo();
-        })
+        });
     }
     else {
       this.saveUserInfo();

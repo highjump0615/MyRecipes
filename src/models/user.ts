@@ -1,6 +1,7 @@
 import {BaseModel} from "./base-model";
 import {FirebaseManager} from "../helpers/firebase-manager";
 import DataSnapshot = firebase.database.DataSnapshot;
+import {Cuisine} from "./cuisine";
 
 export class User extends BaseModel {
 
@@ -15,13 +16,13 @@ export class User extends BaseModel {
   static FIELD_LASTNAME = 'lastName';
   static FIELD_PHOTO = 'photoUrl';
   static FIELD_DESC = 'description';
-  static FIELD_FAVOURITE = 'favourites';
-  static FIELD_FAVOURITE_DONE = 'favouritesDone';
-  static FIELD_ALLERGY = 'allergies';
-  static FIELD_ALLERGY_DONE = 'allergiesDone';
-  static FIELD_DIET = 'diets';
-  static FIELD_DISLIKE = 'dislikes';
-  static FIELD_DISLIKE_DONE = 'dislikesDone';
+
+  // cuisines
+  static TABLE_NAME_FAVOURITE_CUISINE = 'userFavouriteCuisines';
+  static TABLE_NAME_ALLERGY = 'userAllergies';
+  static TABLE_NAME_DIET = 'userDiets';
+  static TABLE_NAME_DISLIKE = 'userDislikes';
+
 
   email = '';
   firstName = '';
@@ -29,15 +30,13 @@ export class User extends BaseModel {
   desc = '';
   photoUrl = '';
 
-  favourites: any;
-  favouritesDone = false;
-
+  favouriteCuisines: any;
   allergies: any;
-  allergiesDone = false;
   diets: any;
-
   dislikes: any;
-  dislikesDone = false;
+
+  fetchCuisineCount = 0;
+  fetchedCuisineCount = 0;
 
 
   constructor();
@@ -60,15 +59,6 @@ export class User extends BaseModel {
       this.lastName = info[User.FIELD_LASTNAME];
       this.photoUrl = info[User.FIELD_PHOTO];
       this.desc = info[User.FIELD_DESC];
-
-      // favourites
-      this.favouritesDone = info[User.FIELD_FAVOURITE_DONE];
-      this.favourites = info[User.FIELD_FAVOURITE];
-      this.allergiesDone = info[User.FIELD_ALLERGY_DONE];
-      this.allergies = info[User.FIELD_ALLERGY];
-      this.diets = info[User.FIELD_DIET];
-      this.dislikesDone = info[User.FIELD_DISLIKE_DONE];
-      this.dislikes = info[User.FIELD_DISLIKE];
     }
   }
 
@@ -107,16 +97,6 @@ export class User extends BaseModel {
     this.addDictitem(dict, User.FIELD_PHOTO, this.photoUrl);
     this.addDictitem(dict, User.FIELD_DESC, this.desc);
 
-    dict[User.FIELD_FAVOURITE_DONE] = this.favouritesDone;
-    this.addDictitem(dict, User.FIELD_FAVOURITE, this.favourites);
-
-    dict[User.FIELD_ALLERGY_DONE] = this.allergiesDone;
-    this.addDictitem(dict, User.FIELD_ALLERGY, this.allergies);
-    this.addDictitem(dict, User.FIELD_DIET, this.diets);
-
-    dict[User.FIELD_DISLIKE_DONE] = this.dislikesDone;
-    this.addDictitem(dict, User.FIELD_DISLIKE, this.dislikes);
-
     return dict;
   }
 
@@ -124,58 +104,295 @@ export class User extends BaseModel {
     return this.firstName + ' ' + this.lastName;
   }
 
-  setFavourites(data) {
-    this.favourites = data;
-    this.favouritesDone = true;
+  //
+  // cuisines
+  //
 
-    // save to db
-    this.saveToDatabaseWithField(
-      User.FIELD_FAVOURITE,
-      data
-    );
-    this.saveToDatabaseWithField(
-      User.FIELD_FAVOURITE_DONE,
-      true
-    );
+  /**
+   * add or remove favourite cuisine
+   * @param data
+   * @param add
+   */
+  addFavouriteCuisine(data: Cuisine, add = true) {
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_FAVOURITE_CUISINE)
+      .child(this.id);
+
+    if (add) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.favouriteCuisines) {
+        this.favouriteCuisines = [];
+      }
+
+      if (!data.isInitData()) {
+        this.favouriteCuisines.push(data.id);
+      }
+    }
   }
 
-  setAllergies(data) {
-    this.allergies = data;
-    this.allergiesDone = true;
+  /**
+   * add or remove allergy
+   * @param data
+   * @param add
+   */
+  addAllergy(data: Cuisine, add = true) {
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_ALLERGY)
+      .child(this.id);
 
-    // save to db
-    this.saveToDatabaseWithField(
-      User.FIELD_ALLERGY,
-      data
-    );
-    this.saveToDatabaseWithField(
-      User.FIELD_ALLERGY_DONE,
-      true
-    );
+    if (add) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.allergies) {
+        this.allergies = [];
+      }
+
+      if (!data.isInitData()) {
+        this.allergies.push(data.id);
+      }
+    }
   }
 
-  setDiets(data) {
-    this.diets = data;
+  /**
+   * add or remove diet
+   * @param data
+   * @param add
+   */
+  addDiet(data: Cuisine, add = true) {
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DIET)
+      .child(this.id);
 
-    // save to db
-    this.saveToDatabaseWithField(
-      User.FIELD_DIET,
-      data
-    );
+    if (add) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.diets) {
+        this.diets = [];
+      }
+
+      if (!data.isInitData()) {
+        this.diets.push(data.id);
+      }
+    }
   }
 
-  setDislikes(data) {
-    this.dislikes = data;
-    this.dislikesDone = true;
+  /**
+   * add or remove dislike
+   * @param data
+   * @param add
+   */
+  addDislike(data: Cuisine, add = true) {
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DISLIKE)
+      .child(this.id);
 
-    // save to db
-    this.saveToDatabaseWithField(
-      User.FIELD_DISLIKE,
-      data
-    );
-    this.saveToDatabaseWithField(
-      User.FIELD_DISLIKE_DONE,
-      true
-    );
+    if (add) {
+      // add to db
+      dbRef.child(data.id).set(true);
+
+      // init array
+      if (!this.dislikes) {
+        this.dislikes = [];
+      }
+
+      if (!data.isInitData()) {
+        this.dislikes.push(data.id);
+      }
+    }
   }
+
+  /**
+   * fetch cuisines data
+   * @param completion
+   */
+  fetchCuisines(completion: () => void) {
+    this.fetchCuisineCount = 0;
+    this.fetchedCuisineCount = 0;
+
+    this.fetchCuisineCount++;
+    this.fetchFavouriteCuisines(() => {
+      this.onFetchedCuisines(completion)
+    });
+
+    this.fetchCuisineCount++;
+    this.fetchAllergies(() => {
+      this.onFetchedCuisines(completion)
+    });
+
+    this.fetchCuisineCount++;
+    this.fetchDiets(() => {
+      this.onFetchedCuisines(completion)
+    });
+
+    this.fetchCuisineCount++;
+    this.fetchDislikes(() => {
+      this.onFetchedCuisines(completion)
+    });
+  }
+
+  onFetchedCuisines(completion: () => void) {
+    this.fetchedCuisineCount++;
+
+    if (this.fetchedCuisineCount == this.fetchCuisineCount) {
+      completion();
+    }
+  }
+
+  fetchFavouriteCuisines(completion: () => void) {
+    const that = this;
+
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_FAVOURITE_CUISINE)
+      .child(this.id);
+
+    dbRef.once('value')
+      .then((snapshot) => {
+        if (snapshot.hasChildren()) {
+          that.favouriteCuisines = [];
+        }
+
+        snapshot.forEach(function(child) {
+          that.favouriteCuisines.push(child.key);
+        });
+
+        completion();
+      })
+      .catch((err) => {
+        completion();
+      });
+  }
+
+  fetchAllergies(completion: () => void) {
+    const that = this;
+
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_ALLERGY)
+      .child(this.id);
+
+    dbRef.once('value')
+      .then((snapshot) => {
+        if (snapshot.hasChildren()) {
+          that.allergies = [];
+        }
+
+        snapshot.forEach(function(child) {
+          that.allergies.push(child.key);
+        });
+
+        completion();
+      })
+      .catch((err) => {
+        completion();
+      });
+  }
+
+  fetchDiets(completion: () => void) {
+    const that = this;
+
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DIET)
+      .child(this.id);
+
+    dbRef.once('value')
+      .then((snapshot) => {
+        if (snapshot.hasChildren()) {
+          that.diets = [];
+        }
+
+        snapshot.forEach(function(child) {
+          that.diets.push(child.key);
+        });
+
+        completion();
+      })
+      .catch((err) => {
+        completion();
+      });
+  }
+
+  fetchDislikes(completion: () => void) {
+    const that = this;
+
+    let dbRef = FirebaseManager.ref()
+      .child(User.TABLE_NAME_DISLIKE)
+      .child(this.id);
+
+    dbRef.once('value')
+      .then((snapshot) => {
+        if (snapshot.hasChildren()) {
+          that.dislikes = [];
+        }
+
+        snapshot.forEach(function(child) {
+          that.dislikes.push(child.key);
+        });
+
+        completion();
+      })
+      .catch((err) => {
+        completion();
+      });
+  }
+
+  // setFavourites(data) {
+  //   this.favourites = data;
+  //   this.favouritesDone = true;
+  //
+  //   // save to db
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_FAVOURITE,
+  //     data
+  //   );
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_FAVOURITE_DONE,
+  //     true
+  //   );
+  // }
+  //
+  // setAllergies(data) {
+  //   this.allergies = data;
+  //   this.allergiesDone = true;
+  //
+  //   // save to db
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_ALLERGY,
+  //     data
+  //   );
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_ALLERGY_DONE,
+  //     true
+  //   );
+  // }
+  //
+  // setDiets(data) {
+  //   this.diets = data;
+  //
+  //   // save to db
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_DIET,
+  //     data
+  //   );
+  // }
+  //
+  // setDislikes(data) {
+  //   this.dislikes = data;
+  //   this.dislikesDone = true;
+  //
+  //   // save to db
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_DISLIKE,
+  //     data
+  //   );
+  //   this.saveToDatabaseWithField(
+  //     User.FIELD_DISLIKE_DONE,
+  //     true
+  //   );
+  // }
 }

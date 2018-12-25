@@ -64,16 +64,14 @@ export class SignupFavouritePage {
    * @param event
    */
   onButNext(event) {
-    let favourites = [];
-
     for (let cuisine of this.favourites) {
       if (cuisine.selected) {
-        favourites.push(cuisine.id);
+        this.userCurrent.addFavouriteCuisine(cuisine);
       }
     }
 
-    // save to db
-    this.userCurrent.setFavourites(favourites);
+    // add init mark
+    this.userCurrent.addFavouriteCuisine(new Cuisine());
 
     // go to signup allergies page
     this.navCtrl.push(SignupAllergiesPage);

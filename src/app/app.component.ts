@@ -24,6 +24,8 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: string}>;
 
+  fetchedCuisineCount = 0;
+
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
@@ -50,8 +52,10 @@ export class MyApp {
           User.currentUser = user;
 
           if (user) {
-            // go to home page
-            that.setRootPage(BasePage.getMainPage());
+            user.fetchCuisines(() => {
+              // go to home page
+              that.setRootPage(BasePage.getMainPage());
+            });
           }
           else {
             that.goToSigninView();
@@ -74,7 +78,6 @@ export class MyApp {
       { title: 'Preferences', component: PreferencePage, icon: 'logo-buffer' },
       { title: 'Settings', component: SettingsPage, icon: 'settings' }
     ];
-
   }
 
   initializeApp() {

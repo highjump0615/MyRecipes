@@ -73,12 +73,12 @@ export class SignupDislikePage extends BasePage {
 
     for (let cuisine of this.dislikes) {
       if (cuisine.selected) {
-        aryDislike.push(cuisine.id);
+        this.userCurrent.addDislike(cuisine);
       }
     }
 
-    // save to db
-    this.userCurrent.setDislikes(aryDislike);
+    // add init mark
+    this.userCurrent.addDislike(new Cuisine());
 
     // go to main page
     this.gotoHome();
