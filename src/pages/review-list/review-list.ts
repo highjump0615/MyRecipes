@@ -17,6 +17,8 @@ import { WriteReviewPage } from '../write-review/write-review';
 })
 export class ReviewListPage {
 
+  static PARAM_RECIPEID = "recipeId";
+
   reviews: Array<Review> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

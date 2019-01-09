@@ -4,6 +4,8 @@ import { RecipeDetailMoreComponent } from '../../components/recipe-detail-more/r
 import { Recipe } from '../../models/recipe';
 import { BasePage } from '../BasePage';
 import { ReviewListPage } from '../review-list/review-list';
+import {SignupEmailPage} from "../signup/signup-email/signup-email";
+import {TermsPage} from "../terms/terms";
 
 /**
  * Generated class for the RecipeDetailPage page.
@@ -20,6 +22,8 @@ import { ReviewListPage } from '../review-list/review-list';
 
 export class RecipeDetailPage extends BasePage {
 
+  static PARAM_RECIPE = 'recipe';
+
   recipe: Recipe;
 
   constructor(
@@ -31,7 +35,7 @@ export class RecipeDetailPage extends BasePage {
   ) {
     super(navCtrl, menuCtrl, toastCtrl);
 
-    this.recipe = new Recipe();
+    this.recipe = navParams.get(RecipeDetailPage.PARAM_RECIPE);
 
     this.enableMenu(false);
   }
@@ -56,7 +60,10 @@ export class RecipeDetailPage extends BasePage {
 
   onButReview() {
     // go to review list page
-    this.navCtrl.push(ReviewListPage);
+    var params = {};
+    params[ReviewListPage.PARAM_RECIPEID] = this.recipe.id;
+
+    this.navCtrl.push(ReviewListPage, params);
   }
 
 }

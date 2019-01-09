@@ -55,9 +55,12 @@ export class HomePage extends BasePage {
   ionViewDidLoad() {
   }
 
-  onRecipeDetail() {
+  onRecipeDetail(data) {
+    var params = {};
+    params[RecipeDetailPage.PARAM_RECIPE] = data;
+
     // go to recipe detail page
-    this.navCtrl.push(RecipeDetailPage);
+    this.navCtrl.push(RecipeDetailPage, params);
   }
 
   onMenuDetail() {

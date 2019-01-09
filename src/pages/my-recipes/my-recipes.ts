@@ -69,9 +69,12 @@ export class MyRecipesPage extends BasePage {
     console.log('ionViewDidLoad MyRecipesPage');
   }
 
-  onRecipeDetail() {
+  onRecipeDetail(data) {
+    var params = {};
+    params[RecipeDetailPage.PARAM_RECIPE] = data;
+
     // go to recipe detail page
-    this.navCtrl.push(RecipeDetailPage);
+    this.navCtrl.push(RecipeDetailPage, params);
   }
 
   onButNew() {
