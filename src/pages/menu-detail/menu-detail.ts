@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Recipe } from '../../models/recipe';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { ShoppingListPage } from '../shopping-list/shopping-list';
-import { ShoppingList } from '../../models/shoppinglist';
 import { AddRecipePage } from '../add-recipe/add-recipe';
 
 /**
@@ -51,7 +50,7 @@ export class MenuDetailPage {
   onButShoppingList() {
     // go to shopping list page
     var params = {};
-    params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
+    // params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
 
     // present shopping list page
     let shoppingListPage = this.modalCtrl.create(

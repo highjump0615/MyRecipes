@@ -9,7 +9,6 @@ import { CookingTipPage } from '../cooking-tip/cooking-tip';
 import { FavouritesPage } from '../favourites/favourites';
 import { MyRecipesPage } from '../my-recipes/my-recipes';
 import { MenuGeneratorPage } from '../menu-generator/menu-generator';
-import { ShoppingList } from '../../models/shoppinglist';
 import { RecipeMenuPage } from '../recipe-menu/recipe-menu';
 import { MenuDetail2Page } from '../menu-detail2/menu-detail2';
 import { User } from '../../models/user';
@@ -68,7 +67,7 @@ export class HomePage extends BasePage {
 
   onShoppingList() {
     var params = {};
-    params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
+    // params[ShoppingListPage.PARAM_SHOPLIST] = new ShoppingList();
 
     // present shopping list page
     let shoppingListPage = this.modalCtrl.create(

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { ShoppingList } from '../../models/shoppinglist';
 import { Ingredient } from '../../models/ingredient';
+import {FirebaseManager} from "../../helpers/firebase-manager";
 
 /**
  * Generated class for the ShoppingListPage page.
@@ -18,41 +18,58 @@ import { Ingredient } from '../../models/ingredient';
 
 export class ShoppingListPage {
 
-  static PARAM_SHOPLIST = "shoplist"
+  static PARAM_SHOPLIST = "shoplist";
+
+  ingAll: Array<Ingredient> = [];
+
+  // ingredient form
+  ingName = '';
+  ingUnit = '';
+  ingQuantity: number;
 
   title = "Shopping List";
 
-  ingredients: Array<String> = [];
-  currentShopList: ShoppingList;
-
-  sources: Array<Ingredient> = [];
+  ingShopping: Array<Ingredient> = [];
 
   // add new ingredient
   showAddMenu = false;
-  currentIngredientIndex = -1;
-  currentIngredient: Ingredient;
-  count = 0;
+  selectedIndex = -1;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController
   ) {
-    this.currentShopList = navParams.get(ShoppingListPage.PARAM_SHOPLIST);
-
-    if (!this.currentShopList) {
+    // this.currentShopList = navParams.get(ShoppingListPage.PARAM_SHOPLIST);
+    // if (!this.currentShopList) {
       // new shopping list
       this.title = "New Shopping List";
-    }
+    // }
 
-    // init data
-    for (var i = 0; i < 2; i++) {
-      this.ingredients.push("aa");
-    }
+    //
+    // fetch all ingredients
+    //
+    const dbRef = FirebaseManager.ref();
 
-    for (i = 0; i < 50; i++) {
-      this.sources.push(new Ingredient());
-    }
+    const query = dbRef.child(Ingredient.TABLE_NAME);
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryIng = [];
+
+        snapshot.forEach(function(child) {
+          const i = new Ingredient(child);
+
+          aryIng.push(i);
+        });
+
+        this.ingAll = aryIng;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   ionViewDidLoad() {
@@ -64,23 +81,35 @@ export class ShoppingListPage {
   }
 
   onButSave() {
-    this.onButClose();
+    // this.onButClose();
   }
 
   selectIngredient(index) {
-    this.currentIngredientIndex = index;
-    this.currentIngredient = this.sources[index];
+    this.selectedIndex = index;
 
-    this.count = 1;
+    if (index < 0) {
+      // clear
+      this.ingName = '';
+      this.ingUnit = '';
+      this.ingQuantity = null;
+    } else {
+      // update ingredient add form
+      this.ingName = this.ingAll[index].name;
+      this.ingUnit = this.ingAll[index].unit;
+
+      if (!this.ingQuantity) {
+        this.ingQuantity = 1;
+      }
+    }
   }
 
   increaseCount(value) {
     // no ingredients selected
-    if (!this.currentIngredient) {
+    if (this.selectedIndex < 0) {
       return;
     }
 
-    this.count = Math.max(this.count + value, 1);
+    this.ingQuantity = Math.max(this.ingQuantity + value, 1);
   }
 
   onButCountInc() {

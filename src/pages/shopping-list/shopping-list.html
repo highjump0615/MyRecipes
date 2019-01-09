@@ -35,7 +35,7 @@
   <div ion-fixed class="container">
     <!-- menu selection -->
     <div class="header">
-      <div *ngIf="currentShopList; else newShopList">
+      <div *ngIf="false">
         <ion-select [(ngModel)]="menu" interface="popover">
           <ion-option selected>Weeknight Suppers</ion-option>
           <ion-option>Dinner with Family</ion-option>
@@ -46,24 +46,33 @@
       </div>
 
       <!-- template name -->
-      <ng-template #newShopList>
-        <div
-          class="input-item">
-          <ion-input placeholder="Menu Name"></ion-input>
-        </div>
-      </ng-template>
+      <div
+        class="input-item">
+        <ion-input
+          name="shoppingName"
+          placeholder="Shopping List Name"
+          [(ngModel)]="shoppingName">
+        </ion-input>
+      </div>
     </div>
 
     <!-- list -->
     <div class="content">
-      <ion-list class="ingredients">
-        <ion-item *ngFor="let ing of ingredients">
-          <ion-chip item-start>
-            <span>3 tbsp</span>
-          </ion-chip>
-          <ion-label text-center class="name">Brasil Leaves</ion-label>
-        </ion-item>
-      </ion-list>
+      <div class="dv-no-list-item flex-c-row nm-center"
+           *ngIf="ingShopping.length == 0; else listIng">
+        <span>No ingredients added yet</span>
+      </div>
+
+      <ng-template #listIng>
+        <ion-list class="ingredients">
+          <ion-item *ngFor="let ing of ingShopping">
+            <ion-chip item-start>
+              <span>3 tbsp</span>
+            </ion-chip>
+            <ion-label text-center class="name">Brasil Leaves</ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-template>
 
       <div
         class="add flex-column"
@@ -94,32 +103,36 @@
             <!-- count -->
             <ion-input
               class="round-height"
+              name="quantity"
               type="number"
               placeholder="Count"
               style="margin-left: 6px; flex: 1;"
-              [value]="count > 0 ? count : ''">
+              [(ngModel)]="ingQuantity">
             </ion-input>
 
             <!-- unit -->
             <ion-input
               class="round-height"
+              name="unit"
               style="margin-left: 6px; flex: 1;"
               readonly
-              value="tbsp">
-              tbsp
+              placeholder="Unit"
+              [(ngModel)]="ingUnit">
             </ion-input>
 
             <!-- item name -->
             <ion-input
               class="round-height"
+              name="ingredient"
               placeholder="Item Name"
               style="margin-left: 6px; flex: 2;"
-              [value]="currentIngredient ? currentIngredient.name : ''"
-              readonly>
+              readonly
+              [(ngModel)]="ingName">
             </ion-input>
 
             <button
               ion-button small
+              [disabled]="!(ingUnit && ingName && ingQuantity)"
               (click)="onButSave()">
               ADD
             </button>
@@ -128,14 +141,21 @@
 
           <!-- list -->
           <div class="list-source">
-            <ion-list>
-              <ion-item
-                *ngFor="let item of sources; let i = index"
-                [class.selected]="currentIngredientIndex == i"
-                (click)="selectIngredient(i)">
-                <ion-label>Alfalfa Sprouts</ion-label>
-              </ion-item>
-            </ion-list>
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="ingAll.length == 0; else listSource">
+              <span>No ingredients yet</span>
+            </div>
+
+            <ng-template #listSource>
+              <ion-list>
+                <ion-item
+                  *ngFor="let item of ingAll; let i = index"
+                  [class.selected]="selectedIndex == i"
+                  (click)="selectIngredient(i)">
+                  <ion-label>{{data.name}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ng-template>
           </div>
         </div>
       </div>
