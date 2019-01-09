@@ -24,27 +24,34 @@
 
 <ion-content>
 
-  <ion-card
-    *ngFor="let review of reviews"
-    class="flex-column">
+  <div class="dv-no-list-item flex-c-row nm-center"
+       *ngIf="reviews.length == 0; else list">
+    <span>No reviews yet</span>
+  </div>
 
-    <div class="flex-row title">
-      <!-- rating -->
-      <star-rate
-        [rating]="3"
-        starSize="16">
-      </star-rate>
+  <ng-template #list>
+    <ion-card
+      *ngFor="let review of reviews"
+      class="flex-column">
 
-      <!-- title -->
-      <span>Easy to prepare</span>
-    </div>
+      <div class="flex-row title">
+        <!-- rating -->
+        <star-rate
+          [rating]="3"
+          starSize="16">
+        </star-rate>
 
-    <!-- user & time -->
-    <span class="user">By John Williams on March 31, 2018</span>
+        <!-- title -->
+        <span>Easy to prepare</span>
+      </div>
 
-    <!-- description -->
-    <span class="desc">{{review.desc}}</span>
+      <!-- user & time -->
+      <span class="user">By John Williams on March 31, 2018</span>
 
-  </ion-card>
+      <!-- description -->
+      <span class="desc">{{review.desc}}</span>
+
+    </ion-card>
+  </ng-template>
 
 </ion-content>

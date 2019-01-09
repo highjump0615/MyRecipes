@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Review } from '../../models/review';
 import { WriteReviewPage } from '../write-review/write-review';
+import {FirebaseManager} from "../../helpers/firebase-manager";
+import {User} from "../../models/user";
 
 /**
  * Generated class for the ReviewListPage page.
@@ -21,12 +23,48 @@ export class ReviewListPage {
 
   reviews: Array<Review> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    const recipeId = navParams.get(ReviewListPage.PARAM_RECIPEID);
 
-    // init data
-    for (var i = 0; i < 2; i++) {
-      this.reviews.push(new Review());
-    }
+    // fetch reviews
+    const dbRef = FirebaseManager.ref();
+    const that = this;
+
+    let nFetchCount = 0;
+    let nFetchUserCount = 0;
+
+    const query = dbRef.child(Review.TABLE_NAME)
+      .child(recipeId);
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryReviews = [];
+
+        snapshot.forEach(function(child) {
+          const r = new Review(child);
+          nFetchCount++;
+
+          User.readFromDatabase(r.userId, (user) => {
+            nFetchUserCount++;
+
+            r.user = user;
+            aryReviews.splice(0, 0, r);
+
+            // update page
+            if (nFetchCount === nFetchUserCount) {
+              that.reviews = aryReviews;
+            }
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   ionViewDidLoad() {
