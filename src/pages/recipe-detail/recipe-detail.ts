@@ -61,7 +61,7 @@ export class RecipeDetailPage extends BasePage {
   onButReview() {
     // go to review list page
     var params = {};
-    params[ReviewListPage.PARAM_RECIPEID] = this.recipe.id;
+    params[RecipeDetailPage.PARAM_RECIPE] = this.recipe;
 
     this.navCtrl.push(ReviewListPage, params);
   }

@@ -4,6 +4,8 @@ import { Review } from '../../models/review';
 import { WriteReviewPage } from '../write-review/write-review';
 import {FirebaseManager} from "../../helpers/firebase-manager";
 import {User} from "../../models/user";
+import {Recipe} from "../../models/recipe";
+import {RecipeDetailPage} from "../recipe-detail/recipe-detail";
 
 /**
  * Generated class for the ReviewListPage page.
@@ -19,15 +21,14 @@ import {User} from "../../models/user";
 })
 export class ReviewListPage {
 
-  static PARAM_RECIPEID = "recipeId";
-
   reviews: Array<Review> = [];
+  recipe: Recipe;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
-    const recipeId = navParams.get(ReviewListPage.PARAM_RECIPEID);
+    this.recipe = navParams.get(RecipeDetailPage.PARAM_RECIPE);
 
     // fetch reviews
     const dbRef = FirebaseManager.ref();
@@ -37,8 +38,8 @@ export class ReviewListPage {
     let nFetchUserCount = 0;
 
     const query = dbRef.child(Review.TABLE_NAME)
-      .child(recipeId);
-    query.once('value')
+      .child(this.recipe.id)
+      .once('value')
       .then((snapshot) => {
         console.log(snapshot);
 
@@ -72,6 +73,9 @@ export class ReviewListPage {
   }
 
   onButNew() {
+    var params = {};
+    params[RecipeDetailPage.PARAM_RECIPE] = this.recipe;
+
     // go to write review page
     this.navCtrl.push(WriteReviewPage);
   }

@@ -19,16 +19,21 @@
 
     <!-- rating -->
     <star-rate
-      [rating]="0"
+      [rating]="5"
       starSize="30"
-      [readOnly]="false">
+      [readOnly]="false"
+      #starRate>
     </star-rate>
 
     <!-- title -->
     <div
       class="input-item"
       style="margin-top: 20px;">
-      <ion-input placeholder="Headline for your review"></ion-input>
+      <ion-input
+        name="review-title"
+        placeholder="Headline for your review"
+        [(ngModel)]="title">
+      </ion-input>
     </div>
 
     <!-- desc -->
@@ -36,9 +41,10 @@
       class="input-item"
       style="margin-top: 12px; flex: 1;">
       <ion-textarea
+        name="content"
         placeholder="Write your review here"
-        [style.height] = "initDone ? '100%' : 'auto'">
-      </ion-textarea>
+        [style.height] = "initDone ? '100%' : 'auto'"
+        [(ngModel)]="content"></ion-textarea>
     </div>
 
     <!-- button -->
