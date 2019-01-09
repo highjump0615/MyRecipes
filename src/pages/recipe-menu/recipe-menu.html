@@ -36,6 +36,7 @@
       <ion-icon class="ic-search" name="ios-search"></ion-icon>
       <ion-input placeholder="Search"></ion-input>
       <button
+        *ngIf="false"
         ion-button
         (click)="onButFilter()">
         <span>Filter</span>
@@ -48,15 +49,23 @@
       class="container-scroll"
       *ngIf="type == TYPE_RECIPE"
       style="margin: 0 6px;">
-      <ion-row>
-        <ion-col col-4 *ngFor="let recipe of recipes">
-          <!-- recipe item -->
-          <recipe-grid-item
-            [showDate]="false"
-            (click)="onRecipeDetail()">
-          </recipe-grid-item>
-        </ion-col>
-      </ion-row>
+      <div class="dv-no-list-item flex-c-row nm-center"
+           *ngIf="recipes.length == 0; else listRecipe">
+        <span>No recipes yet</span>
+      </div>
+
+      <ng-template #listRecipe>
+        <ion-row>
+          <ion-col col-4 *ngFor="let recipe of recipes">
+            <!-- recipe item -->
+            <recipe-grid-item
+              [recipe]="recipe"
+              [showDate]="false"
+              (click)="onRecipeDetail()">
+            </recipe-grid-item>
+          </ion-col>
+        </ion-row>
+      </ng-template>
     </div>
 
     <!-- menus -->
@@ -64,31 +73,38 @@
       class="container-scroll"
       *ngIf="type == TYPE_MENU">
 
-      <ion-card
-        class="recipe-row-item flex-row"
-        *ngFor="let data of menus"
-        (click)="onRecipeDetail()">
-        <!-- image -->
-        <div class="photo">
-          <img src="../../assets/imgs/default_food.png" />
-        </div>
+      <div class="dv-no-list-item flex-c-row nm-center"
+           *ngIf="menus.length == 0; else listMenu">
+        <span>No menus yet</span>
+      </div>
 
-        <!-- info -->
-        <div class="info flex-column">
-          <!-- title -->
-          <span class="recipe-title">Asian Barbecue Pork Ribs</span>
-          <!-- desc -->
-          <span class="recipe-desc">
-            Servings: 7
-          </span>
-          <!-- rating -->
-          <star-rate
-            [rating]="3"
-            starSize="12">
-          </star-rate>
-        </div>
+      <ng-template #listMenu>
+        <ion-card
+          class="recipe-row-item flex-row"
+          *ngFor="let data of menus"
+          (click)="onRecipeDetail()">
+          <!-- image -->
+          <div class="photo">
+            <img src="../../assets/imgs/default_food.png" />
+          </div>
 
-      </ion-card>
+          <!-- info -->
+          <div class="info flex-column">
+            <!-- title -->
+            <span class="recipe-title">Asian Barbecue Pork Ribs</span>
+            <!-- desc -->
+            <span class="recipe-desc">
+              Servings: 7
+            </span>
+            <!-- rating -->
+            <star-rate
+              [rating]="3"
+              starSize="12">
+            </star-rate>
+          </div>
+
+        </ion-card>
+      </ng-template>
     </div>
 
   </div>

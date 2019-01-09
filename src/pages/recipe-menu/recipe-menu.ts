@@ -38,14 +38,10 @@ export class RecipeMenuPage extends BasePage {
     // disable menu
     this.enableMenu(false);
 
-    // init data
-    for (var i = 0; i < 6; i++) {
-      this.recipes.push("aa");
-    }
 
-    for (i = 0; i < 2; i++) {
-      this.menus.push("aa");
-    }
+    // for (let i = 0; i < 2; i++) {
+    //   this.menus.push("aa");
+    // }
   }
 
   ionViewDidLoad() {
