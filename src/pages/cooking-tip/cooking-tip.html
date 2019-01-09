@@ -17,23 +17,29 @@
 
   <div class="container">
 
-    <ion-searchbar>
+    <ion-searchbar
+      [(ngModel)]="keyword"
+      (ionInput)="onChangeKeyword($event)">
     </ion-searchbar>
 
     <!-- tips list -->
-    <ion-list>
-      <ion-card *ngFor="let tip of tips">
-        <ion-card-header>
-          Cooking Tip 1
-        </ion-card-header>
-        <ion-card-content>
-          Far far away, behind the word mountains, far from the
-          countries Vokalia and Consonantia, there live the blind te-
-          xts. Separated they live in Bookmarksgrove right at the co-
-          ast of the Semantics, a large language ocean.
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="tips.length == 0; else list">
+      <span>No cooking tips yet</span>
+    </div>
+
+    <ng-template #list>
+      <ion-list>
+        <ion-card *ngFor="let tip of tips">
+          <ion-card-header>
+            {{data.title}}
+          </ion-card-header>
+          <ion-card-content>
+            {{data.content}}
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ng-template>
 
   </div>
 
