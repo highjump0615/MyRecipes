@@ -55,16 +55,11 @@
 
           <div class="content">
             <button ion-button icon-start round
-              color="light-red"
-              (click)="onMenuDetail()">
+                    color="light-red"
+                    (click)="onMenuDetail()"
+                    *ngFor="let data of []">
               <img src="../../assets/imgs/home_menu_icon.png" />
-              <span>Weeknight Suppers</span>
-            </button>
-            <button ion-button icon-start round
-              color="light-red"
-              (click)="onMenuDetail()">
-              <img src="../../assets/imgs/home_menu_icon.png" />
-              <span>Dinner with Family</span>
+              <span>{{data.name}}</span>
             </button>
           </div>
         </div>
@@ -85,16 +80,10 @@
             <button
               ion-button icon-start round
               color="light-red"
-              (click)="onShoppingList()">
+              (click)="onShoppingList()"
+              *ngFor="let data of userCurrent.shoppingList">
               <img src="../../assets/imgs/home_list_icon.png" />
-              <span>Weeknight Suppers</span>
-            </button>
-            <button
-              ion-button icon-start round
-              color="light-red"
-              (click)="onShoppingList()">
-              <img src="../../assets/imgs/home_list_icon.png" />
-              <span>Dinner with Family</span>
+              <span>{{data.name}}</span>
             </button>
           </div>
         </div>
@@ -107,13 +96,22 @@
       <div>
         <span class="title">Upcoming Recipes:</span>
         <div class="recipe-content">
-          <ion-row>
-            <ion-col col-4 *ngFor="let data of upcomings">
-              <!-- recipe item -->
-              <recipe-grid-item (click)="onRecipeDetail()">
-              </recipe-grid-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="upcomings.length == 0; else listUpcoming">
+            <span>No upcoming recipes yet</span>
+          </div>
+
+          <ng-template #listUpcoming>
+            <ion-row>
+              <ion-col col-4 *ngFor="let data of upcomings">
+                <!-- recipe item -->
+                <recipe-grid-item
+                  [recipe]="data"
+                  (click)="onRecipeDetail()">
+                </recipe-grid-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
 
@@ -130,13 +128,22 @@
           </button>
         </div>
         <div class="recipe-content">
-          <ion-row>
-            <ion-col col-4 *ngFor="let data of upcomings">
-              <!-- recipe item -->
-              <recipe-grid-item (click)="onRecipeDetail()">
-              </recipe-grid-item>
-            </ion-col>
-          </ion-row>
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="recipes.length == 0; else listRecipe">
+            <span>No recipes yet</span>
+          </div>
+
+          <ng-template #listRecipe>
+            <ion-row>
+              <ion-col col-4 *ngFor="let data of recipes">
+                <!-- recipe item -->
+                <recipe-grid-item
+                  [recipe]="data"
+                  (click)="onRecipeDetail()">
+                </recipe-grid-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
         </div>
       </div>
 

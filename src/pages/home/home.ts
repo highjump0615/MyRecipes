@@ -22,7 +22,7 @@ import { User } from '../../models/user';
 export class HomePage extends BasePage {
 
   // user info
-  userCurrent: User;
+  userCurrent = User.currentUser;
 
   // recipes
   upcomings: Array<string> = [];
@@ -37,13 +37,11 @@ export class HomePage extends BasePage {
 
     super(navCtrl, menuCtrl, toastCtrl);
 
-    // set current user
-    this.userCurrent = User.currentUser;
+    // fetch menus
 
-    // init data
-    for (var i = 0; i < 3; i++) {
-      this.upcomings.push("aa");
-      this.recipes.push("aa");
+    // fetch shopping lists
+    if (this.userCurrent.shoppingList.length <= 0) {
+      this.userCurrent.fetchShoppingList();
     }
   }
 

@@ -5,18 +5,18 @@
   <!-- image -->
   <div
     class="thumbnail square"
-    style="background-image: url('../../assets/imgs/default_food.png')">
+    [style.background-image]="'url(' + recipe.photoUrl + ')'">
   </div>
 
   <!-- rating -->
   <star-rate
-    [rating]="3">
+    [rating]="recipe.recipeRate()">
   </star-rate>
 
   <!-- name -->
-  <span class="name">Burger Americana</span>
+  <span class="name">{{recipe.title}}</span>
 
   <!-- date -->
-  <span *ngIf="showDate" class="date">Feb 17, 2018</span>
+  <span *ngIf="showDate" class="date">{{recipe.dateFormatted()}}</span>
 
 </ion-card>

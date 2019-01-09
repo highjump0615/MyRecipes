@@ -1,20 +1,22 @@
 import {BaseModel} from './base-model';
 import DataSnapshot = firebase.database.DataSnapshot;
+import {Ingredient} from './ingredient';
+import {BaseIngredient} from './base-ingredient';
+import {User} from './user';
+import {FirebaseManager} from '../helpers/firebase-manager';
 
-export class Ingredient extends BaseModel {
+export class Shopping extends BaseIngredient {
+
   //
   // table info
   //
-  static TABLE_NAME = 'ingredients';
+  static TABLE_NAME = 'shoppings';
   static FIELD_NAME = 'name';
-  static FIELD_UNIT = 'unit';
 
   name = '';
-  unit = '';
-  quantity = 0;
 
   tableName() {
-    return Ingredient.TABLE_NAME;
+    return Shopping.TABLE_NAME;
   }
 
   constructor(snapshot?: DataSnapshot) {
@@ -23,18 +25,15 @@ export class Ingredient extends BaseModel {
     if (snapshot) {
       const info = snapshot.val();
 
-      this.name = info[Ingredient.FIELD_NAME];
-      this.unit = info[Ingredient.FIELD_UNIT];
+      this.name = info[Shopping.FIELD_NAME];
     }
   }
 
   toDictionary() {
     const dict = super.toDictionary();
 
-    dict[Ingredient.FIELD_NAME] = this.name;
-    dict[Ingredient.FIELD_UNIT] = this.unit;
+    dict[Shopping.FIELD_NAME] = this.name;
 
     return dict;
   }
-
 }

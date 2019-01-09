@@ -2,6 +2,8 @@ import {BaseModel} from "./base-model";
 import {FirebaseManager} from "../helpers/firebase-manager";
 import DataSnapshot = firebase.database.DataSnapshot;
 import {Cuisine} from "./cuisine";
+import {Recipe} from "./recipe";
+import {Shopping} from "./shopping";
 
 export class User extends BaseModel {
 
@@ -16,6 +18,7 @@ export class User extends BaseModel {
   static FIELD_LASTNAME = 'lastName';
   static FIELD_PHOTO = 'photoUrl';
   static FIELD_DESC = 'description';
+  static FIELD_TYPE = 'type';
 
   // cuisines
   static TABLE_NAME_FAVOURITE_CUISINE = 'userFavouriteCuisines';
@@ -23,17 +26,29 @@ export class User extends BaseModel {
   static TABLE_NAME_DIET = 'userDiets';
   static TABLE_NAME_DISLIKE = 'userDislikes';
 
+  static USER_TYPE_NORMAL = 'normal';
+  static USER_TYPE_ADMIN = 'admin';
 
+
+  //
+  // properties
+  //
   email = '';
   firstName = '';
   lastName = '';
   desc = '';
   photoUrl = '';
 
+  type = User.USER_TYPE_NORMAL;
+
   favouriteCuisines: any;
   allergies: any;
   diets: any;
   dislikes: any;
+  ////
+
+  favourites: Array<Recipe> = [];
+  shoppingList: Array<Shopping> = [];
 
   fetchCuisineCount = 0;
   fetchedCuisineCount = 0;
@@ -59,6 +74,10 @@ export class User extends BaseModel {
       this.lastName = info[User.FIELD_LASTNAME];
       this.photoUrl = info[User.FIELD_PHOTO];
       this.desc = info[User.FIELD_DESC];
+
+      if (User.FIELD_TYPE in info) {
+        this.type = info[User.FIELD_TYPE];
+      }
     }
   }
 
@@ -74,7 +93,9 @@ export class User extends BaseModel {
         }
 
         let user = new User(null, snapshot);
-        completion(user);
+        user.fetchCuisines(() => {
+          completion(user);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -390,6 +411,28 @@ export class User extends BaseModel {
       })
       .catch((err) => {
         completion();
+      });
+  }
+
+  fetchShoppingList(): Promise<User> {
+    const that = this;
+
+    // from db
+    const dbRef = FirebaseManager.ref()
+      .child(Shopping.TABLE_NAME)
+      .child(this.id);
+
+    return dbRef.once('value')
+      .then((snapshot) => {
+        that.shoppingList = [];
+
+        snapshot.forEach(function(child) {
+          const s = new Shopping(child);
+
+          that.shoppingList.push(s);
+        });
+
+        return that;
       });
   }
 }
