@@ -14,7 +14,7 @@ import {Cuisine} from "../../models/cuisine";
 
 export class CuisineItemComponent {
 
-  @Input() index: Cuisine;
+  @Input() index: number;
   @Input() item: Cuisine;
   @Output() selectChanged = new EventEmitter();
 

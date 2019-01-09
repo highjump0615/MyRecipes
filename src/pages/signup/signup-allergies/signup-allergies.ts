@@ -93,7 +93,6 @@ export class SignupAllergiesPage {
     //
     // allergies
     //
-    let allergiesSelected = [];
     for (let item of this.allergies) {
       if (item.selected) {
         this.userCurrent.addAllergy(item);
@@ -103,7 +102,6 @@ export class SignupAllergiesPage {
     //
     // diets
     //
-    let dietsSelected = [];
     for (let item of this.diets) {
       if (item.selected) {
         this.userCurrent.addDiet(item);

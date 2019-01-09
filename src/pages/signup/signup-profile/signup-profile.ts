@@ -125,6 +125,8 @@ export class SignupProfilePage extends BaseLandingPage {
 
 
     if (!User.currentUser) {
+      this.showLoadingView();
+
       // do signup
       FirebaseManager.auth().createUserWithEmailAndPassword(
         this.email,

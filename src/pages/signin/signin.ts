@@ -278,7 +278,7 @@ export class SigninPage extends BaseLandingPage {
       })
       .catch((err) => {
         this.onError(err);
-      })
+      });
   }
 
   fetchUserInfo(userInfo: firebase.User,

@@ -69,8 +69,6 @@ export class SignupDislikePage extends BasePage {
    * @param event
    */
   onButNext(event) {
-    let aryDislike = [];
-
     for (let cuisine of this.dislikes) {
       if (cuisine.selected) {
         this.userCurrent.addDislike(cuisine);

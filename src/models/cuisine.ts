@@ -20,7 +20,6 @@ export class Cuisine extends BaseModel {
     return Cuisine.TABLE_NAME;
   }
 
-  constructor();
   constructor(snapshot?: DataSnapshot) {
     super(snapshot);
 
