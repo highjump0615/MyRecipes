@@ -26,7 +26,12 @@
         <img
           src="../assets/imgs/signin/signin_email.png"
           style="width: 19px;" />
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input
+          type="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="email">
+        </ion-input>
       </div>
 
       <div
@@ -45,7 +50,8 @@
       <!-- submit button -->
       <button
         ion-button round full
-        class="but-primary">
+        class="but-primary"
+        (click)="onButSubmit()">
         <b>Submit</b>
       </button>
     </div>

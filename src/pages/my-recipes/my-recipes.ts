@@ -18,8 +18,6 @@ import { AddRecipePage } from '../add-recipe/add-recipe';
 })
 export class MyRecipesPage extends BasePage {
 
-  recipes: Array<string> = [];
-
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -36,6 +34,8 @@ export class MyRecipesPage extends BasePage {
       this.recipes.push("aa");
     }
   }
+
+  recipes: Array<string> = [];
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyRecipesPage');

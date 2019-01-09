@@ -7,9 +7,10 @@ export class BasePage {
 
   constructor(
     public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    public toastCtrl: ToastController,
-    public loadingCtrl?: LoadingController) {
+    public menuCtrl?: MenuController,
+    public toastCtrl?: ToastController,
+    public loadingCtrl?: LoadingController
+  ) {
   }
 
   static getMainPage() {
