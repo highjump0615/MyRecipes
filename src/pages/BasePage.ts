@@ -6,7 +6,7 @@ export class BasePage {
   loadingView: any;
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl?: NavController,
     public menuCtrl?: MenuController,
     public toastCtrl?: ToastController,
     public loadingCtrl?: LoadingController

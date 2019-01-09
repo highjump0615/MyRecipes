@@ -96,7 +96,10 @@
             [class.collapsed]="filterAccIndex != 0">
             <ion-row nowrap>
               <ion-col col-4 *ngFor="let data of favourites">
-                <cuisine-item text="AMERICAN"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_FAVOURITE"
+                  [item]="data">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </div>
@@ -119,7 +122,10 @@
             [class.collapsed]="filterAccIndex != 1">
             <ion-row nowrap>
               <ion-col col-4 *ngFor="let data of allergies">
-                <cuisine-item text="AMERICAN"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_ALLERGY"
+                  [item]="data">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </div>
@@ -142,7 +148,10 @@
             [class.collapsed]="filterAccIndex != 2">
             <ion-row nowrap>
               <ion-col col-4 *ngFor="let data of diets">
-                <cuisine-item text="AMERICAN"></cuisine-item>
+                <cuisine-item
+                  [index]="CUISINE_DIET"
+                  [item]="data">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </div>
@@ -164,8 +173,11 @@
             class="container-scroll content"
             [class.collapsed]="filterAccIndex != 3">
             <ion-row nowrap>
-              <ion-col col-4 *ngFor="let data of diets">
-                <cuisine-item text="AMERICAN"></cuisine-item>
+              <ion-col col-4 *ngFor="let data of dislikes">
+                <cuisine-item
+                  [index]="CUISINE_DISLIKE"
+                  [item]="data">
+                </cuisine-item>
               </ion-col>
             </ion-row>
           </div>
@@ -190,26 +202,33 @@
         </div>
 
         <!-- recipe -->
-        <ion-card
-          class="recipe-row-item flex-row"
-          *ngFor="let data of added"
-          (click)="onRecipeDetail(data)">
-          <!-- image -->
-          <div class="photo">
-            <img src="../../assets/imgs/default_food.png" />
-          </div>
+        <div class="dv-no-list-item flex-c-row nm-center"
+             *ngIf="added.length == 0; else listAdded">
+          <span>No added recipes yet</span>
+        </div>
 
-          <!-- info -->
-          <div class="info flex-column">
-            <!-- title -->
-            <span class="recipe-title">Asian Barbecue Pork Ribs</span>
-            <!-- desc -->
-            <span class="recipe-desc">
-              May 11, 2018
-            </span>
-          </div>
+        <ng-template #listAdded>
+          <ion-card
+            class="recipe-row-item flex-row"
+            *ngFor="let data of added"
+            (click)="onRecipeDetail(data)">
+            <!-- image -->
+            <div class="photo">
+              <img src="../../assets/imgs/default_food.png" />
+            </div>
 
-        </ion-card>
+            <!-- info -->
+            <div class="info flex-column">
+              <!-- title -->
+              <span class="recipe-title">Asian Barbecue Pork Ribs</span>
+              <!-- desc -->
+              <span class="recipe-desc">
+                May 11, 2018
+              </span>
+            </div>
+
+          </ion-card>
+        </ng-template>
 
       </div>
     </div>

@@ -4,6 +4,8 @@ import { BasePage } from '../BasePage';
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { AddDatePage } from '../add-date/add-date';
 import { MenuDetailPage } from '../menu-detail/menu-detail';
+import {BaseCuisinePage} from "../base-cuisine";
+import {Recipe} from "../../models/recipe";
 
 /**
  * Generated class for the MenuGeneratorPage page.
@@ -17,7 +19,7 @@ import { MenuDetailPage } from '../menu-detail/menu-detail';
   selector: 'page-menu-generator',
   templateUrl: 'menu-generator.html',
 })
-export class MenuGeneratorPage extends BasePage {
+export class MenuGeneratorPage extends BaseCuisinePage {
 
   TYPE_AUTO = "auto";
   TYPE_MANUAL = "manual";
@@ -39,13 +41,7 @@ export class MenuGeneratorPage extends BasePage {
    */
   filterAccIndex = 0;
 
-  // recipes
-  favourites: Array<string> = [];
-  allergies: Array<string> = [];
-  diets: Array<string> = [];
-  dislikes: Array<string> = [];
-
-  added: Array<string> = [];
+  added: Array<Recipe> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -54,19 +50,7 @@ export class MenuGeneratorPage extends BasePage {
     public toastCtrl: ToastController,
     public modalCtrl: ModalController
   ) {
-    super(navCtrl, menuCtrl, toastCtrl);
-
-    // init data
-    for (var i = 0; i < 10; i++) {
-      this.favourites.push("aa");
-      this.allergies.push("aa");
-      this.diets.push("aa");
-      this.dislikes.push("aa");
-    }
-
-    for (i = 0; i < 2; i++) {
-      this.added.push("aa");
-    }
+    super(false, navCtrl, menuCtrl, toastCtrl);
   }
 
   ionViewDidLoad() {
@@ -104,6 +88,6 @@ export class MenuGeneratorPage extends BasePage {
 
   onButGenerate() {
     // go to menu detail page
-    this.navCtrl.push(MenuDetailPage);
+    // this.navCtrl.push(MenuDetailPage);
   }
 }
