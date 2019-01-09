@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>My Recipes</ion-title>
 
-    <ion-buttons end>
+    <ion-buttons end *ngIf="false">
       <button
         ion-button clear
         (click)="onButNew()">
@@ -24,12 +24,21 @@
 <ion-content>
 
   <!-- recipes -->
-  <ion-row wrap>
-    <ion-col col-4 *ngFor="let recipe of recipes">
-      <!-- recipe item -->
-      <recipe-grid-item (click)="onRecipeDetail()">
-      </recipe-grid-item>
-    </ion-col>
-  </ion-row>
+  <div class="dv-no-list-item flex-c-row nm-center"
+       *ngIf="recipes.length == 0; else list">
+    <span>No recipes yet</span>
+  </div>
+
+  <ng-template #list>
+    <ion-row wrap>
+      <ion-col col-4 *ngFor="let recipe of recipes">
+        <!-- recipe item -->
+        <recipe-grid-item
+          [recipe]="recipe"
+          (click)="onRecipeDetail()">
+        </recipe-grid-item>
+      </ion-col>
+    </ion-row>
+  </ng-template>
 
 </ion-content>

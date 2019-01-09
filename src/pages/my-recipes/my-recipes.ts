@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams, MenuController, ToastController } 
 import { RecipeDetailPage } from '../recipe-detail/recipe-detail';
 import { BasePage } from '../BasePage';
 import { AddRecipePage } from '../add-recipe/add-recipe';
+import {Recipe} from "../../models/recipe";
+import {FirebaseManager} from "../../helpers/firebase-manager";
+import {User} from "../../models/user";
 
 /**
  * Generated class for the MyRecipesPage page.
@@ -18,6 +21,9 @@ import { AddRecipePage } from '../add-recipe/add-recipe';
 })
 export class MyRecipesPage extends BasePage {
 
+  // recipes
+  recipes: Array<Recipe> = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,13 +35,35 @@ export class MyRecipesPage extends BasePage {
     // disable menu
     this.enableMenu(false);
 
-    // init data
-    for (var i = 0; i < 6; i++) {
-      this.recipes.push("aa");
-    }
-  }
+    // fetch recipes
+    const userCurrent = User.currentUser;
+    const dbRef = FirebaseManager.ref();
 
-  recipes: Array<string> = [];
+    let query: any = dbRef.child(Recipe.TABLE_NAME)
+      .orderByChild(Recipe.FIELD_USERID)
+      .equalTo(userCurrent.id);
+
+    query.once('value')
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        // clear
+        const aryRecipe = [];
+
+        snapshot.forEach(function(child) {
+          const r = new Recipe(child);
+
+          aryRecipe.push(r);
+
+          console.log(child);
+        });
+
+        this.recipes = aryRecipe;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyRecipesPage');
