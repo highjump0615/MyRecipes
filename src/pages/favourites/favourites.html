@@ -38,29 +38,48 @@
   </div>
 
   <!-- recipes -->
-  <ion-row wrap *ngIf="type == TYPE_RECIPE">
-    <ion-col col-4 *ngFor="let recipe of recipes">
-      <!-- recipe item -->
-      <recipe-grid-item (click)="onRecipeDetail()">
-      </recipe-grid-item>
-    </ion-col>
-  </ion-row>
+  <div *ngIf="type == TYPE_RECIPE">
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="userCurrent.favourites.length == 0; else listRecipe">
+      <span>No favorite recipes yet</span>
+    </div>
+
+    <ng-template #listRecipe>
+      <ion-row wrap>
+        <ion-col col-4 *ngFor="let recipe of recipes">
+          <!-- recipe item -->
+          <recipe-grid-item
+            [recipe]="recipe"
+            (click)="onRecipeDetail()">
+          </recipe-grid-item>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </div>
 
   <!-- menus -->
   <div class="flex-column" *ngIf="type == TYPE_MENU">
-    <div class="menus" *ngFor="let menu of menus">
-      <span class="title">Easy Meals</span>
-      <!-- recipes -->
-      <div class="container-scroll">
-        <ion-row nowrap>
-          <ion-col col-4 *ngFor="let recipe of recipes">
-            <!-- recipe item -->
-            <recipe-grid-item (click)="onRecipeDetail()">
-            </recipe-grid-item>
-          </ion-col>
-        </ion-row>
-      </div>
+    <div class="dv-no-list-item flex-c-row nm-center"
+         *ngIf="userCurrent.favourites.length == 0; else listMenu">
+      <span>No favorite menus yet</span>
     </div>
+
+    <ng-template #listRecipe>
+      <div class="menus" *ngFor="let menu of menus">
+        <span class="title">Easy Meals</span>
+        <!-- recipes -->
+        <div class="container-scroll">
+          <ion-row nowrap>
+            <ion-col col-4 *ngFor="let recipe of recipes">
+              <!-- recipe item -->
+              <recipe-grid-item
+                (click)="onRecipeDetail()">
+              </recipe-grid-item>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </ng-template>
   </div>
 
 </ion-content>
