@@ -1,16 +1,50 @@
-<ion-menu [content]="content">
+<ion-menu id="main" type="overlay" [content]="content">
   <ion-header>
     <ion-toolbar>
+
+      <!-- close button -->
+      <ion-buttons start>
+        <button ion-button menuClose>
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+
+      <!-- title -->
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
+    <div ion-fixed class="container">
+      <!-- menu -->
+      <ion-list>
+        <button
+          menuClose ion-item detail-none
+          color="light"
+          *ngFor="let p of pages"
+          (click)="openPage(p)">
+          <ion-icon
+            [name]="p.icon"
+            item-start>
+          </ion-icon>
+          {{p.title}}
+        </button>
+      </ion-list>
+
+      <!-- log out -->
+      <ion-list>
+        <button
+          menuClose ion-item detail-none
+          color="light"
+          (click)="onLogout()">
+          <ion-icon
+            name="log-out"
+            item-start>
+          </ion-icon>
+          Log Out
+        </button>
+      </ion-list>
+    </div>
   </ion-content>
 
 </ion-menu>

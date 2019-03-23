@@ -1,0 +1,42 @@
+page-menu-detail2 {
+
+  .container {
+    height: auto;
+  }
+
+  .recipe-row-item {
+    overflow: hidden;
+    star-rate {
+      margin-top: 20px;
+    }
+  }
+
+  .recipe-item {
+    margin: 12px 10px 0 10px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  ion-item-sliding {
+    ion-item {
+      .item-inner {
+        ion-label {
+          margin: 0 !important;
+        }
+      }
+
+      ion-card {
+        margin: 0 !important;
+        box-shadow: 0px 0px 0px !important;
+      }
+    }
+
+    ion-item-options {
+      button {
+        font-weight: bold !important;
+        font-size: 8pt !important;
+      }
+    }
+  }
+
+}

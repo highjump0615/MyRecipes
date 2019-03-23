@@ -1,0 +1,44 @@
+page-signup-profile {
+
+  .container {
+    justify-content: space-between;
+  }
+
+  .but-photo-large {
+    position: relative;
+    overflow: hidden;
+
+    img.photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .input-items {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex: 1 0 auto;
+
+    .signin-input.desc {
+      flex: 1;
+      margin-bottom: 12px;
+      border-bottom: 0px !important;
+
+      ion-textarea {
+        overflow: scroll;
+        max-height: 100%;
+
+        textarea {
+          border-bottom: 1px solid map-get($colors, light);
+        }
+      }
+    }
+  }
+
+}

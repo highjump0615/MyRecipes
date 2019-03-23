@@ -1,0 +1,66 @@
+<!--
+  Generated template for the SignupFavouritePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header transparent no-border>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div ion-fixed class="container">
+
+    <!-- profile -->
+    <div class="nm-center flex-column div-profile">
+      <img
+        [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../assets/imgs/default_user.png'"
+        class="but-photo-large round" />
+      <span>{{userCurrent.fullName()}}</span>
+    </div>
+
+    <!-- contents -->
+    <div
+      class="flex-column flex-fill div-content darkred-bg top-border bottom-border">
+
+      <div class="title bottom-border">
+        <span>Tell us your favorite cuisines.</span>
+      </div>
+
+      <div class="container-scroll">
+        <div class="dv-no-list-item flex-c-row nm-center"
+             *ngIf="favourites.length == 0; else list">
+          <span>No cuisine items yet</span>
+        </div>
+
+        <ng-template #list>
+          <ion-row wrap>
+            <ion-col col-3 *ngFor="let data of favourites">
+              <cuisine-item [item]="data"></cuisine-item>
+            </ion-col>
+          </ion-row>
+        </ng-template>
+      </div>
+
+    </div>
+
+    <!-- buttons -->
+    <div class="darkred-bg full-width flex-c-row nm-center">
+
+      <!-- next button -->
+      <button
+        ion-button round full
+        class="but-primary width-80"
+        (click)="onButNext($event)"
+        style="margin-top: 20px; margin-bottom: 20px;">
+        <b>Next</b>
+      </button>
+    </div>
+
+  </div>
+</ion-content>

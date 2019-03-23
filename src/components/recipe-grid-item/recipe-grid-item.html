@@ -1,0 +1,22 @@
+<!-- recipe item -->
+<ion-card
+  class="recipe-item flex-column nm-center">
+
+  <!-- image -->
+  <div
+    class="thumbnail square"
+    [style.background-image]="'url(' + recipe.photoUrl + ')'">
+  </div>
+
+  <!-- rating -->
+  <star-rate
+    [rating]="recipe.recipeRate()">
+  </star-rate>
+
+  <!-- name -->
+  <span class="name">{{recipe.title}}</span>
+
+  <!-- date -->
+  <span *ngIf="showDate" class="date">{{recipe.dateFormatted()}}</span>
+
+</ion-card>

@@ -1,0 +1,23 @@
+page-cooking-tip {
+
+  .container {
+    height: auto;
+  }
+
+  // search bar
+  ion-searchbar {
+    .searchbar-input {
+      box-shadow: 0 0px 5px #666;
+    }
+  }
+
+  // lists
+  ion-card-header {
+    font-size: 11pt !important;
+  }
+  ion-card-content {
+    white-space: pre-wrap;
+    color: #5a5a5a;
+    font-size: 10pt !important;
+  }
+}

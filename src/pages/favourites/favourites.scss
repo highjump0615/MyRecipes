@@ -1,0 +1,21 @@
+page-favourites {
+
+  .header-select {
+    padding: 12px;
+  }
+
+
+  ion-row {
+    padding: 0 5px;
+  }
+
+  .menus {
+    margin-bottom: 8px;
+
+    .title {
+      margin: 0 12px 2px 12px;
+      color: map-get($map: $colors, $key: primary);
+    }
+  }
+
+}

@@ -1,0 +1,33 @@
+page-preference {
+
+  .container {
+    height: auto;
+  }
+
+  //
+  // accordion menu
+  //
+  .menu {
+    font-size: 11pt;
+  }
+  .menu ion-icon {
+    font-size: 13pt;
+    min-height: 0;
+    color: map-get($map: $colors, $key: primary)
+  }
+  .container-scroll {
+    margin-top: 0;
+    padding: 0 12px 12px 12px;
+  }
+  .content {
+    transition: 0.3s linear;
+    overflow: hidden;
+  }
+  .content ion-col {
+    padding-top: 0;
+  }
+  .collapsed {
+    max-height: 0 !important;
+  }
+
+}

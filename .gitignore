@@ -18,6 +18,9 @@ npm-debug.log*
 .sass-cache/
 .tmp/
 .versions/
+
+.gradle/
+
 coverage/
 dist/
 node_modules/
@@ -33,3 +36,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+# environments
+src/environments/environments.ts

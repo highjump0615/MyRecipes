@@ -1,0 +1,27 @@
+page-menu-detail {
+
+  .page-title {
+    background-color: map-get($map: $colors, $key: dark-red);
+    text-align: center;
+    color: white;
+    padding: 10px;
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: scroll;
+    justify-content: space-between;
+    padding-top: 12px;
+  }
+
+  .buttons {
+    margin: 0 12px 12px 12px;
+  }
+
+  .date {
+    margin-left: 12px;
+    font-size: 10pt;
+    color: map-get($map: $colors, $key: primary);
+  }
+
+}

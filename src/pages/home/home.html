@@ -1,18 +1,179 @@
-<ion-header>
-  <ion-navbar>
+<ion-header transparent no-border>
+  <ion-navbar >
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <!-- title -->
+    <ion-title>
+      <img class="logo" src="../../assets/imgs/logo_title.png" />
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <div ion-fixed class="container">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+    <!-- profile -->
+    <div>
+      <div class="flex-row profile">
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+        <!-- info -->
+        <div class="info">
+          <div class="flex-row">
+            <span class="name"
+            >{{userCurrent.fullName()}}</span>
+            <button
+              ion-button clear
+              (click)="onButEditProfile()">
+              <img src="../../assets/imgs/home_edit.png" />
+            </button>
+          </div>
+          <div class="desc">{{userCurrent.desc}}</div>
+        </div>
+
+        <!-- photo -->
+        <div class="photo">
+          <img
+            [src]="userCurrent.photoUrl ? userCurrent.photoUrl : '../../../assets/imgs/default_user.png'"
+            class="but-photo round" />
+        </div>
+      </div>
+
+      <!-- list -->
+      <div class="top-border bottom-border menu-list">
+        <!-- menus -->
+        <div class="list-item bottom-border" id="list-menu">
+          <div class="title flex-row">
+            <span>Menus</span>
+            <button
+              ion-button clear
+              class="but-add"
+              (click)="onButAddMenu()">
+              <img src="../../assets/imgs/home_menu_add.png" />
+            </button>
+          </div>
+
+          <div class="content">
+            <button ion-button icon-start round
+                    color="light-red"
+                    (click)="onMenuDetail()"
+                    *ngFor="let data of []">
+              <img src="../../assets/imgs/home_menu_icon.png" />
+              <span>{{data.name}}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- shopping list -->
+        <div class="list-item" id="list-shopping">
+          <div class="title flex-row">
+            <span>Shopping List</span>
+            <button
+              ion-button clear
+              class="but-add"
+              (click)="onButAddShoppingList()">
+              <img src="../../assets/imgs/home_menu_add.png" />
+            </button>
+          </div>
+
+          <div class="content">
+            <button
+              ion-button icon-start round
+              color="light-red"
+              (click)="onShoppingList()"
+              *ngFor="let data of userCurrent.shoppingList">
+              <img src="../../assets/imgs/home_list_icon.png" />
+              <span>{{data.name}}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll content -->
+    <div class="recipes">
+      <!-- upcoming recipes -->
+      <div>
+        <span class="title">Upcoming Recipes:</span>
+        <div class="recipe-content">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="upcomings.length == 0; else listUpcoming">
+            <span>No upcoming recipes yet</span>
+          </div>
+
+          <ng-template #listUpcoming>
+            <ion-row>
+              <ion-col col-4 *ngFor="let data of upcomings">
+                <!-- recipe item -->
+                <recipe-grid-item
+                  [recipe]="data"
+                  (click)="onRecipeDetail(data)">
+                </recipe-grid-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- browse -->
+      <div>
+        <!-- title -->
+        <div class="title-button title">
+          <span>Browse recipes and menus</span>
+          <button
+            ion-button clear
+            (click)="onButViewAll()">
+            View All
+            <ion-icon name="ios-arrow-forward"></ion-icon>
+          </button>
+        </div>
+        <div class="recipe-content">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="recipes.length == 0; else listRecipe">
+            <span>No recipes yet</span>
+          </div>
+
+          <ng-template #listRecipe>
+            <ion-row>
+              <ion-col col-4 *ngFor="let data of recipes">
+                <!-- recipe item -->
+                <recipe-grid-item
+                  [recipe]="data"
+                  (click)="onRecipeDetail(data)">
+                </recipe-grid-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="div-button">
+        <button
+          ion-button round full
+          class="with-shadow"
+          (click)="onButCookTip()">
+          Cooking Tips
+        </button>
+
+        <div class="flex-row">
+          <button ion-button round full
+            style="flex: 1; margin-right: 4px;"
+            class="with-shadow"
+            (click)="onButFavourites()">
+            Favorites
+          </button>
+          <button ion-button round full
+            style="flex: 1; margin-left: 4px;"
+            class="with-shadow"
+            (click)="onButMyRecipes()">
+            My Recipes
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </ion-content>

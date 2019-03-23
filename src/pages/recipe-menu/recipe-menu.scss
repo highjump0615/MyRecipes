@@ -1,0 +1,63 @@
+page-recipe-menu {
+
+  .header-select {
+    margin-top: 10px;
+    padding: 0 10px;
+  }
+
+  .header-search {
+    margin: 12px 10px 0 10px;
+
+    height: 38px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0px 4px #aaa;
+
+    background-color: white;
+    border-radius: 6px;
+
+    // icon
+    .ic-search {
+      margin-left: 10px;
+      color: map-get($map: $colors, $key: primary);
+    }
+
+    // input
+    ion-input {
+      margin: 0 10px;
+    }
+
+    button {
+      height: 100%;
+      margin: 0;
+      padding: 0 10px;
+
+      font-size: 10pt;
+
+      // border radius
+      border-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+
+      ion-icon {
+        margin-left: 4px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .container-scroll {
+    padding: 10px 0;
+    flex: 1;
+  }
+
+  .recipe-row-item {
+    margin-top: 8px;
+
+    star-rate {
+      margin-top: 20px;
+    }
+  }
+}

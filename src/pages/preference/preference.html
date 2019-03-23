@@ -1,0 +1,177 @@
+<!--
+  Generated template for the PreferencePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Preferences</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="container">
+    <!-- favourite -->
+    <ion-card>
+      <!-- menu -->
+      <button
+        ion-item detail-none no-lines
+        class="menu"
+        (click)="onButFavourite()">
+        Favourite Cuisines
+        <ion-icon
+          [name]="isFavouriteOpen ? 'ios-arrow-down' : 'ios-arrow-up'"
+          item-end>
+        </ion-icon>
+      </button>
+
+      <!-- content -->
+      <div
+        class="content"
+        [class.collapsed]="!isFavouriteOpen">
+        <div class="container-scroll">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="favourites.length == 0; else listFavourite">
+            <span>No cuisine items yet</span>
+          </div>
+
+          <ng-template #listFavourite>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of favourites">
+                <cuisine-item
+                  [index]="CUISINE_FAVOURITE"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- allergies -->
+    <ion-card>
+      <!-- menu -->
+      <button
+        ion-item detail-none no-lines
+        class="menu"
+        (click)="onButAllergy()">
+        Allergies
+        <ion-icon
+          [name]="isAllergyOpen ? 'ios-arrow-down' : 'ios-arrow-up'"
+          item-end>
+        </ion-icon>
+      </button>
+
+      <!-- content -->
+      <div
+        class="content"
+        [class.collapsed]="!isAllergyOpen">
+        <div class="container-scroll">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="allergies.length == 0; else listAllergy">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listAllergy>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of allergies">
+                <cuisine-item
+                  [index]="CUISINE_ALLERGY"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- diets -->
+    <ion-card>
+      <!-- menu -->
+      <button
+        ion-item detail-none no-lines
+        class="menu"
+        (click)="onButDiet()">
+        Diets
+        <ion-icon
+          [name]="isDietOpen ? 'ios-arrow-down' : 'ios-arrow-up'"
+          item-end>
+        </ion-icon>
+      </button>
+
+      <!-- content -->
+      <div
+        class="content"
+        [class.collapsed]="!isDietOpen">
+        <div class="container-scroll">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="diets.length == 0; else listDiet">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listDiet>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of diets">
+                <cuisine-item
+                  [index]="CUISINE_DIET"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- dislikes -->
+    <ion-card>
+      <!-- menu -->
+      <button
+        ion-item detail-none no-lines
+        class="menu"
+        (click)="onButDislike()">
+        Diskliked Foods
+        <ion-icon
+          [name]="isDislikeOpen ? 'ios-arrow-down' : 'ios-arrow-up'"
+          item-end>
+        </ion-icon>
+      </button>
+
+      <!-- content -->
+      <div
+        class="content"
+        [class.collapsed]="!isDislikeOpen">
+        <div class="container-scroll">
+          <div class="dv-no-list-item flex-c-row nm-center"
+               *ngIf="dislikes.length == 0; else listDislike">
+            <span>No items yet</span>
+          </div>
+
+          <ng-template #listDislike>
+            <ion-row nowrap>
+              <ion-col col-3 *ngFor="let data of dislikes">
+                <cuisine-item
+                  [index]="CUISINE_DISLIKE"
+                  [item]="data"
+                  (selectChanged)="onSelectItem($event)">
+                </cuisine-item>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

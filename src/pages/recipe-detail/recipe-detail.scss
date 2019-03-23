@@ -1,0 +1,94 @@
+page-recipe-detail {
+
+  ion-title {
+    padding: 0 30px 1px !important;
+  }
+
+  .container {
+    height: auto;
+  }
+
+  .photo-rating {
+    background-color: white;
+    padding-bottom: 16px;
+
+    img {
+      padding: 18px 20px 8px 20px;
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    // rating star
+    star-rate {
+      width: 120px;
+      align-self: center;
+    }
+  }
+
+  // card info
+  ion-card {
+    padding: 10px 18px;
+    font-size: 10pt !important;
+    margin-bottom: 6px !important;
+    color: map-get($map: $colors, $key: dark);
+
+    .header {
+      font-weight: bold;
+    }
+
+    ion-card-content {
+      font-size: 9pt !important;
+      padding-top: 8px !important;
+      padding-bottom: 6px !important;
+      padding-right: 0 !important;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        columns: 2;
+
+        li {
+          padding-right: 4px;
+        }
+      }
+
+      ion-col {
+        padding: 0 !important;
+      }
+    }
+  }
+
+  // description
+  .desc ion-card-content {
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+
+}
+
+.primary-popover .popover-content,
+.secondary-popover .popover-content {
+  width: auto;
+}
+.primary-popover .popover-content ion-list,
+.secondary-popover .popover-content ion-list {
+  margin: -1px 0 0 0;
+  overflow: hidden;
+}
+.primary-popover .popover-content ion-list button,
+.secondary-popover .popover-content ion-list button {
+  font-size: 10pt !important;
+  min-height: 0 !important;
+}
+
+.secondary-popover .popover-content {
+  margin-top: -38px;
+  transform: translateX(-163px) !important;
+}
+.secondary-popover ion-backdrop {
+  opacity: 0 !important;
+}
+.secondary-popover .popover-arrow {
+  display: none;
+}

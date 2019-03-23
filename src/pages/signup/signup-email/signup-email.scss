@@ -1,0 +1,10 @@
+page-signup {
+
+  .container {
+    justify-content: space-between;
+  }
+
+  check-box:not(:first-child) {
+    margin-top: 8px;
+  }
+}

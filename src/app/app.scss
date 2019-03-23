@@ -14,3 +14,351 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$font-size-label: 10pt;
+$font-size-button: 10pt;
+
+
+//
+// content
+//
+ion-content {
+  background-color: map-get($map: $colors, $key: light) !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.flex-row {
+  display: flex;
+}
+.flex-c-row {
+  display: flex;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-fill {
+    flex: 1;
+}
+
+.match-parent {
+    width: 100%;
+    height: 100%;
+}
+.full-width {
+  width: 100%;
+}
+
+.nm-center {
+    align-self: center;
+    justify-content: center !important;
+    text-align: center;
+}
+
+//
+// background
+//
+.red-bg {
+  background-image: url('../assets/imgs/onboard_bg.jpg');
+  background-size: cover;
+}
+
+
+// width
+.width-80 {
+  width: 80%;
+}
+
+//
+// buttons
+//
+.but-primary {
+    font-size: $font-size-button;
+    color: map-get($colors, primary) !important;
+    background-color: map-get($colors, light) !important;
+}
+.but-primary.activated {
+    opacity: 0.7;
+}
+
+// add button
+.but-add img {
+  width: 15px;
+}
+
+.but-transparent {
+    font-size: $font-size-button;
+    color: map-get($colors, light) !important;
+}
+
+//
+// navigation bar
+//
+.back-button-icon {
+  font-size: 2.2rem;
+}
+
+ion-navbar ion-buttons[end] {
+  button {
+    font-size: 10pt;
+  }
+}
+
+//
+// signin form
+//
+.signin-input {
+  border-bottom: 1px solid map-get($colors, light);
+
+  ion-input, ion-textarea {
+    color: map-get($colors, light);
+  }
+}
+.signin-input img {
+  margin-right: 24px;
+}
+
+// term & signup
+.signin-menu {
+  text-align: center;
+}
+.signin-menu span {
+  font-size: $font-size-label;
+  color: map-get($colors, light);
+}
+.signin-menu span.clickable {
+  color: #ff5047;
+}
+
+
+//
+// placeholders
+//
+.signin-input {
+  .text-input::-moz-placeholder {
+    color: map-get($colors, light);
+  }
+
+  .text-input::-ms-input-placeholder {
+    color: map-get($colors, light);
+  }
+
+  .text-input::-webkit-input-placeholder {
+    color: map-get($colors, light);
+  }
+}
+
+//
+// photo buttons
+//
+.round {
+  border-radius: 50%;
+  overflow: hidden;
+}
+.but-photo {
+  border: 3px solid white;
+}
+.but-photo-large {
+  width: 120px;
+  height: 120px;
+  border: 3px solid white;
+  font-size: 10pt;
+}
+.but-photo-large .title {
+  line-height: 1.4;
+}
+.but-photo-large ion-icon {
+  font-size: 27pt;
+}
+
+//
+// round
+//
+.round-height {
+  border-radius: 120px;
+}
+.round-rect {
+  border-radius: 6px !important;
+}
+
+//
+// transparent header
+//
+ion-header[transparent] .toolbar-background {
+  background: transparent;
+}
+
+//
+// scroll container
+//
+.container-scroll {
+  overflow: scroll
+}
+
+//
+// menu
+//
+button[menutoggle] {
+  margin: 0;
+}
+button[menutoggle] ion-icon {
+  font-size: 2.2rem;
+}
+
+ion-menu ion-title {
+  padding: 0 40px !important;
+}
+ion-menu ion-title .toolbar-title {
+  font-size: 12pt;
+  font-weight: normal;
+}
+#main .container {
+  justify-content: space-between;
+}
+
+//
+// menu buttons
+//
+#main ion-list {
+  margin-bottom: 0;
+}
+#main ion-list button {
+  font-size: 11pt;
+  color: map-get($map: $colors, $key: dark);
+}
+#main ion-list button ion-icon {
+  font-size: 13pt;
+  min-height: 0;
+  color: map-get($map: $colors, $key: primary)
+}
+
+//
+// border
+//
+.top-border {
+  border-top: 1px solid #ffffff70;
+}
+.bottom-border {
+  border-bottom: 1px solid #ffffff70;
+}
+
+//
+// square image
+//
+.square {
+  position: relative;
+  padding-bottom: 100%;
+  background-position: 50%;
+  background-size: cover;
+}
+
+//
+// buttons
+//
+.button-primary {
+  font-size: 10pt !important;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 3px 30px #666;
+}
+
+//
+// shadow
+//
+.with-shadow {
+  box-shadow: 0 3px 30px #666;
+}
+.with-shadow-small {
+  box-shadow: 0 0px 10px #bbb;
+}
+
+//
+// segments
+//
+ion-segment {
+  border-radius: 6px;
+  background-color: color($colors, main-red);
+
+  .segment-button {
+    color: white !important;
+  }
+
+  .segment-activated {
+    background-color: map-get($map: $colors, $key: light-red) !important;
+  }
+}
+
+//
+// recipe row item
+//
+.recipe-row-item {
+  .photo {
+    width: 98px;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    padding: 10px;
+  }
+
+  .recipe-title {
+    color: map-get($map: $colors, $key: primary);
+    font-size: 10pt;
+  }
+  .recipe-desc {
+    margin-top: 6px;
+    color: #999;
+    font-size: 8.5pt;
+    line-height: 1.5;
+  }
+
+  // rating star
+  star-rate {
+    width: 80px;
+
+  }
+}
+
+// buttons
+.div-button {
+  margin-top: 10px;
+}
+.div-button [ion-button] {
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+// search bar
+ion-searchbar {
+  background-color: transparent !important;
+}
+
+//
+// close button
+//
+button[menuClose] {
+  font-size: 20pt;
+}
+
+.inactive {
+  opacity: 0.6;
+}
+
+.input-cover { position: static; }
+
+.dv-no-list-item {
+  min-height: 94px;
+  color: gray;
+}

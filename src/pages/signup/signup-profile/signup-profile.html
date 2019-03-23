@@ -1,0 +1,102 @@
+<!--
+  Generated template for the SignupProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{type == FROM_SIGNUP ? 'Sign Up' : 'Edit Profile'}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="red-bg">
+  <div class="container" padding>
+    <!-- submit form -->
+    <div
+      class="width-80 input-items"
+      style="margin-top: 30px;">
+
+      <!-- photo button -->
+      <input
+        type="file"
+        [hidden]="true"
+        accept="image/*;capture=camera"
+        (change)="onFileSelected($event)"
+        #file />
+
+        <button
+          ion-button round
+          class="but-photo-large nm-center"
+          (click)="onButPhoto()">
+          <!-- photo image -->
+          <img class="photo"
+               [src]="imgPhoto"
+               *ngIf="imgPhoto; else fromUrl" />
+          <ng-template #fromUrl>
+            <img class="photo"
+                 [src]="imgPhotoUrl"
+                 *ngIf="imgPhotoUrl" />
+          </ng-template>
+
+          <div class="flex-column"
+               *ngIf="!imgPhoto">
+            <ion-icon name="add"></ion-icon>
+            <span class="title">Upload<br>Photo</span>
+          </div>
+        </button>
+
+      <!-- first name -->
+      <div
+        class="flex-c-row input-item signin-input"
+        style="margin-top: 10px;">
+        <ion-input
+          placeholder="First Name"
+          [(ngModel)]="firstName">
+        </ion-input>
+      </div>
+
+      <!-- last name -->
+      <div
+        class="flex-c-row input-item signin-input"
+        style="margin-top: 8px;">
+        <ion-input
+          placeholder="Last Name"
+          [(ngModel)]="lastName">
+        </ion-input>
+      </div>
+
+      <!-- description -->
+      <div
+        class="flex-row input-item signin-input desc"
+        style="margin-top: 8px;">
+        <ion-textarea
+          #desc
+          (input)="adjustTextarea($event);"
+          placeholder="Description"
+          maxLength="500"
+          [(ngModel)]="description">
+        </ion-textarea>
+      </div>
+    </div>
+
+    <!-- buttons -->
+    <div
+      class="nm-center width-80"
+      style="margin-bottom: 40px;">
+
+      <!-- next button -->
+      <button
+        ion-button round full
+        class="but-primary"
+        (click)="onButNext($event)">
+        <b>{{type == FROM_SIGNUP ? 'Next' : 'Save'}}</b>
+      </button>
+    </div>
+
+  </div>
+
+</ion-content>

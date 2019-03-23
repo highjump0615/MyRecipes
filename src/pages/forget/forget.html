@@ -1,0 +1,60 @@
+<!--
+  Generated template for the ForgetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="red-bg" padding>
+
+  <div ion-fixed class="container" padding>
+    <!-- submit form -->
+    <div
+      class="nm-center width-80"
+      style="margin-top: 60px;">
+
+      <!-- email -->
+      <div class="flex-c-row input-item signin-input">
+        <img
+          src="../assets/imgs/signin/signin_email.png"
+          style="width: 19px;" />
+        <ion-input
+          type="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="email">
+        </ion-input>
+      </div>
+
+      <div
+        class="signin-menu"
+        style="margin-top: 40px;">
+        <span style="font-style: italic">Put in your email address so we can<br
+          >send a password reset link</span>
+      </div>
+    </div>
+
+    <!-- buttons -->
+    <div
+      class="nm-center width-80"
+      style="margin-bottom: 40px;">
+
+      <!-- submit button -->
+      <button
+        ion-button round full
+        class="but-primary"
+        (click)="onButSubmit()">
+        <b>Submit</b>
+      </button>
+    </div>
+  </div>
+
+</ion-content>

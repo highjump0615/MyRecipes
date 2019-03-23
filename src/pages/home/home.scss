@@ -1,3 +1,129 @@
 page-home {
 
+  ion-content {
+    background-color: map-get($map: $colors, $key: main-red) !important;
+    color: map-get($map: $colors, $key: light) !important;
+  }
+
+  //
+  // logo
+  //
+  .logo {
+    width: 111px;
+  }
+
+  //
+  // profile
+  //
+  .profile {
+    padding: 10px 40px 12px 40px;
+    background-color: map-get($map: $colors, $key: main-red);
+  }
+  .profile .info {
+    font-size: 10pt;
+    flex: 1;
+  }
+  .profile .info .name {
+    font-weight: bolder;
+    font-size: 14pt;
+  }
+  .profile .info button {
+    height: auto;
+    padding: 6px;
+    margin-top: -6px;
+    margin-right: -6px;
+  }
+  .profile .info button img {
+    width: 14px;
+  }
+  .profile .info .desc {
+    margin-top: 8px;
+  }
+  .profile .photo {
+    margin-left: 18px;
+    height: 80px;
+    width: 80px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  //
+  // menu list
+  //
+  .menu-list {
+    padding: 0 12px;
+    background-color: map-get($map: $colors, $key: dark-red);
+  }
+  .menu-list .title {
+    font-weight: bold;
+    font-size: 11pt;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu-list .title button {
+    height: auto;
+    padding: 6px;
+  }
+  .menu-list .content button {
+    height: auto;
+    padding: 8px 12px;
+    font-size: 9pt;
+  }
+  .menu-list .content button img {
+    margin-right: 6px;
+  }
+  .menu-list .list-item {
+    padding-bottom: 10px;
+  }
+  #list-menu .content button img {
+    width: 16px;
+  }
+  #list-shopping .content button img {
+    width: 13px;
+  }
+
+  //
+  // recipes content
+  //
+  .scroll-content {
+    background-color: map-get($map: $colors, $key: light);
+  }
+
+  .recipes {
+    padding: 12px;
+    overflow: scroll;
+
+    .title-button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-weight: bold;
+      color: map-get($map: $colors, $key: primary);
+
+      button {
+        height: auto;
+        font-size: 10pt;
+        font-weight: bold;
+
+        ion-icon {
+          margin-left: 6px;
+        }
+      }
+    }
+  }
+
+  .recipe-content {
+    margin: 2px -5px;
+  }
+
+  .dv-no-list-item {
+    min-height: 167px;
+  }
 }

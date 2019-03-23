@@ -1,0 +1,30 @@
+page-onboard {
+    .slide-content span {
+        margin-top: 60px;
+        font-size: $font-size-label;
+        color: map-get($colors, light);
+    }
+
+    .slide-content {
+        margin-bottom: 10%;
+    }
+
+    .img-logo {
+        width: 157px;
+    }
+
+    //
+    // slider buillets
+    //
+
+    // color
+    .swiper-pagination-bullet {
+        background: map-get($colors, light) !important;
+    }
+
+    // position
+    .swiper-pagination-bullets {
+        bottom: 10% !important;
+    }
+}
+

@@ -1,0 +1,124 @@
+page-menu-generator {
+
+  .header-select {
+    margin: 10px;
+  }
+
+  .container-scroll {
+    flex: 1;
+  }
+
+  .buttons {
+    margin: 10px;
+  }
+
+  .input-item {
+    background-color: white;
+    margin: 10px 10px 0 10px;
+    box-shadow: 0 0px 2px #666;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+
+    .text-input {
+      margin: 10px;
+    }
+
+    ion-input {
+      flex: 1;
+    }
+
+    ion-icon {
+      font-size: 15pt;
+      color: map-get($map: $colors, $key: primary);
+      margin: 0 14px;
+    }
+  }
+
+  .collapsed {
+    max-height: 0 !important;
+  }
+
+  .filter-options {
+    background-color: map-get($map: $colors, $key: primary);
+    margin-top: 10px;
+
+    transition: 0.2s linear;
+    overflow: hidden;
+    max-height: 600px;
+
+    ion-list {
+      margin: 0;
+    }
+
+    ion-item {
+      background-color: map-get($map: $colors, $key: primary);
+      color: map-get($map: $colors, $key: light);
+      font-size: 11pt;
+    }
+
+    button[ion-item] {
+      color: map-get($map: $colors, $key: light);
+      font-size: 11pt;
+      min-height: 0 !important;
+      border-top: 0 !important;
+
+      ion-icon {
+        font-size: 15pt;
+        min-height: 0;
+        margin-right: 4px;
+      }
+    }
+
+    .accordion {
+      .content {
+        padding: 0 14px;
+
+        transition: 0.3s linear;
+
+        ion-row {
+          padding-bottom: 6px;
+        }
+      }
+
+      .item-inner {
+        border-bottom: 0px;
+        border-top: 0.55px solid #c8c7cce0;
+      }
+
+      ion-col {
+        padding: 0 10px;
+      }
+
+    }
+  }
+
+  // customize cuisine item
+  cuisine-item {
+    .border {
+      border: 1px solid #ffffff80;
+    }
+
+    span {
+      color: white;
+      margin-top: 4px;
+      font-size: 9pt;
+    }
+  }
+
+  // added recipes
+  .added {
+    margin-top: 16px;
+
+    .div-title {
+      margin: 12px;
+      color: map-get($map: $colors, $key: primary);
+    }
+
+    .recipe-row-item {
+      margin-top: 8px;
+      height: 90px;
+    }
+
+  }
+}

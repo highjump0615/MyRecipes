@@ -1,0 +1,165 @@
+<!--
+  Generated template for the ShoppingListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <!-- close button -->
+    <ion-buttons start>
+      <button
+        ion-button menuClose
+        (click)="onButClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{title}}</ion-title>
+
+    <ion-buttons end>
+      <button
+        ion-button
+        (click)="onButSave()">
+        SAVE
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div ion-fixed class="container">
+    <!-- menu selection -->
+    <div class="header">
+      <div *ngIf="false">
+        <ion-select [(ngModel)]="menu" interface="popover">
+          <ion-option selected>Weeknight Suppers</ion-option>
+          <ion-option>Dinner with Family</ion-option>
+          <ion-option>Quick and Easy</ion-option>
+          <ion-option>Super Bown Party</ion-option>
+          <ion-option>Dinner to Impress</ion-option>
+        </ion-select>
+      </div>
+
+      <!-- template name -->
+      <div
+        class="input-item">
+        <ion-input
+          name="shoppingName"
+          placeholder="Shopping List Name"
+          [(ngModel)]="shoppingName">
+        </ion-input>
+      </div>
+    </div>
+
+    <!-- list -->
+    <div class="content">
+      <div class="dv-no-list-item flex-c-row nm-center"
+           *ngIf="ingShopping.length == 0; else listIng">
+        <span>No ingredients added yet</span>
+      </div>
+
+      <ng-template #listIng>
+        <ion-list class="ingredients">
+          <ion-item *ngFor="let ing of ingShopping">
+            <ion-chip item-start>
+              <span>3 tbsp</span>
+            </ion-chip>
+            <ion-label text-center class="name">Brasil Leaves</ion-label>
+          </ion-item>
+        </ion-list>
+      </ng-template>
+
+      <div
+        class="add flex-column"
+        [class.collapsed]="!showAddMenu">
+        <!-- add button -->
+        <button
+          ion-button full icon-only
+          class="but-show-add"
+          (click)="onToggleAddMenu()">
+          <ion-icon [name]="showAddMenu ? 'ios-arrow-down' : 'ios-arrow-up'"></ion-icon>
+        </button>
+
+        <div class="list-add flex-column">
+          <div class="row-add flex-row top-border">
+            <!-- increase/decrease -->
+            <button
+              ion-button icon-only
+              (click)="onButCountDec()">
+              <ion-icon name="ios-remove-circle-outline"></ion-icon>
+            </button>
+            <button
+              ion-button icon-only
+              style="margin-left: 6px;"
+              (click)="onButCountInc()">
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+            </button>
+
+            <!-- count -->
+            <ion-input
+              class="round-height"
+              name="quantity"
+              type="number"
+              placeholder="Count"
+              style="margin-left: 6px; flex: 1;"
+              [(ngModel)]="ingQuantity">
+            </ion-input>
+
+            <!-- unit -->
+            <ion-input
+              class="round-height"
+              name="unit"
+              style="margin-left: 6px; flex: 1;"
+              readonly
+              placeholder="Unit"
+              [(ngModel)]="ingUnit">
+            </ion-input>
+
+            <!-- item name -->
+            <ion-input
+              class="round-height"
+              name="ingredient"
+              placeholder="Item Name"
+              style="margin-left: 6px; flex: 2;"
+              readonly
+              [(ngModel)]="ingName">
+            </ion-input>
+
+            <button
+              ion-button small
+              [disabled]="!(ingUnit && ingName && ingQuantity)"
+              (click)="onButSave()">
+              ADD
+            </button>
+
+          </div>
+
+          <!-- list -->
+          <div class="list-source">
+            <div class="dv-no-list-item flex-c-row nm-center"
+                 *ngIf="ingAll.length == 0; else listSource">
+              <span>No ingredients yet</span>
+            </div>
+
+            <ng-template #listSource>
+              <ion-list>
+                <ion-item
+                  *ngFor="let item of ingAll; let i = index"
+                  [class.selected]="selectedIndex == i"
+                  (click)="selectIngredient(i)">
+                  <ion-label>{{data.name}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
