@@ -115,13 +115,16 @@ ion-textarea {
 ```
 
 ### 4. Third-Party Libraries
-#### Cordova plugins
+#### 4.1 Cordova plugins
 - [Google Plus](https://github.com/EddyVerbruggen/cordova-plugin-googleplus) v6.0.0  
 Google Signin
 - [Facebook4](https://github.com/jeduan/cordova-plugin-facebook4#readme) v4.0.0  
 Facebook Signin
 - [Email Composer](https://github.com/katzer/cordova-plugin-email-composer) v0.8.15  
 Report a problem in Settings
+
+#### 4.2 [Firebase JS SDK](https://github.com/firebase/firebase-js-sdk) v5.7.0  
+Main backend & database for the app
 
 
 ## Need to Improve
